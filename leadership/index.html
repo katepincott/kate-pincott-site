@@ -142,25 +142,23 @@ nav.top a.current{color:var(--accent);font-weight:600}
   max-width:40ch;
 }
 
-/* Pull quote */
+/* Pull quote - subtle, right-aligned tagline */
 .pull{
-  margin:64px 0 96px;
-  padding:48px 0;
-  border-top:1px solid var(--line);
-  border-bottom:1px solid var(--line);
+  margin:0 0 96px;
+  padding:0;
 }
 .pull p{
-  margin:0 auto;
-  text-align:center;
-  font-family:var(--font-display);
-  font-style:normal;
-  font-weight:500;
-  font-size:clamp(28px, 3.4vw, 40px);
-  line-height:1.2;
-  letter-spacing:-0.022em;
-  color:var(--fg);
+  margin:0 0 0 auto;
+  text-align:right;
+  font-family:var(--font-display-italic);
+  font-style:italic;
+  font-weight:400;
+  font-size:22px;
+  line-height:1.4;
+  letter-spacing:-0.006em;
+  color:var(--accent);
   text-wrap:balance;
-  max-width:26ch;
+  max-width:48ch;
 }
 .pull p .accent{color:var(--accent)}
 
@@ -237,6 +235,24 @@ nav.top a.current{color:var(--accent);font-weight:600}
 }
 /* Unnumbered variant: drop the 60px numeric column when the .ix prefix is removed */
 .principles.unnumbered .p{grid-template-columns: 1fr minmax(0, 360px)}
+
+/* Italic-accent treatment for <em> inside principle supporting paragraphs (matches h3 em pattern) */
+.principles .p p em{
+  font-family:var(--font-display-italic);
+  font-style:italic;
+  color:var(--accent);
+  font-weight:400;
+}
+
+/* Standalone intro paragraph - left-aligned, sits inside the hero below the h1 */
+.intro-block{
+  margin: 28px 0 0 0;
+  text-align: left;
+  max-width: 62ch;
+  font-size: 17px;
+  color: var(--fg-mute);
+  line-height: 1.6;
+}
 
 /* Compact variant for the craft-bar four questions: ~half height, smaller text */
 #craft-bar .principles .p{
@@ -731,11 +747,17 @@ footer.foot{
     <div>
       <div class="eyebrow"><span class="dot"></span>Leadership README · v1 · 2026</div>
       <h1>A user manual for <em>working with me</em>.</h1>
+      <p class="intro-block">
+        The thing peers and reports tell me most often is that I'm a steady presence in messy rooms - calm, warm, enthusiastic, and useful. The thing I notice most about my own impact is that it tends to outlast me. The people I've led carry the thinking forward into their next teams. That's the part I care about most, and it's the part I'm most still learning to do better.
+      </p>
     </div>
-    <p class="intro">
-      "My job as a leader is to set clear direction, foster alignment, and remove obstacles - so others can do their best work."
-    </p>
   </header>
+
+  <section class="pull reveal">
+    <p>
+      "My job is to move the work forward and grow the people doing it - and to refuse to treat those as separate problems."
+    </p>
+  </section>
 
   <section class="section reveal" id="how-i-lead">
     <div class="section-head">
@@ -762,6 +784,11 @@ footer.foot{
       <div class="p">
         <h3>Make space for <em>experiments</em> - including ones that fail.</h3>
         <p>Especially with AI tooling, new design system rituals, hybrid roles. I'll back a 70%-confident prototype over a 100%-talked-about idea. If it doesn't work we learn it cost us two weeks, not two quarters.</p>
+      </div>
+
+      <div class="p">
+        <h3>Coaching is the <em>work</em>, not a side activity.</h3>
+        <p>I'll ask what you're seeing before I tell you what I'm seeing. Most days that <em>is</em> the job - not a soft skill bolted onto it.</p>
       </div>
 
     </div>
