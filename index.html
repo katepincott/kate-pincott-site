@@ -369,7 +369,9 @@ nav.top a.current{color:var(--accent);font-weight:600}
   to   { transform: translateX(-50%); }
 }
 @media (prefers-reduced-motion: reduce){
-  .ticker-track{animation:none}
+  /* Compromise: keep the clients ticker drifting, but slow and gentle
+     for users who prefer reduced motion (incl. iOS Low Power Mode). */
+  .ticker-track{animation-duration:90s}
 }
 
 /* Clients strip */
