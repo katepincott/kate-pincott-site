@@ -1,0 +1,665 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Kate Pincott — Testimonials</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+
+<style>
+:root{
+  --bg: oklch(0.985 0.006 80);
+  --surface: oklch(0.965 0.008 80);
+  --fg: oklch(0.22 0.012 60);
+  --fg-mute: oklch(0.45 0.012 60);
+  --fg-faint: oklch(0.62 0.010 60);
+  --line: oklch(0.86 0.012 70);
+  --accent: oklch(0.62 0.14 38);
+  --accent-soft: oklch(0.62 0.14 38 / 0.10);
+
+  --gap-row: 32px;
+  --gap-section: 96px;
+  --leading-body: 1.55;
+
+  --font-body: "Geist", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-display-italic: "Instrument Serif", "Geist", serif;
+  --font-mono: "Geist Mono", ui-monospace, monospace;
+  --weight-display: 500;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+html{background:var(--bg)}
+body{
+  font-family:var(--font-body);
+  color:var(--fg);
+  background:var(--bg);
+  font-size:16px;
+  line-height:var(--leading-body);
+  font-weight:400;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  text-rendering:optimizeLegibility;
+  font-feature-settings:"ss01","cv11";
+}
+::selection{background:var(--accent-soft);color:var(--fg)}
+
+.shell{
+  max-width:1180px;
+  margin:0 auto;
+  padding:48px 56px 96px;
+}
+
+nav.top{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  padding-bottom:8px;
+  margin-bottom:96px;
+}
+nav.top .brand{
+  font-family:var(--font-display);
+  font-weight:500;
+  font-size:15px;
+  letter-spacing:-0.005em;
+}
+nav.top .brand a{color:var(--fg);text-decoration:none}
+nav.top .brand .dot{color:var(--accent)}
+nav.top ul{
+  list-style:none;
+  display:flex;
+  gap:28px;
+  margin:0;padding:0;
+  font-size:13.5px;
+}
+nav.top a{
+  color:var(--fg-mute);
+  text-decoration:none;
+  font-weight:400;
+  transition:color .18s ease;
+}
+nav.top a:hover{color:var(--accent)}
+nav.top a.current{color:var(--fg);font-weight:500}
+
+/* Hero */
+.hero{
+  display:grid;
+  grid-template-columns: minmax(0, 8fr) minmax(0, 4fr);
+  gap:80px;
+  margin-bottom:64px;
+  align-items:end;
+}
+.hero .eyebrow{
+  font-family:var(--font-mono);
+  font-size:11.5px;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  color:var(--fg-faint);
+  margin-bottom:32px;
+  display:flex;
+  gap:14px;
+  align-items:center;
+}
+.hero .eyebrow .dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--accent);
+  display:inline-block;
+}
+.hero h1{
+  font-family:var(--font-display);
+  font-weight:var(--weight-display);
+  font-size:clamp(38px, 5.4vw, 64px);
+  line-height:1.04;
+  letter-spacing:-0.024em;
+  margin:0;
+  color:var(--fg);
+  text-wrap:balance;
+  max-width:18ch;
+}
+.hero h1 em{
+  font-family:var(--font-display-italic);
+  font-style:italic;
+  font-weight:400;
+  color:var(--accent);
+  font-size:1.05em;
+}
+.hero p.intro{
+  font-size:16px;
+  color:var(--fg-mute);
+  line-height:1.55;
+  margin:0;
+  max-width:40ch;
+}
+
+/* Stats strip */
+.stats{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap:32px;
+  padding:32px 0;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  margin-bottom:64px;
+}
+.stats .stat .n{
+  font-family:var(--font-display);
+  font-weight:500;
+  font-size:clamp(28px, 3.4vw, 42px);
+  letter-spacing:-0.022em;
+  line-height:1;
+  color:var(--fg);
+  margin:0 0 8px 0;
+}
+.stats .stat .n em{
+  font-family:var(--font-display-italic);
+  font-style:italic;
+  color:var(--accent);
+  font-weight:400;
+}
+.stats .stat .l{
+  font-family:var(--font-mono);
+  font-size:11px;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  color:var(--fg-faint);
+}
+
+/* Clients */
+.alumni{
+  margin-bottom:64px;
+}
+.alumni .h{
+  font-family:var(--font-mono);
+  font-size:11px;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  color:var(--fg-faint);
+  margin:0 0 20px 0;
+}
+.alumni .companies{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 12px;
+  font-family:var(--font-display);
+  font-weight:500;
+  font-size:17px;
+  color:var(--fg);
+  letter-spacing:-0.012em;
+}
+.alumni .companies .c{
+  padding:6px 14px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  transition: border-color .15s, color .15s;
+}
+.alumni .companies .c:hover{
+  border-color:var(--accent);
+  color:var(--accent);
+}
+
+/* Testimonials masonry */
+.grid{
+  column-count: 2;
+  column-gap: 24px;
+}
+@media (max-width: 880px){
+  .grid{column-count: 1}
+}
+.testimonial{
+  break-inside: avoid;
+  display:inline-block;
+  width:100%;
+  margin-bottom:24px;
+  padding:36px 36px 28px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:var(--bg);
+  position:relative;
+  transition: border-color .25s ease-out, transform .25s ease-out, box-shadow .25s ease-out;
+}
+.testimonial:hover{
+  border-color: color-mix(in oklch, var(--accent) 40%, var(--line));
+  transform:translateY(-4px);
+  box-shadow: 0 16px 32px -16px rgba(0,0,0,0.14), 0 4px 12px -4px rgba(0,0,0,0.06);
+}
+.testimonial .mark{
+  position:absolute;
+  top:14px;
+  right:24px;
+  font-family:var(--font-display-italic);
+  font-style:italic;
+  font-size:88px;
+  line-height:0.85;
+  color:var(--accent);
+  opacity:0.42;
+  font-weight:400;
+  user-select:none;
+  pointer-events:none;
+}
+.testimonial blockquote{
+  margin:0 0 24px 0;
+  font-family:var(--font-display);
+  font-weight:400;
+  font-size:17px;
+  line-height:1.5;
+  letter-spacing:-0.006em;
+  color:var(--fg);
+  text-wrap:pretty;
+  position:relative;
+  z-index:1;
+}
+.testimonial .who{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding-top:18px;
+  border-top:1px solid var(--line);
+}
+.testimonial .who .av{
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  background:var(--accent-soft);
+  color:var(--accent);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:var(--font-mono);
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:0;
+  text-transform:uppercase;
+  flex-shrink:0;
+}
+.testimonial .who .info{
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+}
+.testimonial .who .name{
+  font-family:var(--font-display);
+  font-weight:500;
+  font-size:14px;
+  letter-spacing:-0.006em;
+  color:var(--fg);
+  line-height:1.3;
+}
+.testimonial .who .role{
+  font-size:12.5px;
+  color:var(--fg-mute);
+  line-height:1.3;
+  margin-top:2px;
+}
+.testimonial .who .role b{
+  color:var(--fg);
+  font-weight:500;
+}
+
+/* CTA */
+.cta{
+  margin-top:96px;
+  padding:48px 56px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  display:grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap:64px;
+  align-items:center;
+  background: linear-gradient(180deg, var(--accent-soft), transparent 80%);
+}
+.cta h2{
+  font-family:var(--font-display);
+  font-weight:500;
+  font-size:clamp(28px, 3.2vw, 38px);
+  line-height:1.1;
+  letter-spacing:-0.02em;
+  margin:0;
+  text-wrap:balance;
+}
+.cta h2 em{
+  font-family:var(--font-display-italic);
+  font-style:italic;
+  color:var(--accent);
+  font-weight:400;
+}
+.cta p{margin:0;color:var(--fg-mute);font-size:15px;line-height:1.55}
+.cta a.invite{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-size:14px;
+  font-weight:500;
+  color:var(--fg);
+  text-decoration:none;
+  border-bottom:1px solid var(--fg);
+  padding-bottom:2px;
+  margin-top:16px;
+  transition: color .2s, border-color .2s;
+}
+.cta a.invite:hover{color:var(--accent);border-color:var(--accent)}
+
+footer.foot{
+  margin-top:64px;
+  padding-top:32px;
+  border-top:1px solid var(--line);
+  display:flex;
+  justify-content:space-between;
+  font-family:var(--font-mono);
+  font-size:11px;
+  color:var(--fg-faint);
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+}
+
+/* Scroll reveal */
+.reveal{
+  opacity:0;
+  transform:translateY(20px);
+  transition: opacity .4s ease-out, transform .4s ease-out;
+  will-change: opacity, transform;
+}
+.reveal.in{opacity:1;transform:translateY(0)}
+@media (prefers-reduced-motion: reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+}
+
+@media (max-width: 880px){
+  .shell{padding:32px 24px 64px}
+  nav.top{margin-bottom:48px}
+  nav.top ul{gap:18px;font-size:12.5px}
+  .hero{grid-template-columns:1fr;gap:32px;align-items:start}
+  .stats{grid-template-columns:1fr;gap:16px;padding:24px 0}
+  .cta{grid-template-columns:1fr;gap:24px;padding:32px}
+  .testimonial{padding:28px 24px 20px}
+}
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <nav class="top">
+    <div class="brand"><a href="index.html">Kate Pincott<span class="dot">.</span></a></div>
+    <ul>
+      <li><a href="index.html#work">Work</a></li>
+      <li><a href="index.html#now">Now</a></li>
+      <li><a href="speaking.html">Speaking</a></li>
+      <li><a href="testimonials.html" class="current">Testimonials</a></li>
+      <li><a href="leadership.html">Leadership</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero reveal">
+    <div>
+      <div class="eyebrow"><span class="dot"></span>Designers I've coached</div>
+      <h1>What designers say after working with <em>me</em>.</h1>
+    </div>
+    <p class="intro">
+      Quotes from designers, managers, and creative directors at Figma, Amazon, IDEO, Monzo, IKEA, Booking.com and beyond &mdash; on confidence, clarity, promotions, and finding their voice.
+    </p>
+  </header>
+
+  <section class="stats reveal">
+    <div class="stat">
+      <p class="n"><span class="count" data-count="100">0</span><em>+</em></p>
+      <p class="l">Designers coached</p>
+    </div>
+    <div class="stat">
+      <p class="n"><span class="count" data-count="7">0</span><em>yrs</em></p>
+      <p class="l">Coaching practice</p>
+    </div>
+    <div class="stat">
+      <p class="n">IC<em> → </em>Director</p>
+      <p class="l">Levels supported</p>
+    </div>
+  </section>
+
+  <section class="alumni reveal">
+    <p class="h">Coaching alumni at</p>
+    <div class="companies">
+      <span class="c">Figma</span>
+      <span class="c">Amazon</span>
+      <span class="c">IDEO</span>
+      <span class="c">Monzo</span>
+      <span class="c">IKEA</span>
+      <span class="c">Booking.com</span>
+      <span class="c">Checkout.com</span>
+      <span class="c">Numan</span>
+      <span class="c">Gravity Sketch</span>
+      <span class="c">AdvisorEngine</span>
+      <span class="c">Playfields</span>
+    </div>
+  </section>
+
+  <section class="grid">
+
+    <figure class="testimonial reveal">
+      <span class="mark">&ldquo;</span>
+      <blockquote>Kate helped to take my instinctive 'this is huge!' mindset and break it down into smaller chunks, with plenty of metaphors and analogies to boot. It can be really useful to have someone listen to you as you think through your problems and potential solutions.</blockquote>
+      <figcaption class="who">
+        <span class="av">LO</span>
+        <span class="info">
+          <span class="name">Luis Ouriach</span>
+          <span class="role">Designer Advocate <b>· Figma</b></span>
+        </span>
+      </figcaption>
+    </figure>
+
+    <figure class="testimonial reveal">
+      <span class="mark">&ldquo;</span>
+      <blockquote>Kate has helped me distill what really matters to me in a way which felt natural. The session was positive, thought provoking, and I've mentally referred back to it often!</blockquote>
+      <figcaption class="who">
+        <span class="av">GL</span>
+        <span class="info">
+          <span class="name">Gemma Lord</span>
+          <span class="role">Design Director <b>· IDEO</b></span>
+        </span>
+      </figcaption>
+    </figure>
+
+    <figure class="testimonial reveal">
+      <span class="mark">&ldquo;</span>
+      <blockquote>Promoted and almost doubled total compensation. Gained clarity on how I think about Product Design even after many years in the industry. Realise my thoughts and opinions matter &mdash; self-confidence to speak my own truth.</blockquote>
+      <figcaption class="who">
+        <span class="av">CR</span>
+        <span class="info">
+          <span class="name">Chad Rolinski</span>
+          <span class="role">Manager of Product Design <b>· Amazon</b></span>
+        </span>
+      </figcaption>
+    </figure>
+
+    <figure class="testimonial reveal">
+      <span class="mark">&ldquo;</span>
+      <blockquote>Kate helped tease out some things which I'm now aware I need to think about more deeply. I also now have a good process for thinking about how to prioritise my focus areas over the upcoming period.</blockquote>
+      <figcaption class="who">
+        <span class="av">JC</span>
+        <span class="info">
+          <span class="name">Jay Clark</span>
+          <span class="role">Senior Product Designer <b>· Monzo</b></span>
+        </span>
+      </figcaption>
+    </figure>
+
+    <figure class="testimonial reveal">
+      <span class="mark">&ldquo;</span>
+      <blockquote>Kate has an enchanting way to listen, identify, and bring out designer's talents, alongside defining structures and processes to help designers to succeed.</blockquote>
+      <figcaption class="who">
+        <span class="av">MJ</span>
+        <span class="info">
+          <span class="name">Mark Jackel</span>
+          <span class="role">Creative Director <b>· Playfields</b></span>
+        </span>
+      </figcaption>
+    </figure>
+
+    <figure class="testimonial reveal">
+      <span class="mark">&ldquo;</span>
+      <blockquote>I was feeling frustrated, worried and lost. She's experienced and well aware of the design industry &mdash; rest assured that you're going to enjoy your coaching session with Kate.</blockquote>
+      <figcaption class="who">
+        <span class="av">MS</span>
+        <span class="info">
+          <span class="name">Mohammad Sayyar</span>
+          <span class="role">Senior Product Designer <b>· Gravity Sketch</b></span>
+        </span>
+      </figcaption>
+    </figure>
+
+    <figure class="testimonial reveal">
+      <span class="mark">&ldquo;</span>
+      <blockquote>I got clarity on my current situation and feel more optimistic.</blockquote>
+      <figcaption class="who">
+        <span class="av">TJ</span>
+        <span class="info">
+          <span class="name">Ting Ji</span>
+          <span class="role">UX Designer <b>· Booking.com</b></span>
+        </span>
+      </figcaption>
+    </figure>
+
+    <figure class="testimonial reveal">
+      <span class="mark">&ldquo;</span>
+      <blockquote>After the session I feel much more positive. I have a much better idea of what to emphasise when I talk in interviews. It was a very productive 30 mins.</blockquote>
+      <figcaption class="who">
+        <span class="av">IL</span>
+        <span class="info">
+          <span class="name">Irene Liao</span>
+          <span class="role">Product Designer <b>· Checkout.com</b></span>
+        </span>
+      </figcaption>
+    </figure>
+
+    <figure class="testimonial reveal">
+      <span class="mark">&ldquo;</span>
+      <blockquote>Gained confidence in day-to-day work. Increased awareness of my perception of the situation vs reality.</blockquote>
+      <figcaption class="who">
+        <span class="av">AO</span>
+        <span class="info">
+          <span class="name">Alexis Oh</span>
+          <span class="role">Product UX Designer <b>· IKEA</b></span>
+        </span>
+      </figcaption>
+    </figure>
+
+    <figure class="testimonial reveal">
+      <span class="mark">&ldquo;</span>
+      <blockquote>I was very close to leaving the design industry altogether. Reality Prototyping has helped me align my values and turn my eye inwards. We are all the designers of our own lives and realities. I'm designing mine now.</blockquote>
+      <figcaption class="who">
+        <span class="av">TM</span>
+        <span class="info">
+          <span class="name">Thomas Morrell</span>
+          <span class="role">Product Design Lead <b>· AdvisorEngine</b></span>
+        </span>
+      </figcaption>
+    </figure>
+
+    <figure class="testimonial reveal">
+      <span class="mark">&ldquo;</span>
+      <blockquote>Having a half-hour conversation with Kate was more beneficial than many TED talks and YouTube workshops combined for me personally.</blockquote>
+      <figcaption class="who">
+        <span class="av">AR</span>
+        <span class="info">
+          <span class="name">Aravinth Roshan</span>
+          <span class="role">Product Manager <b>· Numan</b></span>
+        </span>
+      </figcaption>
+    </figure>
+
+    <figure class="testimonial reveal">
+      <span class="mark">&ldquo;</span>
+      <blockquote>Kate helped me look at job hunting from a viewpoint I've never considered before. I feel really inspired and hopeful because now I have a direction.</blockquote>
+      <figcaption class="who">
+        <span class="av">EI</span>
+        <span class="info">
+          <span class="name">Elena Ilyukhina</span>
+          <span class="role">Brand Designer</span>
+        </span>
+      </figcaption>
+    </figure>
+
+  </section>
+
+  <section class="cta reveal">
+    <div>
+      <h2>Want a session <em>like these?</em></h2>
+    </div>
+    <div>
+      <p>I coach designers, managers and creative leaders &mdash; on confidence, voice, career strategy, and prototyping your way through ambiguity. 30 mins is often enough to shift something.</p>
+      <a class="invite" href="mailto:kate.pincott@gmail.com?subject=Coaching enquiry">kate.pincott@gmail.com <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <span>© Kate Pincott 2026</span>
+    <span>Made with Claude Design</span>
+  </footer>
+
+</div>
+
+
+<script>
+// Count-up animation on stats when they enter viewport
+(function(){
+  const els = document.querySelectorAll('.count[data-count]');
+  if (!els.length) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    els.forEach(el => el.textContent = el.dataset.count);
+    return;
+  }
+  const animate = (el) => {
+    const target = parseInt(el.dataset.count, 10);
+    if (isNaN(target)) return;
+    const duration = 1200;
+    const start = performance.now();
+    const step = (t) => {
+      const elapsed = t - start;
+      const p = Math.min(1, elapsed / duration);
+      // ease-out cubic
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(target * eased);
+      if (p < 1) requestAnimationFrame(step);
+      else el.textContent = target;
+    };
+    requestAnimationFrame(step);
+  };
+  if (!('IntersectionObserver' in window)) {
+    els.forEach(animate);
+    return;
+  }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { animate(e.target); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.5 });
+  els.forEach(el => io.observe(el));
+})();
+
+(function(){
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+    return;
+  }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.reveal').forEach((el, i) => {
+    if (el.classList.contains('testimonial')) {
+      el.style.transitionDelay = (Math.min(i % 6, 5) * 100) + 'ms';
+    }
+    io.observe(el);
+  });
+})();
+</script>
+
+
+</body>
+</html>

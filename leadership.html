@@ -1,0 +1,790 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Kate Pincott — Leadership README</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+
+<style>
+:root{
+  --bg: oklch(0.985 0.006 80);
+  --surface: oklch(0.965 0.008 80);
+  --fg: oklch(0.22 0.012 60);
+  --fg-mute: oklch(0.45 0.012 60);
+  --fg-faint: oklch(0.62 0.010 60);
+  --line: oklch(0.86 0.012 70);
+  --accent: oklch(0.62 0.14 38);
+  --accent-soft: oklch(0.62 0.14 38 / 0.10);
+
+  --gap-row: 32px;
+  --gap-section: 96px;
+  --leading-body: 1.55;
+
+  --font-body: "Geist", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-display-italic: "Instrument Serif", "Geist", serif;
+  --font-mono: "Geist Mono", ui-monospace, monospace;
+  --weight-display: 500;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+html{background:var(--bg)}
+body{
+  font-family:var(--font-body);
+  color:var(--fg);
+  background:var(--bg);
+  font-size:16px;
+  line-height:var(--leading-body);
+  font-weight:400;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  text-rendering:optimizeLegibility;
+  font-feature-settings:"ss01","cv11";
+}
+::selection{background:var(--accent-soft);color:var(--fg)}
+
+.shell{
+  max-width:1180px;
+  margin:0 auto;
+  padding:48px 56px 96px;
+}
+
+nav.top{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  padding-bottom:8px;
+  margin-bottom:96px;
+}
+nav.top .brand{
+  font-family:var(--font-display);
+  font-weight:500;
+  font-size:15px;
+  letter-spacing:-0.005em;
+}
+nav.top .brand a{color:var(--fg);text-decoration:none}
+nav.top .brand .dot{color:var(--accent)}
+nav.top ul{
+  list-style:none;
+  display:flex;
+  gap:28px;
+  margin:0;padding:0;
+  font-size:13.5px;
+}
+nav.top a{
+  color:var(--fg-mute);
+  text-decoration:none;
+  font-weight:400;
+  transition:color .18s ease;
+}
+nav.top a:hover{color:var(--accent)}
+nav.top a.current{color:var(--fg);font-weight:500}
+
+/* Hero */
+.hero{
+  display:grid;
+  grid-template-columns: minmax(0, 8fr) minmax(0, 4fr);
+  gap:80px;
+  margin-bottom:64px;
+  align-items:end;
+}
+.hero .eyebrow{
+  font-family:var(--font-mono);
+  font-size:11.5px;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  color:var(--fg-faint);
+  margin-bottom:32px;
+  display:flex;
+  gap:14px;
+  align-items:center;
+}
+.hero .eyebrow .dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--accent);
+  display:inline-block;
+}
+.hero h1{
+  font-family:var(--font-display);
+  font-weight:var(--weight-display);
+  font-size:clamp(38px, 5.4vw, 64px);
+  line-height:1.04;
+  letter-spacing:-0.024em;
+  margin:0;
+  color:var(--fg);
+  text-wrap:balance;
+  max-width:18ch;
+}
+.hero h1 em{
+  font-family:var(--font-display-italic);
+  font-style:italic;
+  font-weight:400;
+  color:var(--accent);
+  font-size:1.05em;
+}
+.hero p.intro{
+  font-size:16px;
+  color:var(--fg-mute);
+  line-height:1.55;
+  margin:0;
+  max-width:40ch;
+}
+
+/* Pull quote */
+.pull{
+  margin:64px 0 96px;
+  padding:48px 0;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.pull p{
+  margin:0;
+  font-family:var(--font-display-italic);
+  font-style:italic;
+  font-size:clamp(28px, 3.4vw, 40px);
+  line-height:1.18;
+  letter-spacing:-0.012em;
+  color:var(--fg);
+  text-wrap:balance;
+  max-width:26ch;
+  font-weight:400;
+}
+.pull p .accent{color:var(--accent)}
+
+/* Section */
+.section{
+  margin-bottom:var(--gap-section);
+}
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  margin-bottom:40px;
+  padding-bottom:18px;
+  border-bottom:1px solid var(--line);
+}
+.section-head h2{
+  font-family:var(--font-display);
+  font-weight:500;
+  font-size:14px;
+  letter-spacing:0.02em;
+  margin:0;
+}
+.section-head .ix{
+  font-family:var(--font-mono);
+  font-size:11.5px;
+  color:var(--fg-faint);
+  letter-spacing:0.06em;
+}
+
+/* Principle list */
+.principles{
+  display:flex;
+  flex-direction:column;
+}
+.principles .p{
+  display:grid;
+  grid-template-columns: 60px 1fr minmax(0, 360px);
+  gap:48px;
+  padding:28px 0;
+  border-bottom:1px solid var(--line);
+  align-items:start;
+}
+.principles .p:first-child{padding-top:6px}
+.principles .p:last-child{border-bottom:0}
+.principles .p .ix{
+  font-family:var(--font-mono);
+  font-size:13px;
+  color:var(--fg-faint);
+  padding-top:2px;
+  font-variant-numeric:tabular-nums;
+}
+.principles .p h3{
+  font-family:var(--font-display);
+  font-weight:500;
+  font-size:22px;
+  letter-spacing:-0.014em;
+  line-height:1.2;
+  margin:0;
+  color:var(--fg);
+  max-width:28ch;
+  text-wrap:balance;
+}
+.principles .p h3 em{
+  font-family:var(--font-display-italic);
+  font-style:italic;
+  color:var(--accent);
+  font-weight:400;
+}
+.principles .p p{
+  margin:0;
+  font-size:14.5px;
+  color:var(--fg-mute);
+  line-height:1.55;
+}
+
+/* Dictionary term */
+.def{
+  position:relative;
+  border-bottom:1px dotted var(--fg-faint);
+  cursor:help;
+  transition:border-color .15s, color .15s;
+}
+.def:hover{color:var(--accent);border-bottom-color:var(--accent)}
+.def-card{
+  position:fixed;
+  z-index:200;
+  pointer-events:none;
+  width:260px;
+  background:var(--bg);
+  border:1px solid var(--line);
+  box-shadow: 0 1px 0 rgba(255,255,255,.6) inset, 0 22px 50px -20px rgba(0,0,0,.18), 0 8px 18px -8px rgba(0,0,0,.10);
+  border-radius:12px;
+  padding:18px 20px;
+  font-family:var(--font-body);
+  opacity:0;
+  transform:translateY(-6px) scale(.98);
+  transform-origin:top left;
+  transition:opacity .2s ease, transform .25s cubic-bezier(.2,.7,.2,1);
+}
+.def-card.in{opacity:1;transform:translateY(0) scale(1)}
+.def-card .term{font-family:var(--font-display);font-weight:600;font-size:17px;color:var(--fg);letter-spacing:-0.01em;margin:0 0 4px 0}
+.def-card .pron{font-family:var(--font-mono);font-size:12px;color:var(--fg-faint);margin:0 0 2px 0}
+.def-card .pos{font-family:var(--font-display-italic);font-style:italic;font-size:13px;color:var(--fg-mute);margin:0 0 12px 0}
+.def-card .body{font-size:13.5px;color:var(--fg-mute);line-height:1.5;margin:0}
+
+/* List */
+.values{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap:24px;
+}
+.values .v{
+  padding:24px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:var(--bg);
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  transition: border-color .25s, transform .25s ease;
+}
+.values .v:hover{border-color: color-mix(in oklch, var(--accent) 40%, var(--line));transform:translateY(-2px)}
+.values .v .n{
+  font-family:var(--font-mono);
+  font-size:10.5px;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  color:var(--accent);
+}
+.values .v h4{
+  margin:0;
+  font-family:var(--font-display);
+  font-weight:500;
+  font-size:18px;
+  letter-spacing:-0.012em;
+  color:var(--fg);
+}
+.values .v p{
+  margin:0;
+  font-size:14px;
+  color:var(--fg-mute);
+  line-height:1.5;
+}
+
+/* Working with me — two-column */
+.cols{
+  display:grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap:48px;
+}
+.cols .col{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+.cols .col h3{
+  font-family:var(--font-mono);
+  font-size:11px;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  color:var(--fg-faint);
+  margin:0;
+}
+.cols .col h3 .sign{
+  color:var(--accent);
+  font-weight:600;
+  margin-right:6px;
+}
+.cols .col ul{
+  list-style:none;
+  padding:0;
+  margin:0;
+  display:flex;
+  flex-direction:column;
+}
+.cols .col ul li{
+  padding:14px 0;
+  border-bottom:1px solid var(--line);
+  font-size:15px;
+  color:var(--fg);
+  line-height:1.5;
+}
+.cols .col ul li:last-child{border-bottom:0}
+.cols .col ul li b{
+  font-family:var(--font-display);
+  font-weight:500;
+  display:block;
+  margin-bottom:2px;
+}
+.cols .col ul li span{
+  color:var(--fg-mute);
+  font-size:14px;
+}
+
+/* Brave bit — growth edges */
+.brave{
+  display:grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap:48px;
+  padding:48px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:var(--accent-soft);
+  align-items:start;
+}
+.brave .lede{
+  font-family:var(--font-display);
+  font-size:22px;
+  line-height:1.3;
+  letter-spacing:-0.014em;
+  margin:0;
+  color:var(--fg);
+}
+.brave .lede em{
+  font-family:var(--font-display-italic);
+  font-style:italic;
+  color:var(--accent);
+}
+.brave ul{
+  list-style:none;
+  padding:0;
+  margin:0;
+  display:flex;
+  flex-direction:column;
+}
+.brave ul li{
+  padding:14px 0;
+  border-bottom:1px solid color-mix(in oklch, var(--accent) 25%, transparent);
+  font-size:15px;
+  color:var(--fg);
+  line-height:1.5;
+}
+.brave ul li:last-child{border-bottom:0}
+.brave ul li::before{
+  content:"→";
+  font-family:var(--font-mono);
+  color:var(--accent);
+  margin-right:10px;
+}
+
+/* CTA */
+.cta{
+  margin-top:var(--gap-section);
+  padding:48px 56px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  display:grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap:64px;
+  align-items:center;
+  background: linear-gradient(180deg, var(--accent-soft), transparent 80%);
+}
+.cta h2{
+  font-family:var(--font-display);
+  font-weight:500;
+  font-size:clamp(28px, 3.2vw, 38px);
+  line-height:1.1;
+  letter-spacing:-0.02em;
+  margin:0;
+  text-wrap:balance;
+}
+.cta h2 em{font-family:var(--font-display-italic);font-style:italic;color:var(--accent);font-weight:400}
+.cta p{margin:0;color:var(--fg-mute);font-size:15px;line-height:1.55}
+.cta a.invite{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-size:14px;
+  font-weight:500;
+  color:var(--fg);
+  text-decoration:none;
+  border-bottom:1px solid var(--fg);
+  padding-bottom:2px;
+  margin-top:16px;
+  transition: color .2s, border-color .2s;
+}
+.cta a.invite:hover{color:var(--accent);border-color:var(--accent)}
+
+footer.foot{
+  margin-top:64px;
+  padding-top:32px;
+  border-top:1px solid var(--line);
+  display:flex;
+  justify-content:space-between;
+  font-family:var(--font-mono);
+  font-size:11px;
+  color:var(--fg-faint);
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+}
+
+/* Scroll reveal */
+.reveal{
+  opacity:0;
+  transform:translateY(20px);
+  transition: opacity .4s ease-out, transform .4s ease-out;
+  will-change: opacity, transform;
+}
+.reveal.in{opacity:1;transform:translateY(0)}
+@media (prefers-reduced-motion: reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+}
+
+@media (max-width: 880px){
+  .shell{padding:32px 24px 64px}
+  nav.top{margin-bottom:48px}
+  nav.top ul{gap:18px;font-size:12.5px;flex-wrap:wrap}
+  .hero{grid-template-columns:1fr;gap:32px;align-items:start}
+  .principles .p{grid-template-columns:40px 1fr;gap:18px}
+  .principles .p p{grid-column:2 / -1}
+  .values{grid-template-columns:1fr}
+  .cols{grid-template-columns:1fr;gap:32px}
+  .brave{grid-template-columns:1fr;gap:24px;padding:32px}
+  .cta{grid-template-columns:1fr;gap:24px;padding:32px}
+}
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <nav class="top">
+    <div class="brand"><a href="index.html">Kate Pincott<span class="dot">.</span></a></div>
+    <ul>
+      <li><a href="index.html#work">Work</a></li>
+      <li><a href="index.html#now">Now</a></li>
+      <li><a href="speaking.html">Speaking</a></li>
+      <li><a href="testimonials.html">Testimonials</a></li>
+      <li><a href="leadership.html" class="current">Leadership</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero reveal">
+    <div>
+      <div class="eyebrow"><span class="dot"></span>Leadership README · v1 · 2026</div>
+      <h1>A user manual for <em>working with me</em>.</h1>
+    </div>
+    <p class="intro">
+      Half coach, half operator. This is how I lead, what I value, how I give feedback, and the bits I'm still working on. Read it before we work together &mdash; it'll save us both a quarter.
+    </p>
+  </header>
+
+  <section class="pull reveal">
+    <p>
+      "My job as a leader is to set <span class="accent">clear direction</span>, foster alignment, and remove obstacles &mdash; so others can do their best work."
+    </p>
+  </section>
+
+  <section class="section reveal">
+    <div class="section-head">
+      <h2>How I lead</h2>
+      <span class="ix">Five principles</span>
+    </div>
+    <div class="principles">
+
+      <div class="p">
+        <span class="ix">01</span>
+        <h3>Set <em>direction</em>. Then get out of the way.</h3>
+        <p>Vision and metrics come from me. The "how" comes from the team. I'll write the brief, give context, and ask harder questions than the brief itself — but I won't redesign the work over your shoulder.</p>
+      </div>
+
+      <div class="p">
+        <span class="ix">02</span>
+        <h3>Listen <em>first</em>. Reframe before you solve.</h3>
+        <p>Most "problems" land mis-named. I'll ask thoughtful questions in 1:1s, calibrations, and strategy sessions — not because I don't have a view, but because the right reframe usually unlocks more than the right answer.</p>
+      </div>
+
+      <div class="p">
+        <span class="ix">03</span>
+        <h3>Coaching is a <em>leadership skill</em>, not a side activity.</h3>
+        <p>I coach my reports as a primary part of the job, not a bonus. I expect the same of any manager I hire. <span class="def" data-term="psychological safety" data-pron="/saɪkəˈlɒdʒɪkəl ˈseɪfti/" data-pos="noun" data-def="A shared belief in a team that it's safe to take interpersonal risks — to disagree, admit mistakes, and ask questions without fear of being punished or judged.">Psychological safety</span> isn't a vibe; it's a daily practice.</p>
+      </div>
+
+      <div class="p">
+        <span class="ix">04</span>
+        <h3>Make space for <em>experiments</em> &mdash; including ones that fail.</h3>
+        <p>Especially with AI tooling, new design system rituals, hybrid roles. I'll back a 70%-confident prototype over a 100%-talked-about idea. If it doesn't work we learn it cost us two weeks, not two quarters.</p>
+      </div>
+
+      <div class="p">
+        <span class="ix">05</span>
+        <h3>Service mindset, all the way <em>down</em>.</h3>
+        <p>The org exists to make the team great. The team exists to make the user great. My job is to keep that arrow pointing the right way, even when politics tries to turn it.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <div class="section-head">
+      <h2>What I value most</h2>
+      <span class="ix">In the team</span>
+    </div>
+    <div class="values">
+      <div class="v">
+        <span class="n">01</span>
+        <h4>Curiosity over certainty</h4>
+        <p>People who ask the second question. Strong opinions, held loosely.</p>
+      </div>
+      <div class="v">
+        <span class="n">02</span>
+        <h4>Craft with intent</h4>
+        <p>Beautiful work, in service of the user — not the portfolio.</p>
+      </div>
+      <div class="v">
+        <span class="n">03</span>
+        <h4>Speed with humility</h4>
+        <p>Ship fast, then own what you got wrong. The pace is non-negotiable; the ego is.</p>
+      </div>
+      <div class="v">
+        <span class="n">04</span>
+        <h4>Diverse perspectives</h4>
+        <p>Different backgrounds, different brains. Where I've built teams, this has been the unfair advantage.</p>
+      </div>
+      <div class="v">
+        <span class="n">05</span>
+        <h4>AI fluency</h4>
+        <p>Not flair. Real, daily, opinionated use of AI tooling across research, design, and delivery.</p>
+      </div>
+      <div class="v">
+        <span class="n">06</span>
+        <h4>Calm under ambiguity</h4>
+        <p>Most of the interesting problems are messy. The willingness to sit with that is half the job.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <div class="section-head">
+      <h2>How I give feedback</h2>
+      <span class="ix">Cadence + style</span>
+    </div>
+    <div class="cols">
+      <div class="col">
+        <h3><span class="sign">→</span> Rhythm</h3>
+        <ul>
+          <li><b>Weekly 1:1s</b><span>Always. 50 minutes. Owned by you, not me — you bring the agenda.</span></li>
+          <li><b>Live coaching in the moment</b><span>I'll surface feedback in the work itself rather than save it for a quarterly review.</span></li>
+          <li><b>Written calibration notes</b><span>Before any promotion or performance cycle, you'll see my written take with time to respond.</span></li>
+          <li><b>Annual self-review</b><span>I do mine first and share it. Goes both ways.</span></li>
+        </ul>
+      </div>
+      <div class="col">
+        <h3><span class="sign">→</span> Style</h3>
+        <ul>
+          <li><b>Direct, kindly</b><span>Specific to behaviour, not character. No vague "be more strategic".</span></li>
+          <li><b>Named &amp; reframed</b><span>I'll name what I'm seeing, then ask how you see it — usually the gap is where the work is.</span></li>
+          <li><b>Praise in public, course-correct in private</b><span>Default mode, with rare exceptions when the team needs to see the standard live.</span></li>
+          <li><b>Receipts</b><span>If I ask for change, I'll point at the evidence, not just the vibe.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <div class="section-head">
+      <h2>How to work with me</h2>
+      <span class="ix">Operating defaults</span>
+    </div>
+    <div class="cols">
+      <div class="col">
+        <h3><span class="sign">→</span> Comms &amp; meetings</h3>
+        <ul>
+          <li><b>Async-first</b><span>Default to a doc or a Loom before a meeting. If you need me live, say why.</span></li>
+          <li><b>25 / 50 minute meetings</b><span>Never the full hour. Always an agenda.</span></li>
+          <li><b>Deep work in the mornings</b><span>Don't book me before 11 unless it's strategic. I'll do the same for you.</span></li>
+          <li><b>Slack is for fast, doc is for slow</b><span>Big decisions belong in writing, not in DMs.</span></li>
+        </ul>
+      </div>
+      <div class="col">
+        <h3><span class="sign">→</span> Decisions</h3>
+        <ul>
+          <li><b>Brief → disagree → ship</b><span>I'll write a short brief, ask for the strongest disagree, then commit. We don't relitigate later.</span></li>
+          <li><b>Disagree &amp; commit</b><span>Once a decision is made, I expect public alignment — even if you pushed back inside the room.</span></li>
+          <li><b>Reversible vs one-way</b><span>For two-way doors, decide in a day. For one-way doors, take a week and write a memo.</span></li>
+          <li><b>Default to clarity over consensus</b><span>I'd rather be 80% right and decided than 100% right and stuck.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <div class="section-head">
+      <h2>Energy</h2>
+      <span class="ix">What lights me up · what drains me</span>
+    </div>
+    <div class="cols">
+      <div class="col">
+        <h3><span class="sign">+</span> Energises me</h3>
+        <ul>
+          <li><b>Low-maturity teams</b><span>Brand new functions, missing playbooks, no manager. Sweet spot.</span></li>
+          <li><b>Ambiguous, high-stakes problems</b><span>The messier the brief, the more interesting it is.</span></li>
+          <li><b>Coaching IC → manager transitions</b><span>The hardest career jump in design. I love being there for it.</span></li>
+          <li><b>AI-native design systems &amp; tooling</b><span>Where craft and ops meet — the future of how we work.</span></li>
+          <li><b>Brand-building with founders</b><span>Voice, vision, narrative. Especially in 0 → 1 environments.</span></li>
+        </ul>
+      </div>
+      <div class="col">
+        <h3><span class="sign">−</span> Drains me</h3>
+        <ul>
+          <li><b>Politics dressed as strategy</b><span>I'll call it gently the first time and bluntly the second.</span></li>
+          <li><b>Theatre meetings</b><span>Long status updates that should have been a doc. Multi-meeting decision loops.</span></li>
+          <li><b>Command-and-control leadership above me</b><span>I'll struggle in an org that doesn't see coaching as real work.</span></li>
+          <li><b>Perfectionism on low-stakes work</b><span>Polishing the inbox while the launch slips. Hard pass.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <div class="section-head">
+      <h2>The fit test</h2>
+      <span class="ix">Hire me if · don't hire me if</span>
+    </div>
+    <div class="cols">
+      <div class="col">
+        <h3><span class="sign">✓</span> Hire me if</h3>
+        <ul>
+          <li><b>You're scaling a design function from near-scratch</b><span>I've done it three times. Love it every time.</span></li>
+          <li><b>You want AI-native craft, not AI-flavoured slideware</b><span>Real workflows, real tooling, real upskilling — not a deck about it.</span></li>
+          <li><b>You see coaching as an asset, not extracurricular</b><span>If "spends too much time with their reports" sounds like a compliment to you, we'll get along.</span></li>
+          <li><b>You want direction <i>and</i> autonomy</b><span>I'll set both and ask for both.</span></li>
+        </ul>
+      </div>
+      <div class="col">
+        <h3><span class="sign">✗</span> Don't hire me if</h3>
+        <ul>
+          <li><b>You need a pure IC, no team</b><span>I'll be in the work, but I lead through the team.</span></li>
+          <li><b>The mandate is "maintain"</b><span>I'm a builder. If the function is already humming and just needs steering, you want someone else.</span></li>
+          <li><b>Design Systems, Brand, Research are seen as overhead</b><span>I treat them as growth multipliers. We'll fight if you don't.</span></li>
+          <li><b>Decisions take five meetings</b><span>I won't last the trial.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <div class="section-head">
+      <h2>What I'm working on</h2>
+      <span class="ix">Growth edges · the brave bit</span>
+    </div>
+    <div class="brave">
+      <p class="lede">The bits I'm <em>still</em> getting better at. Read this so you can hold me to it.</p>
+      <ul>
+        <li>Saying no faster &mdash; instead of saying yes and rebalancing the load three weeks later.</li>
+        <li>Shipping drafts to my team earlier &mdash; less polish, more "here's where I'm at, push back".</li>
+        <li>Asking for help before I need it, not after.</li>
+        <li>Letting silence sit longer in 1:1s &mdash; the best stuff is usually on the other side of it.</li>
+        <li>Choosing fewer priorities and protecting them ruthlessly.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="cta reveal">
+    <div>
+      <h2>Sound like the kind of leader you want? <em>Let's talk.</em></h2>
+    </div>
+    <div>
+      <p>This README is a starting point, not a contract. The real test is a conversation — I'd rather have an honest 30 minutes than a polished interview round. Drop me a note.</p>
+      <a class="invite" href="mailto:kate.pincott@gmail.com?subject=Leadership chat">kate.pincott@gmail.com <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <span>© Kate Pincott 2026</span>
+    <span>Made with Claude Design</span>
+  </footer>
+
+</div>
+
+
+<script>
+// Scroll reveal
+(function(){
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+    return;
+  }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+})();
+
+// Dictionary-style hover overlay
+(function(){
+  let card = null;
+  let currentTerm = null;
+  let hideTimer = null;
+  function ensureCard(){
+    if (card) return card;
+    card = document.createElement('div');
+    card.className = 'def-card';
+    card.innerHTML = '<p class="term"></p><p class="pron"></p><p class="pos"></p><p class="body"></p>';
+    document.body.appendChild(card);
+    return card;
+  }
+  function position(el){
+    const r = el.getBoundingClientRect();
+    const cardEl = ensureCard();
+    const w = 260;
+    const left = Math.max(12, Math.min(window.innerWidth - w - 12, r.left));
+    const top = r.bottom + 10;
+    const cardH = cardEl.offsetHeight || 140;
+    if (top + cardH > window.innerHeight - 12) cardEl.style.top = (r.top - cardH - 10) + 'px';
+    else cardEl.style.top = top + 'px';
+    cardEl.style.left = left + 'px';
+  }
+  function show(el){
+    if (currentTerm === el) return;
+    clearTimeout(hideTimer);
+    currentTerm = el;
+    const c = ensureCard();
+    c.querySelector('.term').textContent = el.dataset.term || el.textContent;
+    c.querySelector('.pron').textContent = el.dataset.pron || '';
+    c.querySelector('.pos').textContent = el.dataset.pos || '';
+    c.querySelector('.body').textContent = el.dataset.def || '';
+    position(el);
+    requestAnimationFrame(() => c.classList.add('in'));
+  }
+  function hide(){ hideTimer = setTimeout(() => { if (card) card.classList.remove('in'); currentTerm = null; }, 100); }
+  document.addEventListener('mouseover', (e) => { const t = e.target.closest('.def'); if (t) show(t); });
+  document.addEventListener('mouseout', (e) => { const t = e.target.closest('.def'); if (t) hide(); });
+  window.addEventListener('scroll', () => { if (currentTerm) position(currentTerm); }, { passive: true });
+})();
+</script>
+
+
+</body>
+</html>

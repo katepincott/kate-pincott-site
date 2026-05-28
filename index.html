@@ -1,0 +1,1108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Kate Pincott — Design Manager &amp; Coach</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+
+<style>
+:root{
+  /* Palette (set by Tweaks) */
+  --bg: oklch(0.985 0.006 80);
+  --surface: oklch(0.965 0.008 80);
+  --fg: oklch(0.22 0.012 60);
+  --fg-mute: oklch(0.45 0.012 60);
+  --fg-faint: oklch(0.62 0.010 60);
+  --line: oklch(0.86 0.012 70);
+  --accent: oklch(0.58 0.14 38);
+  --accent-soft: oklch(0.58 0.14 38 / 0.10);
+
+  /* Density */
+  --gap-row: 32px;
+  --gap-section: 96px;
+  --leading-body: 1.55;
+
+  /* Type */
+  --font-body: "Geist", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-display-italic: "Instrument Serif", "Geist", serif;
+  --font-mono: "Geist Mono", ui-monospace, monospace;
+  --weight-display: 500;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+html{background:var(--bg)}
+body{
+  font-family:var(--font-body);
+  color:var(--fg);
+  background:var(--bg);
+  font-size:16px;
+  line-height:var(--leading-body);
+  font-weight:400;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  text-rendering:optimizeLegibility;
+  font-feature-settings:"ss01","cv11";
+}
+::selection{background:var(--accent-soft);color:var(--fg)}
+
+/* Layout shell */
+.shell{
+  max-width:1180px;
+  margin:0 auto;
+  padding:48px 56px 96px;
+}
+
+/* Nav */
+nav.top{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  padding-bottom:8px;
+  margin-bottom:120px;
+}
+nav.top .brand{
+  font-family:var(--font-display);
+  font-weight:500;
+  font-size:15px;
+  letter-spacing:-0.005em;
+}
+nav.top .brand .dot{color:var(--accent)}
+nav.top ul{
+  list-style:none;
+  display:flex;
+  gap:28px;
+  margin:0;padding:0;
+  font-size:13.5px;
+}
+nav.top a{
+  color:var(--fg-mute);
+  text-decoration:none;
+  font-weight:400;
+  transition:color .18s ease;
+}
+nav.top a:hover{color:var(--accent)}
+
+/* Hero */
+.hero{
+  margin-bottom:var(--gap-section);
+  display:grid;
+  grid-template-columns: minmax(0, 8fr) minmax(0, 4fr);
+  gap:80px;
+  align-items:start;
+}
+.hero .eyebrow{
+  font-family:var(--font-mono);
+  font-size:11.5px;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  color:var(--fg-faint);
+  margin-bottom:32px;
+  display:flex;
+  gap:14px;
+  align-items:center;
+}
+.hero .eyebrow .dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--accent);
+  display:inline-block;
+}
+.hero h1{
+  font-family:var(--font-display);
+  font-weight:var(--weight-display);
+  font-size:clamp(38px, 5.4vw, 64px);
+  line-height:1.04;
+  letter-spacing:-0.024em;
+  margin:0 0 36px 0;
+  color:var(--fg);
+  text-wrap:balance;
+  max-width:18ch;
+}
+.hero h1 em{
+  font-family:var(--font-display-italic);
+  font-style:italic;
+  font-weight:400;
+  letter-spacing:-0.01em;
+  color:var(--accent);
+  font-size:1.05em;
+}
+.hero p.intro{
+  font-size:17px;
+  line-height:1.55;
+  color:var(--fg-mute);
+  max-width:46ch;
+  margin:0;
+}
+.hero .meta{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+  font-size:13.5px;
+  padding-top:6px;
+}
+.hero .meta .row{
+  display:flex;
+  justify-content:space-between;
+  gap:18px;
+  padding-bottom:14px;
+  border-bottom:1px solid var(--line);
+}
+.hero .meta .row .v{
+  text-align:right;
+  word-break:break-word;
+  overflow-wrap:anywhere;
+}
+.hero .meta .row:last-child{border-bottom:0}
+.hero .meta .row .k{
+  font-family:var(--font-mono);
+  font-size:11.5px;
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+  color:var(--fg-faint);
+}
+.hero .meta .row .v{color:var(--fg)}
+.hero .meta .row .v a{color:var(--fg);text-decoration:none;border-bottom:1px solid var(--line);transition:color .15s, border-color .15s}
+.hero .meta .row .v a:hover{color:var(--accent);border-color:var(--accent)}
+
+/* Section header */
+.section{
+  margin-bottom:var(--gap-section);
+}
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  margin-bottom:40px;
+  padding-bottom:18px;
+  border-bottom:1px solid var(--line);
+}
+.section-head h2{
+  font-family:var(--font-display);
+  font-weight:500;
+  font-size:14px;
+  letter-spacing:0.02em;
+  margin:0;
+  color:var(--fg);
+}
+.section-head .count{
+  font-family:var(--font-mono);
+  font-size:11.5px;
+  color:var(--fg-faint);
+  letter-spacing:0.06em;
+}
+
+/* Project list — matches the CV reference */
+.cv{display:flex;flex-direction:column}
+.cv .item{
+  display:grid;
+  grid-template-columns: 92px minmax(0, 1fr) minmax(0, 320px);
+  gap:48px;
+  padding:var(--gap-row) 0;
+  border-bottom:1px solid var(--line);
+  align-items:start;
+}
+.cv .item:first-child{padding-top:8px}
+.cv .item:last-child{border-bottom:0}
+.cv .year{
+  font-family:var(--font-mono);
+  font-size:13px;
+  color:var(--fg-mute);
+  font-weight:400;
+  padding-top:2px;
+  font-variant-numeric:tabular-nums;
+  white-space:nowrap;
+}
+.cv .body .role{
+  font-family:var(--font-display);
+  font-weight:500;
+  font-size:18px;
+  letter-spacing:-0.012em;
+  margin:0 0 6px 0;
+  color:var(--fg);
+  display:flex;
+  align-items:baseline;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.cv .body .role .at{
+  font-weight:400;
+  color:var(--fg-faint);
+}
+.cv .body .role a{
+  color:inherit;
+  text-decoration:none;
+  border-bottom:1px solid transparent;
+  transition: color .15s ease, border-color .15s ease;
+}
+.cv .body .role a:hover{
+  color:var(--accent);
+  border-bottom-color:var(--accent);
+}
+.cv .body p.company{
+  margin:0 0 14px 0;
+  font-family:var(--font-display-italic);
+  font-style:italic;
+  font-size:14.5px;
+  color:var(--fg-faint);
+  line-height:1.45;
+  max-width:62ch;
+  letter-spacing:-0.003em;
+}
+.cv .body p{
+  margin:0;
+  font-size:14.5px;
+  color:var(--fg-mute);
+  line-height:1.5;
+  max-width:62ch;
+}
+.cv .body ul.highlights{
+  list-style:none;
+  margin:14px 0 0 0;
+  padding:0;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  max-width:62ch;
+}
+.cv .body ul.highlights li{
+  font-size:14px;
+  color:var(--fg-mute);
+  line-height:1.5;
+  padding-left:18px;
+  position:relative;
+}
+.cv .body ul.highlights li::before{
+  content:"";
+  position:absolute;
+  left:2px;
+  top:0.65em;
+  width:6px;
+  height:1px;
+  background:var(--accent);
+}
+.cv .body .more{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  margin-top:10px;
+  font-family:var(--font-mono);
+  font-size:11.5px;
+  letter-spacing:0.04em;
+  color:var(--accent);
+  text-decoration:none;
+  text-transform:uppercase;
+}
+.cv .body .more:hover{text-decoration:underline}
+.cv .tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  justify-content:flex-end;
+  padding-top:4px;
+}
+.cv .tag{
+  font-size:12px;
+  color:var(--fg-mute);
+  padding:3px 11px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  background:transparent;
+  white-space:nowrap;
+  line-height:1.4;
+}
+
+/* Clients ticker */
+.ticker{
+  position:relative;
+  overflow:hidden;
+  padding:18px 0;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%);
+}
+.ticker-track{
+  display:flex;
+  width:max-content;
+  align-items:center;
+  animation: ticker-scroll 38s linear infinite;
+}
+.ticker:hover .ticker-track{animation-play-state:paused}
+.ticker .client{
+  flex-shrink:0;
+  padding:0 36px;
+  font-family:var(--font-display);
+  font-weight:500;
+  font-size:clamp(28px, 3.4vw, 42px);
+  color:var(--fg);
+  letter-spacing:-0.022em;
+  white-space:nowrap;
+  transition: color .2s ease;
+}
+.ticker .client:hover{color:var(--accent)}
+@keyframes ticker-scroll{
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce){
+  .ticker-track{animation:none}
+}
+
+/* Clients strip */
+.clients{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 14px;
+  font-family:var(--font-display);
+  font-weight:500;
+  font-size:18px;
+  color:var(--fg);
+  letter-spacing:-0.012em;
+  max-width:80ch;
+}
+.clients .client{
+  padding:8px 16px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  transition:border-color .15s, color .15s;
+}
+.clients .client:hover{
+  border-color:var(--accent);
+  color:var(--accent);
+}
+
+/* Now / wishlist */
+.now{
+  display:grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap:64px;
+  align-items:start;
+}
+.now .lede{
+  font-family:var(--font-display);
+  font-size:22px;
+  line-height:1.35;
+  letter-spacing:-0.012em;
+  color:var(--fg);
+  margin:0;
+  font-weight:400;
+  max-width:24ch;
+}
+.now .lede em{
+  font-family:var(--font-display-italic);
+  font-style:italic;
+  color:var(--accent);
+  font-size:1.08em;
+}
+.wish{
+  display:flex;
+  flex-direction:column;
+}
+.wish .w{
+  display:grid;
+  grid-template-columns: 140px 1fr;
+  gap:24px;
+  padding:18px 0;
+  border-bottom:1px solid var(--line);
+}
+.wish .w:first-child{padding-top:0}
+.wish .w:last-child{border-bottom:0}
+.wish .w .k{
+  font-family:var(--font-mono);
+  font-size:11.5px;
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+  color:var(--fg-faint);
+  padding-top:3px;
+}
+.wish .w .v{
+  font-size:15px;
+  color:var(--fg);
+  line-height:1.5;
+}
+.wish .w .v .pill{
+  display:inline-block;
+  font-size:13px;
+  padding:3px 10px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  margin:0 4px 4px 0;
+  color:var(--fg-mute);
+}
+.wish .w .v .pill.hot{
+  border-color:var(--accent);
+  color:var(--accent);
+  background:var(--accent-soft);
+}
+
+/* Philosophy triptych */
+.philosophy{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap:32px;
+}
+.philosophy .p-item{
+  padding-top:28px;
+  border-top:1px solid var(--line);
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+.philosophy .p-num{
+  font-family:var(--font-mono);
+  font-size:11px;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  color:var(--accent);
+}
+.philosophy .p-item p{
+  margin:0;
+  font-family:var(--font-display);
+  font-weight:400;
+  font-size:clamp(20px, 1.8vw, 24px);
+  line-height:1.28;
+  letter-spacing:-0.014em;
+  color:var(--fg);
+  text-wrap:balance;
+}
+.philosophy .p-item p.sub{
+  font-family:var(--font-body);
+  font-size:14.5px;
+  font-weight:400;
+  letter-spacing:-0.002em;
+  line-height:1.55;
+  color:var(--fg-mute);
+  text-wrap:pretty;
+  max-width:34ch;
+}
+.philosophy .p-item p em{
+  font-family:var(--font-display-italic);
+  font-style:italic;
+  font-weight:400;
+  color:var(--accent);
+}
+@media (max-width: 880px){
+  .philosophy{grid-template-columns:1fr;gap:0}
+  .philosophy .p-item{padding-top:24px;padding-bottom:8px}
+}
+
+/* Speaking & Quotes */
+.quote{
+  font-family:var(--font-display-italic);
+  font-style:italic;
+  font-size:clamp(28px, 3.4vw, 40px);
+  line-height:1.18;
+  letter-spacing:-0.012em;
+  color:var(--fg);
+  max-width:22ch;
+  margin:0 0 24px 0;
+  font-weight:400;
+}
+.quote .accent{color:var(--accent)}
+.quote-attr{
+  font-family:var(--font-mono);
+  font-size:11.5px;
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+  color:var(--fg-faint);
+}
+
+/* Footer / contact */
+footer{
+  margin-top:var(--gap-section);
+  padding:48px 0 8px;
+  border-top:1px solid var(--line);
+  display:grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap:64px;
+  align-items:start;
+}
+footer h3{
+  font-family:var(--font-display);
+  font-weight:500;
+  font-size:14px;
+  letter-spacing:0.02em;
+  margin:0 0 24px 0;
+}
+footer .big{
+  font-family:var(--font-display);
+  font-weight:var(--weight-display);
+  font-size:clamp(32px, 4vw, 48px);
+  line-height:1.05;
+  letter-spacing:-0.022em;
+  margin:0 0 32px 0;
+  text-wrap:balance;
+}
+footer .big em{
+  font-family:var(--font-display-italic);
+  font-style:italic;
+  color:var(--accent);
+  font-weight:400;
+}
+footer .links{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  font-size:15px;
+}
+footer .links a{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  color:var(--fg);
+  text-decoration:none;
+  padding:8px 0;
+  border-bottom:1px solid var(--line);
+  transition:color .15s, border-color .15s;
+}
+footer .links a:hover{color:var(--accent);border-color:var(--accent)}
+footer .links a .arrow{
+  margin-left:auto;
+  font-family:var(--font-mono);
+  color:var(--fg-faint);
+  transition:transform .2s ease, color .15s;
+}
+footer .links a:hover .arrow{transform:translateX(4px);color:var(--accent)}
+.colophon{
+  margin-top:64px;
+  display:flex;
+  justify-content:space-between;
+  font-family:var(--font-mono);
+  font-size:11px;
+  color:var(--fg-faint);
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+}
+
+/* Headline word-cycle */
+.cycle{
+  display:inline-block;
+  position:relative;
+  transition: opacity .25s ease-out, transform .25s ease-out;
+  will-change: opacity, transform;
+}
+.cycle.swapping{
+  opacity:0;
+  transform:translateY(-6px);
+}
+@media (prefers-reduced-motion: reduce){
+  .cycle, .cycle.swapping{transition:none;transform:none;opacity:1}
+}
+.hero p.subhead{
+  font-family:var(--font-display-italic);
+  font-style:italic;
+  font-size:clamp(20px, 2.4vw, 26px);
+  line-height:1.28;
+  color:var(--fg-mute);
+  margin:20px 0 28px;
+  max-width:36ch;
+  text-wrap:balance;
+  font-weight:400;
+  letter-spacing:-0.006em;
+}
+.hero p.subhead .cycle{
+  color:var(--accent);
+}
+
+/* Scroll reveal */
+.reveal{
+  opacity:0;
+  transform:translateY(20px);
+  transition: opacity .4s ease-out, transform .4s ease-out;
+  will-change: opacity, transform;
+}
+.reveal.in{opacity:1;transform:translateY(0)}
+@media (prefers-reduced-motion: reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+}
+
+/* CV row hover */
+.cv .item{
+  transition: background-color .25s ease, box-shadow .25s ease;
+  position:relative;
+  margin:0 -16px;
+  padding-left:16px;
+  padding-right:16px;
+  border-radius:4px;
+}
+.cv .item .year{transition:color .25s ease, transform .25s ease;transform-origin:left center}
+.cv .item:hover{background-color:var(--accent-soft)}
+.cv .item:hover .year{color:var(--accent)}
+.cv .item .body .role .arrow{
+  display:inline-block;
+  opacity:0;
+  margin-left:2px;
+  transform:translateX(-4px);
+  transition:opacity .25s ease, transform .25s ease;
+  color:var(--accent);
+  font-weight:400;
+}
+.cv .item:hover .body .role .arrow{opacity:1;transform:translateX(0)}
+
+/* Dictionary-style definition term — inline tooltip on hover */
+.def{
+  position:relative;
+  border-bottom:1px dotted var(--fg-faint);
+  cursor:help;
+  transition:border-color .15s, color .15s;
+}
+.def:hover{color:var(--accent);border-bottom-color:var(--accent)}
+.def-card{
+  position:fixed;
+  z-index:200;
+  pointer-events:none;
+  width:260px;
+  background:var(--bg);
+  border:1px solid var(--line);
+  box-shadow: 0 1px 0 rgba(255,255,255,.6) inset, 0 22px 50px -20px rgba(0,0,0,.18), 0 8px 18px -8px rgba(0,0,0,.10);
+  border-radius:12px;
+  padding:18px 20px;
+  font-family:var(--font-body);
+  opacity:0;
+  transform:translateY(-6px) scale(.98);
+  transform-origin:top left;
+  transition:opacity .2s ease, transform .25s cubic-bezier(.2,.7,.2,1);
+}
+.def-card.in{opacity:1;transform:translateY(0) scale(1)}
+.def-card .term{
+  font-family:var(--font-display);
+  font-weight:600;
+  font-size:17px;
+  color:var(--fg);
+  letter-spacing:-0.01em;
+  margin:0 0 4px 0;
+}
+.def-card .pron{
+  font-family:var(--font-mono);
+  font-size:12px;
+  color:var(--fg-faint);
+  margin:0 0 2px 0;
+}
+.def-card .pos{
+  font-family:var(--font-display-italic);
+  font-style:italic;
+  font-size:13px;
+  color:var(--fg-mute);
+  margin:0 0 12px 0;
+}
+.def-card .body{
+  font-size:13.5px;
+  color:var(--fg-mute);
+  line-height:1.5;
+  margin:0;
+}
+
+/* Responsive */
+@media (max-width: 880px){
+  .shell{padding:32px 24px 64px}
+  nav.top{margin-bottom:64px}
+  nav.top ul{gap:18px;font-size:12.5px}
+  .hero{grid-template-columns:1fr;gap:40px}
+  .cv .item{grid-template-columns:64px 1fr;gap:18px}
+  .cv .tags{grid-column:1 / -1;justify-content:flex-start;padding-top:2px}
+  .now{grid-template-columns:1fr;gap:40px}
+  footer{grid-template-columns:1fr;gap:40px}
+  .wish .w{grid-template-columns:1fr;gap:6px}
+}
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <nav class="top">
+    <div class="brand">Kate Pincott<span class="dot">.</span></div>
+    <ul>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#now">Now</a></li>
+      <li><a href="speaking.html">Speaking</a></li>
+      <li><a href="testimonials.html">Testimonials</a></li>
+      <li><a href="leadership.html">Leadership</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero reveal">
+    <div>
+      <div class="eyebrow"><span class="dot"></span>Director of Experience · Coach · London, UK</div>
+      <h1>I help product organisations figure out what design means in an <em class="cycle" data-words="AI-first,AI-native,agent-first,post-AI">AI-first</em> world.</h1>
+      <p class="intro">
+        Currently leading Experience at Multiverse &mdash; Product Design, Research, Brand, Design Systems and Accessibility across a team of up to 20. Previously Cleo, Mattereum, GfK, Facebook, Ustwo, Barclays, Pentagram. Seven years coaching designers and managers at Amazon, Monzo, Figma, Google, Meta, IDEO and beyond.
+      </p>
+    </div>
+    <div class="meta">
+      <div class="row"><span class="k">Currently</span><span class="v">Director of Experience, Multiverse</span></div>
+      <div class="row"><span class="k">Also</span><span class="v">Coaching &amp; advisory</span></div>
+      <div class="row"><span class="k">Based</span><span class="v">London, UK · Remote</span></div>
+      <div class="row"><span class="k">Email</span><span class="v"><a href="mailto:kate.pincott@gmail.com">kate.pincott@gmail.com</a></span></div>
+    </div>
+  </section>
+
+  <section class="section reveal" id="work">
+    <div class="section-head">
+      <h2>Selected work</h2>
+      <span class="count">2010 — Now</span>
+    </div>
+
+    <div class="cv">
+
+      <div class="item">
+        <div class="year">2025 — Now</div>
+        <div class="body">
+          <h3 class="role"><a href="https://www.multiverse.io/" target="_blank" rel="noopener">Multiverse</a> <span class="at">— Director of Experience</span><span class="arrow">→</span></h3>
+          <p class="company">Apprenticeship platform for tech, data and AI careers.</p>
+          <p>Built Multiverse's Design function from the ground up inside the Tech org &mdash; hiring 8 roles in ~8 weeks (incl. a Research Manager from Meta) and growing to a team of 20 across Product Design, Research, Brand, Design Systems and Accessibility.</p>
+          <ul class="highlights">
+            <li>Built an <span class="def" data-term="AI-native" data-pron="/eɪ aɪ ˈneɪtɪv/" data-pos="adjective" data-def="Designed with AI tools embedded in every step of the workflow — not bolted on after.">AI-native</span> design culture: Claude Code 101 sessions, Figma Make jams, hybrid designer-developer roles, AI-assisted design system prototyping workflow.</li>
+            <li>Deployed the first known <span class="def" data-term="agentic" data-pron="/eɪˈdʒɛntɪk/" data-pos="adjective" data-def="Driven by an autonomous AI agent that plans and executes work end-to-end with minimal human-in-the-loop oversight.">agentic</span> <span class="def" data-term="VPAT" data-pron="/ˈviː pat/" data-pos="noun" data-def="Voluntary Product Accessibility Template — a self-disclosure document mapping a product against WCAG accessibility criteria.">VPAT</span> accessibility programme — 1 engineer, 13 PRs, 22 production fixes, 50% of WCAG 2.1 AA backlog cleared with zero squad capacity (vs. industry standard 4–6 people at $10k+).</li>
+            <li>Led a full AI first brand refresh using an AI-readable design system with semantic tokens, AGENTS.md rules and self-serve tooling. SLAs dropped from 5 days to under 2 hours. Set to launch end of year.</li>
+            <li>Established Multiverse's first <span class="def" data-term="Voice of User" data-pron="/vɔɪs əv ˈjuːzər/" data-pos="noun" data-def="An always-on programme that surfaces customer and learner feedback to leadership continuously — instead of via quarterly surveys.">Voice of User</span> function and CSAT audit programme — a continuous insight loop into senior leadership for the first time.</li>
+            <li>Published the company's first AI led <span class="def" data-term="competency framework" data-pron="/ˈkɒmpɪtənsi ˈfreɪmwɜːk/" data-pos="noun" data-def="A leveled rubric defining what 'good' looks like at each career stage — across both IC and management tracks.">competency framework</span> across Design &amp; UXR (IC + management tracks); ran calibrations; authored 7 performance reviews including a P4 → P5 promotion case.</li>
+          </ul>
+        </div>
+        <div class="tags">
+          <span class="tag">Design Leadership</span>
+          <span class="tag">AI-Native</span>
+          <span class="tag">Team Building</span>
+          <span class="tag">Design Systems</span>
+          <span class="tag">Accessibility</span>
+          <span class="tag">Brand</span>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="year">2023 — 24</div>
+        <div class="body">
+          <h3 class="role"><a href="https://web.meetcleo.com/" target="_blank" rel="noopener">Cleo</a> <span class="at">— Interim Head of Design</span><span class="arrow">→</span></h3>
+          <p class="company">AI-powered financial assistant app helping Gen Z manage their money.</p>
+          <p>Scaled the design team from 8 to 20. Pitched and won budget for the company's first ever Design Systems squad. Led the <span class="def" data-term="IA" data-pron="/aɪ eɪ/" data-pos="noun" data-def="Information Architecture — the underlying structure, hierarchy and navigation model of a product.">IA</span> redesign that cut the app's tabs from six to four, and rolled out CSAT &amp; UX Quality standards across 17 squads.</p>
+        </div>
+        <div class="tags">
+          <span class="tag">Design Leadership</span>
+          <span class="tag">Team Scaling</span>
+          <span class="tag">Design Systems</span>
+          <span class="tag">UX Strategy</span>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="year">2019 — Now</div>
+        <div class="body">
+          <h3 class="role"><a href="https://www.linkedin.com/company/76970361/" target="_blank" rel="noopener">Reality Prototyping</a> <span class="at">— Founder &amp; Coach</span></h3>
+          <p class="company">My own coaching practice for designers and design leaders.</p>
+          <p>Coaching designers and managers from Amazon, Monzo, Figma, Google, Meta, IDEO, IKEA, Lloyds, and more. A self-coaching syllabus built on lean loops and continuous delivery &mdash; helping designers find their voice, grow influence, and prototype their careers like they would a product.</p>
+        </div>
+        <div class="tags">
+          <span class="tag">Coaching</span>
+          <span class="tag">Founder</span>
+          <span class="tag">Career Development</span>
+          <span class="tag">Public Speaking</span>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="year">2021 — 23</div>
+        <div class="body">
+          <h3 class="role"><a href="https://mattereum.com/" target="_blank" rel="noopener">Mattereum</a> <span class="at">— Head of Design</span><span class="arrow">→</span></h3>
+          <p class="company">Web3 infrastructure for trading physical assets on the blockchain with legal certainty.</p>
+          <p>Led the design direction for a breakthrough Web3 legal innovation: digital passports for physical assets. Directed pitch deck and fundraise narrative &mdash; a 4,700% increase in follow-up VC calls and a £550K bridge round. Found product-market fit with B2B high-value assets and tripled the enterprise pipeline.</p>
+        </div>
+        <div class="tags">
+          <span class="tag">Web3</span>
+          <span class="tag">Design Leadership</span>
+          <span class="tag">Brand</span>
+          <span class="tag">Fundraising</span>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="year">2020 — 21</div>
+        <div class="body">
+          <h3 class="role"><a href="https://www.gfk-media-measurement.com/global/en/" target="_blank" rel="noopener">GfK</a> <span class="at">— Interim Head of Design</span><span class="arrow">→</span></h3>
+          <p class="company">Global consumer intelligence and market measurement company.</p>
+          <p>Scaled the design team from 5 to 15. Established the first ever UXR team. Trained 30+ PMs and 15 designers in hypothesis-driven design and seeded product trios across the org. Shipped gfknewron 1.1 — the first paying client in two years.</p>
+        </div>
+        <div class="tags">
+          <span class="tag">Design Leadership</span>
+          <span class="tag">Team Scaling</span>
+          <span class="tag">User Research</span>
+          <span class="tag">Coaching</span>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="year">2019 — 20</div>
+        <div class="body">
+          <h3 class="role"><a href="https://www.playdeo.co.uk/" target="_blank" rel="noopener">Playdeo</a> <span class="at">— Product Design Manager</span><span class="arrow">→</span></h3>
+          <p class="company">Interactive video studio creating playable stories on mobile.</p>
+          <p>Contract role leading product design and managing a team of four on an interactive video platform.</p>
+        </div>
+        <div class="tags">
+          <span class="tag">Product Design</span>
+          <span class="tag">Team Management</span>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="year">2015 — 18</div>
+        <div class="body">
+          <h3 class="role"><a href="https://www.meta.com/" target="_blank" rel="noopener">Facebook (Meta)</a> <span class="at">— Senior Product Designer</span><span class="arrow">→</span></h3>
+          <p class="company">Social technology company behind Facebook, Instagram and WhatsApp.</p>
+          <p>Built and launched Creative Hub &mdash; a WhatsApp / Instagram / Facebook advertising mockup tool &mdash; from <span class="def" data-term="0 → 1" data-pron="/ˈzɪərəʊ tuː wʌn/" data-pos="phrase" data-def="Building a product from nothing into a working, validated first version — the riskiest, most ambiguous phase of product development.">alpha to acquisition</span> by Ads Manager over three years. Improved Ad ROI by 30%.</p>
+        </div>
+        <div class="tags">
+          <span class="tag">Product Design</span>
+          <span class="tag">0 → 1</span>
+          <span class="tag">Advertising</span>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="year">2015</div>
+        <div class="body">
+          <h3 class="role"><a href="https://ustwo.com/" target="_blank" rel="noopener">Ustwo</a> <span class="at">— Senior Product Designer</span><span class="arrow">→</span></h3>
+          <p class="company">Independent digital product studio &mdash; creators of Monument Valley.</p>
+          <p>Contract role launching the Barclays Mobile Banking design guidelines.</p>
+        </div>
+        <div class="tags">
+          <span class="tag">Product Design</span>
+          <span class="tag">Mobile</span>
+          <span class="tag">Banking</span>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="year">2013 — 14</div>
+        <div class="body">
+          <h3 class="role"><a href="https://speakerdeck.com/zboralski/belua-pitch-deck" target="_blank" rel="noopener">Belua</a> <span class="at">— Founder &amp; Director of Design</span><span class="arrow">→</span></h3>
+          <p class="company">Early Web3 consumer product, covered by TechCrunch.</p>
+          <p>Co-founded an early Web3 product (covered by TechCrunch), running design end-to-end across brand, product, and pitch.</p>
+        </div>
+        <div class="tags">
+          <span class="tag">Founder</span>
+          <span class="tag">Web3</span>
+          <span class="tag">Brand</span>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="year">2012 — 13</div>
+        <div class="body">
+          <h3 class="role"><a href="https://www.barclays.co.uk/" target="_blank" rel="noopener">Barclays</a> <span class="at">— Senior Visual Designer</span><span class="arrow">→</span></h3>
+          <p class="company">British multinational bank.</p>
+          <p>Contract role on the Barclays Mobile Banking app.</p>
+        </div>
+        <div class="tags">
+          <span class="tag">Visual Design</span>
+          <span class="tag">Banking</span>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="year">2010 — 12</div>
+        <div class="body">
+          <h3 class="role"><a href="https://www.pentagram.com/" target="_blank" rel="noopener">Pentagram NYC</a> <span class="at">— Product Designer</span><span class="arrow">→</span></h3>
+          <p class="company">The world&rsquo;s largest independent design consultancy.</p>
+          <p>Contract role at Pentagram's New York studio across product and brand engagements.</p>
+        </div>
+        <div class="tags">
+          <span class="tag">Product Design</span>
+          <span class="tag">Brand</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section reveal" id="clients">
+    <div class="section-head">
+      <h2>Coaching clients</h2>
+      <span class="count">100+ designers</span>
+    </div>
+    <div class="ticker" aria-label="Coaching clients">
+      <div class="ticker-track">
+        <span class="client">Amazon</span>
+        <span class="client">Monzo</span>
+        <span class="client">Figma</span>
+        <span class="client">Google</span>
+        <span class="client">Meta</span>
+        <span class="client">IDEO</span>
+        <span class="client">IKEA</span>
+        <span class="client">Lloyds</span>
+        <span class="client" aria-hidden="true">Amazon</span>
+        <span class="client" aria-hidden="true">Monzo</span>
+        <span class="client" aria-hidden="true">Figma</span>
+        <span class="client" aria-hidden="true">Google</span>
+        <span class="client" aria-hidden="true">Meta</span>
+        <span class="client" aria-hidden="true">IDEO</span>
+        <span class="client" aria-hidden="true">IKEA</span>
+        <span class="client" aria-hidden="true">Lloyds</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section reveal" id="now">
+    <div class="section-head">
+      <h2>Open to chat about</h2>
+      <span class="count">Selectively · 2026</span>
+    </div>
+    <div class="now">
+      <p class="lede">
+        Happily at Multiverse. Open to the occasional <em>advisory</em>, coaching engagement, or speaking slot.
+      </p>
+      <div class="wish">
+        <div class="w"><div class="k">Shapes</div><div class="v">Advisory · Coaching · Speaking · IC + manager calibration</div></div>
+        <div class="w"><div class="k">Where</div><div class="v">Remote, occasional London</div></div>
+        <div class="w"><div class="k">Topics</div><div class="v">
+          <span class="pill hot">AI-native design culture</span>
+          <span class="pill hot">Scaling design teams</span>
+          <span class="pill hot">Design systems &amp; accessibility</span>
+          <span class="pill">Coaching IC → manager transitions</span>
+        </div></div>
+        <div class="w"><div class="k">Industries</div><div class="v">
+          <span class="pill">Financial empowerment</span>
+          <span class="pill">Mental health</span>
+          <span class="pill">Climate</span>
+          <span class="pill">Education</span>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact" class="reveal">
+    <div>
+      <h3>Contact</h3>
+      <p class="big">Let's <em>talk</em>.</p>
+    </div>
+    <div class="links">
+      <a href="mailto:kate.pincott@gmail.com">kate.pincott@gmail.com <span class="arrow">→</span></a>
+      <a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn <span class="arrow">→</span></a>
+    </div>
+  </footer>
+
+  <div class="colophon">
+    <span>© Kate Pincott 2026</span>
+    <span>Made with Claude Design</span>
+  </div>
+
+</div>
+
+
+<script>
+// Headline word cycle
+(function(){
+  const el = document.querySelector('.cycle');
+  if (!el) return;
+  const words = (el.dataset.words || '').split(',').map(w => w.trim()).filter(Boolean);
+  if (words.length < 2) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  let i = 0;
+  setInterval(() => {
+    el.classList.add('swapping');
+    setTimeout(() => {
+      i = (i + 1) % words.length;
+      el.textContent = words[i];
+      el.classList.remove('swapping');
+    }, 250);
+  }, 3200);
+})();
+
+// Scroll reveal
+(function(){
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+    return;
+  }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  // Stagger CV items on entry
+  const cvItems = document.querySelectorAll('.cv .item');
+  cvItems.forEach((it, i) => {
+    it.classList.add('reveal');
+    it.style.transitionDelay = (Math.min(i, 5) * 100) + 'ms';
+    io.observe(it);
+  });
+})();
+
+// Dictionary-style hover overlay
+(function(){
+  let card = null;
+  let currentTerm = null;
+  let hideTimer = null;
+
+  function ensureCard(){
+    if (card) return card;
+    card = document.createElement('div');
+    card.className = 'def-card';
+    card.innerHTML = '<p class="term"></p><p class="pron"></p><p class="pos"></p><p class="body"></p>';
+    document.body.appendChild(card);
+    return card;
+  }
+
+  function position(el){
+    const r = el.getBoundingClientRect();
+    const cardEl = ensureCard();
+    const w = 260;
+    const left = Math.max(12, Math.min(window.innerWidth - w - 12, r.left));
+    const top = r.bottom + 10;
+    // If too low, flip above
+    const cardH = cardEl.offsetHeight || 140;
+    if (top + cardH > window.innerHeight - 12) {
+      cardEl.style.top = (r.top - cardH - 10) + 'px';
+    } else {
+      cardEl.style.top = top + 'px';
+    }
+    cardEl.style.left = left + 'px';
+  }
+
+  function show(el){
+    if (currentTerm === el) return;
+    clearTimeout(hideTimer);
+    currentTerm = el;
+    const c = ensureCard();
+    c.querySelector('.term').textContent = el.dataset.term || el.textContent;
+    c.querySelector('.pron').textContent = el.dataset.pron || '';
+    c.querySelector('.pos').textContent = el.dataset.pos || '';
+    c.querySelector('.body').textContent = el.dataset.def || '';
+    position(el);
+    requestAnimationFrame(() => c.classList.add('in'));
+  }
+  function hide(){
+    hideTimer = setTimeout(() => {
+      if (card) card.classList.remove('in');
+      currentTerm = null;
+    }, 100);
+  }
+
+  document.addEventListener('mouseover', (e) => {
+    const t = e.target.closest('.def');
+    if (t) show(t);
+  });
+  document.addEventListener('mouseout', (e) => {
+    const t = e.target.closest('.def');
+    if (t) hide();
+  });
+  document.addEventListener('focusin', (e) => {
+    if (e.target.matches && e.target.matches('.def')) show(e.target);
+  });
+  document.addEventListener('focusout', (e) => {
+    if (e.target.matches && e.target.matches('.def')) hide();
+  });
+  window.addEventListener('scroll', () => {
+    if (currentTerm) position(currentTerm);
+  }, { passive: true });
+})();
+</script>
+
+
+</body>
+</html>

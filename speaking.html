@@ -1,0 +1,878 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Kate Pincott — Speaking</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+
+<style>
+:root{
+  --bg: oklch(0.985 0.006 80);
+  --surface: oklch(0.965 0.008 80);
+  --fg: oklch(0.22 0.012 60);
+  --fg-mute: oklch(0.45 0.012 60);
+  --fg-faint: oklch(0.62 0.010 60);
+  --line: oklch(0.86 0.012 70);
+  --accent: oklch(0.62 0.14 38);
+  --accent-soft: oklch(0.62 0.14 38 / 0.10);
+
+  --gap-row: 32px;
+  --gap-section: 96px;
+  --leading-body: 1.55;
+
+  --font-body: "Geist", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-display-italic: "Instrument Serif", "Geist", serif;
+  --font-mono: "Geist Mono", ui-monospace, monospace;
+  --weight-display: 500;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+html{background:var(--bg)}
+body{
+  font-family:var(--font-body);
+  color:var(--fg);
+  background:var(--bg);
+  font-size:16px;
+  line-height:var(--leading-body);
+  font-weight:400;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  text-rendering:optimizeLegibility;
+  font-feature-settings:"ss01","cv11";
+}
+::selection{background:var(--accent-soft);color:var(--fg)}
+
+.shell{
+  max-width:1180px;
+  margin:0 auto;
+  padding:48px 56px 96px;
+}
+
+nav.top{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  padding-bottom:8px;
+  margin-bottom:96px;
+}
+nav.top .brand{
+  font-family:var(--font-display);
+  font-weight:500;
+  font-size:15px;
+  letter-spacing:-0.005em;
+}
+nav.top .brand a{
+  color:var(--fg);
+  text-decoration:none;
+}
+nav.top .brand .dot{color:var(--accent)}
+nav.top ul{
+  list-style:none;
+  display:flex;
+  gap:28px;
+  margin:0;padding:0;
+  font-size:13.5px;
+}
+nav.top a{
+  color:var(--fg-mute);
+  text-decoration:none;
+  font-weight:400;
+  transition:color .18s ease;
+}
+nav.top a:hover{color:var(--accent)}
+nav.top a.current{color:var(--fg);font-weight:500}
+
+/* Speaking hero */
+.speaking-hero{
+  display:grid;
+  grid-template-columns: minmax(0, 8fr) minmax(0, 4fr);
+  gap:80px;
+  margin-bottom:72px;
+  align-items:end;
+}
+.speaking-hero .eyebrow{
+  font-family:var(--font-mono);
+  font-size:11.5px;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  color:var(--fg-faint);
+  margin-bottom:32px;
+  display:flex;
+  gap:14px;
+  align-items:center;
+}
+.speaking-hero .eyebrow .dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--accent);
+  display:inline-block;
+}
+.speaking-hero h1{
+  font-family:var(--font-display);
+  font-weight:var(--weight-display);
+  font-size:clamp(38px, 5.4vw, 64px);
+  line-height:1.04;
+  letter-spacing:-0.024em;
+  margin:0;
+  color:var(--fg);
+  text-wrap:balance;
+  max-width:20ch;
+}
+.speaking-hero h1 em{
+  font-family:var(--font-display-italic);
+  font-style:italic;
+  font-weight:400;
+  color:var(--accent);
+  font-size:1.05em;
+}
+.speaking-hero p.intro{
+  font-size:16px;
+  color:var(--fg-mute);
+  line-height:1.55;
+  margin:0;
+  max-width:38ch;
+}
+
+/* Filter chips */
+.filter{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-bottom:48px;
+  padding-bottom:24px;
+  border-bottom:1px solid var(--line);
+}
+.filter button{
+  appearance:none;
+  background:transparent;
+  border:1px solid var(--line);
+  padding:8px 16px;
+  border-radius:999px;
+  cursor:pointer;
+  font-family:var(--font-body);
+  font-size:13px;
+  color:var(--fg-mute);
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  transition: background-color .18s, color .18s, border-color .18s;
+}
+.filter button:hover{
+  border-color:var(--accent);
+  color:var(--accent);
+}
+.filter button.on{
+  background:var(--fg);
+  color:var(--bg);
+  border-color:var(--fg);
+}
+.filter button .count{
+  font-family:var(--font-mono);
+  font-size:11px;
+  opacity:0.55;
+  font-variant-numeric:tabular-nums;
+}
+
+/* Cards grid */
+.cards{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap:48px 28px;
+}
+.card{
+  text-decoration:none;
+  color:inherit;
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+  position:relative;
+  transition: transform .25s ease-out, opacity .25s ease;
+}
+.card.hide{display:none}
+.card .thumb{transition: border-color .25s ease, box-shadow .25s ease-out}
+.card:hover{transform:translateY(-4px)}
+.card:hover .thumb{
+  box-shadow: 0 14px 28px -14px rgba(0,0,0,0.18), 0 4px 10px -4px rgba(0,0,0,0.08);
+}
+
+/* Pinned cards (move to first position when their data-pin matches the active filter) */
+.cards.f-podcast .card[data-pin="podcast"],
+.cards.f-talk .card[data-pin="talk"],
+.cards.f-workshop .card[data-pin="workshop"]{order:-1}
+
+.card .thumb{
+  aspect-ratio: 4 / 3;
+  border-radius:14px;
+  position:relative;
+  overflow:hidden;
+  display:block;
+  background:var(--accent-soft);
+  border:1px solid color-mix(in oklch, var(--accent) 25%, transparent);
+  transition: border-color .25s ease;
+}
+.card .thumb .label{
+  position:absolute;
+  top:18px;
+  left:20px;
+  font-family:var(--font-mono);
+  font-size:10.5px;
+  letter-spacing:0.10em;
+  text-transform:uppercase;
+  color:var(--accent);
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+.card .thumb .label .yr{opacity:.6}
+.card .thumb .ext{
+  position:absolute;
+  top:18px;
+  right:20px;
+  width:20px;height:20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  color:var(--accent);
+  opacity:0;
+  transform:translateY(-3px);
+  transition: opacity .2s, transform .2s ease;
+}
+.card:hover .thumb .ext{opacity:1;transform:translateY(0)}
+.card .thumb .glyph{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  pointer-events:none;
+}
+.card .thumb .glyph svg{
+  width:64px;height:64px;
+  color:var(--accent);
+  opacity:0.55;
+  transition: transform .35s cubic-bezier(.2,.7,.2,1), opacity .25s;
+}
+.card:hover .thumb .glyph svg{
+  transform:scale(1.08);
+  opacity:0.85;
+}
+
+
+
+
+/* Face pile (host + Kate) */
+.card .thumb .pile{
+  position:absolute;
+  bottom:14px;
+  left:14px;
+  display:flex;
+  z-index:2;
+}
+.card .thumb .pile .avatar{
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  border:2.5px solid var(--bg);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:var(--font-mono);
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:0;
+  text-transform:uppercase;
+  background:oklch(0.86 0.014 70);
+  color:var(--fg);
+  margin-left:-10px;
+  overflow:hidden;
+  background-clip:padding-box;
+  transition: transform .25s ease;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.card .thumb .pile .avatar:first-child{margin-left:0}
+.card .thumb .pile .avatar.kate{
+  background:var(--accent);
+  color:#fff;
+}
+.card .thumb .pile .avatar img{
+  width:100%;height:100%;
+  object-fit:cover;
+  display:block;
+}
+.card:hover .thumb .pile .avatar{
+  transform:translateY(-1px);
+}
+.card[data-type="workshop"] .thumb .pile .avatar{
+  border-color: var(--fg);
+}
+
+/* Per-medium tint */
+.card[data-type="podcast"] .thumb{
+  background: oklch(0.93 0.008 70);
+  border-color: oklch(0.86 0.008 70);
+}
+.card[data-type="podcast"] .thumb .label,
+.card[data-type="podcast"] .thumb .ext,
+.card[data-type="podcast"] .thumb .glyph svg{
+  color:var(--fg-mute);
+}
+
+.card[data-type="workshop"] .thumb{
+  background: var(--fg);
+  border-color: var(--fg);
+}
+.card[data-type="workshop"] .thumb .label,
+.card[data-type="workshop"] .thumb .ext{
+  color:var(--bg);
+  opacity:0.82;
+}
+.card[data-type="workshop"] .thumb .glyph svg{
+  color:var(--bg);
+  opacity:0.45;
+}
+
+/* Card body */
+.card .title{
+  font-family:var(--font-display);
+  font-weight:500;
+  font-size:18px;
+  line-height:1.28;
+  letter-spacing:-0.014em;
+  color:var(--fg);
+  margin:0;
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+.card:hover .title{color:var(--accent)}
+.card .meta{
+  font-family:var(--font-mono);
+  font-size:11px;
+  letter-spacing:0.05em;
+  text-transform:uppercase;
+  color:var(--fg-faint);
+  margin:0;
+}
+.card .desc{
+  font-size:13.5px;
+  color:var(--fg-mute);
+  line-height:1.5;
+  margin:0;
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+.card .tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin-top:auto;
+}
+.card .tag{
+  font-size:11px;
+  padding:3px 10px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  color:var(--fg-mute);
+  white-space:nowrap;
+  line-height:1.4;
+}
+
+/* Empty state */
+.empty{
+  grid-column: 1 / -1;
+  text-align:center;
+  padding:60px 0;
+  font-family:var(--font-mono);
+  font-size:12px;
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+  color:var(--fg-faint);
+  display:none;
+}
+.empty.show{display:block}
+
+/* CTA bar */
+.cta{
+  margin-top:96px;
+  padding:48px 56px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  display:grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap:64px;
+  align-items:center;
+  background: linear-gradient(180deg, var(--accent-soft), transparent 80%);
+}
+.cta h2{
+  font-family:var(--font-display);
+  font-weight:500;
+  font-size:clamp(28px, 3.2vw, 38px);
+  line-height:1.1;
+  letter-spacing:-0.02em;
+  margin:0;
+  text-wrap:balance;
+}
+.cta h2 em{
+  font-family:var(--font-display-italic);
+  font-style:italic;
+  color:var(--accent);
+  font-weight:400;
+}
+.cta p{
+  margin:0;
+  color:var(--fg-mute);
+  font-size:15px;
+  line-height:1.55;
+}
+.cta a.invite{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-size:14px;
+  font-weight:500;
+  color:var(--fg);
+  text-decoration:none;
+  border-bottom:1px solid var(--fg);
+  padding-bottom:2px;
+  margin-top:16px;
+  transition: color .2s, border-color .2s;
+}
+.cta a.invite:hover{color:var(--accent);border-color:var(--accent)}
+
+footer.foot{
+  margin-top:64px;
+  padding-top:32px;
+  border-top:1px solid var(--line);
+  display:flex;
+  justify-content:space-between;
+  font-family:var(--font-mono);
+  font-size:11px;
+  color:var(--fg-faint);
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+}
+
+/* Scroll reveal */
+.reveal{
+  opacity:0;
+  transform:translateY(20px);
+  transition: opacity .4s ease-out, transform .4s ease-out;
+  will-change: opacity, transform;
+}
+.reveal.in{opacity:1;transform:translateY(0)}
+@media (prefers-reduced-motion: reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+}
+
+/* Responsive */
+@media (max-width: 1024px){
+  .cards{grid-template-columns: repeat(2, minmax(0, 1fr))}
+  .speaking-hero{grid-template-columns:1fr;gap:32px;align-items:start}
+  .cta{grid-template-columns:1fr;gap:24px;padding:32px}
+}
+@media (max-width: 640px){
+  .shell{padding:32px 24px 64px}
+  nav.top{margin-bottom:48px}
+  nav.top ul{gap:18px;font-size:12.5px}
+  .cards{grid-template-columns: 1fr; gap:32px}
+}
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <nav class="top">
+    <div class="brand"><a href="index.html">Kate Pincott<span class="dot">.</span></a></div>
+    <ul>
+      <li><a href="index.html#work">Work</a></li>
+      <li><a href="index.html#now">Now</a></li>
+      <li><a href="speaking.html" class="current">Speaking</a></li>
+      <li><a href="testimonials.html">Testimonials</a></li>
+      <li><a href="leadership.html">Leadership</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header class="speaking-hero reveal">
+    <div>
+      <div class="eyebrow"><span class="dot"></span>Talks · Podcasts · Workshops</div>
+      <h1>Words on <em>design</em>, careers, AI, and what makes people tick.</h1>
+    </div>
+    <p class="intro">
+      Conference talks, podcast appearances, panels and workshops &mdash; on design leadership, coaching, reframing, blockchain, and the messy work of being a human in tech.
+    </p>
+  </header>
+
+  <div class="filter reveal" role="tablist">
+    <button data-filter="all" class="on" type="button" role="tab" aria-selected="true">All <span class="count">19</span></button>
+    <button data-filter="talk" type="button" role="tab" aria-selected="false">Talks <span class="count">4</span></button>
+    <button data-filter="podcast" type="button" role="tab" aria-selected="false">Podcasts <span class="count">11</span></button>
+    <button data-filter="workshop" type="button" role="tab" aria-selected="false">Workshops <span class="count">4</span></button>
+  </div>
+
+  <!-- Reusable glyph definitions -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="g-talk" viewBox="0 0 64 64">
+        <circle cx="32" cy="32" r="30" stroke="currentColor" stroke-width="1.5" fill="none"/>
+        <path d="M25 19 L47 32 L25 45 Z" fill="currentColor"/>
+      </symbol>
+      <symbol id="g-podcast" viewBox="0 0 64 64">
+        <line x1="12" y1="24" x2="12" y2="40" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="22" y1="18" x2="22" y2="46" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="32" y1="10" x2="32" y2="54" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="42" y1="18" x2="42" y2="46" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="52" y1="24" x2="52" y2="40" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+      </symbol>
+      <symbol id="g-workshop" viewBox="0 0 64 64">
+        <rect x="10" y="10" width="20" height="20" stroke="currentColor" stroke-width="1.5" fill="none"/>
+        <rect x="34" y="10" width="20" height="20" stroke="currentColor" stroke-width="1.5" fill="none"/>
+        <rect x="10" y="34" width="20" height="20" stroke="currentColor" stroke-width="1.5" fill="none"/>
+        <rect x="34" y="34" width="20" height="20" stroke="currentColor" stroke-width="1.5" fill="none"/>
+      </symbol>
+      <symbol id="ext-arrow" viewBox="0 0 16 16">
+        <path d="M5 11 L11 5 M11 5 H6 M11 5 V10" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <section class="cards" id="cards">
+
+    <!-- 2024 -->
+    <a class="card reveal" data-type="podcast" data-year="2024" href="https://www.beyonduxdesign.com/episode/90-the-art-of-perspective-mastering-the-reframe-with-kate-pincott/" target="_blank" rel="noopener">
+      <div class="thumb">
+        <span class="label">Podcast <span class="yr">· 2024</span></span>
+        <span class="ext"><svg width="14" height="14"><use href="#ext-arrow"/></svg></span>
+        <span class="glyph"><svg><use href="#g-podcast"/></svg></span>
+        <span class="pile" aria-label="Speakers"><span class="avatar kate" title="Kate Pincott">KP</span><span class="avatar host" title="Beyond UX Design (host)">BU</span></span>
+      </div>
+      <p class="meta">Beyond UX Design · August 2024</p>
+      <h3 class="title">The Art of Perspective: Mastering the Reframe</h3>
+      <p class="desc">A deep dive into reframing &mdash; how it transforms design practice and career development.</p>
+      <div class="tags"><span class="tag">Reframing</span><span class="tag">UX Design</span><span class="tag">Mindset</span></div>
+    </a>
+
+    <a class="card reveal" data-type="workshop" data-year="2024" href="https://www.youtube.com/watch?v=Ye-bEv8OvHY" target="_blank" rel="noopener">
+      <div class="thumb">
+        <span class="label">Workshop <span class="yr">· 2024</span></span>
+        <span class="ext"><svg width="14" height="14"><use href="#ext-arrow"/></svg></span>
+        <span class="glyph"><svg><use href="#g-workshop"/></svg></span>
+        <span class="pile" aria-label="Speakers"><span class="avatar kate" title="Kate Pincott">KP</span></span>
+      </div>
+      <p class="meta">Live AMA · March 2024</p>
+      <h3 class="title">How To Prototype Your Design Career &mdash; AMA</h3>
+      <p class="desc">An open AMA on career uncertainty, burnout, and prototyping your way to a fulfilling design career.</p>
+      <div class="tags"><span class="tag">Career Development</span><span class="tag">Coaching</span><span class="tag">Prototyping</span></div>
+    </a>
+
+    <!-- 2023 -->
+    <a class="card reveal" data-type="talk" data-year="2023" href="https://www.youtube.com/watch?v=CLodJO4svc4" target="_blank" rel="noopener">
+      <div class="thumb">
+        <span class="label">Talk <span class="yr">· 2023</span></span>
+        <span class="ext"><svg width="14" height="14"><use href="#ext-arrow"/></svg></span>
+        <span class="glyph"><svg><use href="#g-talk"/></svg></span>
+        <span class="pile" aria-label="Speakers"><span class="avatar kate" title="Kate Pincott">KP</span><span class="avatar host" title="Rui Barroca · designFAO">RB</span></span>
+      </div>
+      <p class="meta">designFAO · December 2023</p>
+      <h3 class="title">Name &amp; Reframe</h3>
+      <p class="desc">On design coaching and the power of reframing in design careers &mdash; introducing the Reality Prototyping framework.</p>
+      <div class="tags"><span class="tag">Coaching</span><span class="tag">Career</span><span class="tag">Reframing</span></div>
+    </a>
+
+    <a class="card reveal" data-type="podcast" data-year="2023" href="https://open.spotify.com/episode/0Ya3t1RemZCRSlKIuwtUC3" target="_blank" rel="noopener">
+      <div class="thumb">
+        <span class="label">Podcast <span class="yr">· 2023</span></span>
+        <span class="ext"><svg width="14" height="14"><use href="#ext-arrow"/></svg></span>
+        <span class="glyph"><svg><use href="#g-podcast"/></svg></span>
+        <span class="pile" aria-label="Speakers"><span class="avatar kate" title="Kate Pincott">KP</span><span class="avatar host" title="Web3 Future (host)">W3</span></span>
+      </div>
+      <p class="meta">Web3 Future · July 2023</p>
+      <h3 class="title">Sustainable Web3 Innovations</h3>
+      <p class="desc">Why blockchain plays a critical role in a sustainable product future &mdash; and reflections on Mattereum.</p>
+      <div class="tags"><span class="tag">Web3</span><span class="tag">Sustainability</span><span class="tag">Blockchain</span></div>
+    </a>
+
+    <a class="card reveal" data-type="podcast" data-year="2023" href="https://www.youtube.com/watch?v=0oPNuh1kBy4" target="_blank" rel="noopener">
+      <div class="thumb">
+        <span class="label">Podcast <span class="yr">· 2023</span></span>
+        <span class="ext"><svg width="14" height="14"><use href="#ext-arrow"/></svg></span>
+        <span class="glyph"><svg><use href="#g-podcast"/></svg></span>
+        <span class="pile" aria-label="Speakers"><span class="avatar kate" title="Kate Pincott">KP</span><span class="avatar host" title="Pascal Potvin">PP</span></span>
+      </div>
+      <p class="meta">Shaping Design · April 2023</p>
+      <h3 class="title">Navigating Creativity, Tokenizing Everything &amp; Design Titles</h3>
+      <p class="desc">With Pascal Potvin &mdash; on creative careers, blockchain in design, and the evolution of design roles.</p>
+      <div class="tags"><span class="tag">Creativity</span><span class="tag">Blockchain</span><span class="tag">Design Roles</span></div>
+    </a>
+
+    <a class="card reveal" data-type="workshop" data-year="2023" href="https://www.linkedin.com/posts/pincott_designers-uxui-coaching-activity-7047233326755024896-lkpo" target="_blank" rel="noopener">
+      <div class="thumb">
+        <span class="label">Workshop <span class="yr">· 2023</span></span>
+        <span class="ext"><svg width="14" height="14"><use href="#ext-arrow"/></svg></span>
+        <span class="glyph"><svg><use href="#g-workshop"/></svg></span>
+        <span class="pile" aria-label="Speakers"><span class="avatar kate" title="Kate Pincott">KP</span></span>
+      </div>
+      <p class="meta">10X Designers · March 2023</p>
+      <h3 class="title">Name it &amp; Reframe it: How to Land Your Message and Grow Your Influence</h3>
+      <p class="desc">A reflective 2-hour live workshop on the power of reframing to develop your messaging and expand your influence.</p>
+      <div class="tags"><span class="tag">Reframing</span><span class="tag">Influence</span><span class="tag">Design Leadership</span></div>
+    </a>
+
+    <a class="card reveal" data-type="podcast" data-year="2023" href="https://www.youtube.com/watch?v=8or7tLoZf58" target="_blank" rel="noopener">
+      <div class="thumb">
+        <span class="label">Podcast <span class="yr">· 2023</span></span>
+        <span class="ext"><svg width="14" height="14"><use href="#ext-arrow"/></svg></span>
+        <span class="glyph"><svg><use href="#g-podcast"/></svg></span>
+        <span class="pile" aria-label="Speakers"><span class="avatar kate" title="Kate Pincott">KP</span><span class="avatar host" title="JUST Branding (host)">JB</span></span>
+      </div>
+      <p class="meta">JUST Branding S04.Ep04 · March 2023</p>
+      <h3 class="title">NFTs: The New Frontier for Brands</h3>
+      <p class="desc">How NFTs and Web3 technologies are creating new opportunities for brands and designers.</p>
+      <div class="tags"><span class="tag">NFTs</span><span class="tag">Branding</span><span class="tag">Web3</span></div>
+    </a>
+
+    <!-- 2022 -->
+    <a class="card reveal" data-type="talk" data-year="2022" href="https://open.spotify.com/episode/0c1AnRJbsaR1YIJvba3Izy" target="_blank" rel="noopener">
+      <div class="thumb">
+        <span class="label">Panel <span class="yr">· 2022</span></span>
+        <span class="ext"><svg width="14" height="14"><use href="#ext-arrow"/></svg></span>
+        <span class="glyph"><svg><use href="#g-talk"/></svg></span>
+        <span class="pile" aria-label="Speakers"><span class="avatar kate" title="Kate Pincott">KP</span><span class="avatar host" title="Benny Zuffolini">BZ</span><span class="avatar host" title="João Miranda">JM</span><span class="avatar host" title="Bruno Figueiredo · host of Design is for Everyone">BF</span></span>
+      </div>
+      <p class="meta">designFAO · November 2022</p>
+      <h3 class="title">Dealing with Design in a Post-Democratization Era</h3>
+      <p class="desc">Panel with João Miranda and Benny Zuffolini at designFAO &mdash; design in a post-democratization context.</p>
+      <div class="tags"><span class="tag">Democratization</span><span class="tag">Panel</span><span class="tag">Design Leadership</span></div>
+    </a>
+
+    <a class="card reveal" data-type="talk" data-year="2022" href="https://www.youtube.com/watch?v=6ZEK9jWOLdI" target="_blank" rel="noopener">
+      <div class="thumb">
+        <span class="label">Talk <span class="yr">· 2022</span></span>
+        <span class="ext"><svg width="14" height="14"><use href="#ext-arrow"/></svg></span>
+        <span class="glyph"><svg><use href="#g-talk"/></svg></span>
+        <span class="pile" aria-label="Speakers"><span class="avatar kate" title="Kate Pincott">KP</span><span class="avatar host" title="Rui Barroca · designFAO">RB</span></span>
+      </div>
+      <p class="meta">designFAO · October 2022</p>
+      <h3 class="title">Trading Physical Assets On The Blockchain</h3>
+      <p class="desc">How blockchain enables digital passports for physical assets &mdash; based on the Mattereum work.</p>
+      <div class="tags"><span class="tag">Blockchain</span><span class="tag">Web3</span><span class="tag">Product Design</span></div>
+    </a>
+
+    <a class="card reveal" data-type="podcast" data-year="2022" href="https://www.youtube.com/watch?v=LDeSWgczR7c" target="_blank" rel="noopener">
+      <div class="thumb">
+        <span class="label">Livestream <span class="yr">· 2022</span></span>
+        <span class="ext"><svg width="14" height="14"><use href="#ext-arrow"/></svg></span>
+        <span class="glyph"><svg><use href="#g-podcast"/></svg></span>
+        <span class="pile" aria-label="Speakers"><span class="avatar kate" title="Kate Pincott">KP</span><span class="avatar host" title="Femke van Schoonhoven">FV</span></span>
+      </div>
+      <p class="meta">With Femke van Schoonhoven · July 2022</p>
+      <h3 class="title">What is Design Coaching?</h3>
+      <p class="desc">Explaining design coaching &mdash; how it helps designers grow self-confidence, awareness, and impact.</p>
+      <div class="tags"><span class="tag">Coaching</span><span class="tag">Career</span><span class="tag">Development</span></div>
+    </a>
+
+    <a class="card reveal" data-type="podcast" data-year="2022" href="https://open.spotify.com/episode/4nrEK82MegSRx7oBycp7fD" target="_blank" rel="noopener">
+      <div class="thumb">
+        <span class="label">Podcast <span class="yr">· 2022</span></span>
+        <span class="ext"><svg width="14" height="14"><use href="#ext-arrow"/></svg></span>
+        <span class="glyph"><svg><use href="#g-podcast"/></svg></span>
+        <span class="pile" aria-label="Speakers"><span class="avatar kate" title="Kate Pincott">KP</span><span class="avatar host" title="Trenton Moss">TM</span><span class="avatar host" title="Jason Mesut">JM</span><span class="avatar host" title="Nirish Shakya · host of Unthinking Space">NS</span></span>
+      </div>
+      <p class="meta">Unthinking Space · March 2022</p>
+      <h3 class="title">The Human Behind the Human-Centred Designer</h3>
+      <p class="desc">With Jason Mesut and Trenton Moss &mdash; on self-awareness, creative confidence, and meaning at work.</p>
+      <div class="tags"><span class="tag">Self-Awareness</span><span class="tag">Panel</span><span class="tag">Creative Confidence</span></div>
+    </a>
+
+    <!-- 2021 -->
+    <a class="card reveal" data-type="workshop" data-year="2021" href="https://www.linkedin.com/posts/pincott_layoffs-rejection-interviewing-activity-7001869247144456193-ZH0a" target="_blank" rel="noopener">
+      <div class="thumb">
+        <span class="label">Workshop <span class="yr">· 2021</span></span>
+        <span class="ext"><svg width="14" height="14"><use href="#ext-arrow"/></svg></span>
+        <span class="glyph"><svg><use href="#g-workshop"/></svg></span>
+        <span class="pile" aria-label="Speakers"><span class="avatar kate" title="Kate Pincott">KP</span></span>
+      </div>
+      <p class="meta">General Assembly UXD Immersive · 2021</p>
+      <h3 class="title">Dealing with Layoffs, Rejection &amp; Interviewing</h3>
+      <p class="desc">Guest session for design students &mdash; layoffs, rejection, interviewing, and paying it forward.</p>
+      <div class="tags"><span class="tag">Career</span><span class="tag">Interviewing</span><span class="tag">Mindset</span></div>
+    </a>
+
+    <!-- Undated / Previous -->
+    <a class="card reveal" data-type="talk" data-pin="talk" data-year="2020" href="https://www.youtube.com/watch?v=LcuwoNJAiCM" target="_blank" rel="noopener">
+      <div class="thumb">
+        <span class="label">Talk <span class="yr">· 2020</span></span>
+        <span class="ext"><svg width="14" height="14"><use href="#ext-arrow"/></svg></span>
+        <span class="glyph"><svg><use href="#g-talk"/></svg></span>
+        <span class="pile" aria-label="Speakers"><span class="avatar kate" title="Kate Pincott">KP</span></span>
+      </div>
+      <p class="meta">Figma Config Europe · October 2020</p>
+      <h3 class="title">Visualising capacity</h3>
+      <p class="desc">Talk at Figma's Config Europe conference.</p>
+      <div class="tags"><span class="tag">Design</span><span class="tag">Figma</span><span class="tag">Conference</span></div>
+    </a>
+
+    <a class="card reveal" data-type="podcast" data-pin="podcast" data-year="" href="https://open.spotify.com/episode/6aQeEzE9I6awvaOUEo2FV9" target="_blank" rel="noopener">
+      <div class="thumb">
+        <span class="label">Podcast</span>
+        <span class="ext"><svg width="14" height="14"><use href="#ext-arrow"/></svg></span>
+        <span class="glyph"><svg><use href="#g-podcast"/></svg></span>
+        <span class="pile" aria-label="Speakers"><span class="avatar kate" title="Kate Pincott">KP</span><span class="avatar host" title="Chris Do">CD</span></span>
+      </div>
+      <p class="meta">The Futur with Chris Do</p>
+      <h3 class="title">Prototyping Yourself</h3>
+      <p class="desc">A live coaching session in action &mdash; how to prototype your career and navigate uncertainty.</p>
+      <div class="tags"><span class="tag">Coaching</span><span class="tag">Prototyping</span><span class="tag">Design Thinking</span></div>
+    </a>
+
+    <a class="card reveal" data-type="podcast" data-year="" href="https://open.spotify.com/episode/7DqGQI5bEsH4ITiFgDak5B" target="_blank" rel="noopener">
+      <div class="thumb">
+        <span class="label">Podcast</span>
+        <span class="ext"><svg width="14" height="14"><use href="#ext-arrow"/></svg></span>
+        <span class="glyph"><svg><use href="#g-podcast"/></svg></span>
+        <span class="pile" aria-label="Speakers"><span class="avatar kate" title="Kate Pincott">KP</span><span class="avatar host" title="Nathalie Nahai">NN</span></span>
+      </div>
+      <p class="meta">Captivate · with Nathalie Nahai</p>
+      <h3 class="title">From Facebook to Forests: A Tale of Rewilding</h3>
+      <p class="desc">From tech to a simpler life &mdash; physical design, coaching, and what changed along the way.</p>
+      <div class="tags"><span class="tag">Career</span><span class="tag">Lifestyle</span><span class="tag">Design</span></div>
+    </a>
+
+    <a class="card reveal" data-type="podcast" data-year="" href="https://open.spotify.com/episode/7J8pfnbmbuqthBaqwNwlw9" target="_blank" rel="noopener">
+      <div class="thumb">
+        <span class="label">Podcast</span>
+        <span class="ext"><svg width="14" height="14"><use href="#ext-arrow"/></svg></span>
+        <span class="glyph"><svg><use href="#g-podcast"/></svg></span>
+        <span class="pile" aria-label="Speakers"><span class="avatar kate" title="Kate Pincott">KP</span><span class="avatar host" title="Luis Ouriach">LO</span></span>
+      </div>
+      <p class="meta">8 px Radio · with Luis Ouriach</p>
+      <h3 class="title">8 px Radio</h3>
+      <p class="desc">Interview about design, coaching, and career development.</p>
+      <div class="tags"><span class="tag">Design</span><span class="tag">Coaching</span><span class="tag">Career</span></div>
+    </a>
+
+    <a class="card reveal" data-type="podcast" data-year="" href="https://open.spotify.com/episode/3SK5QaLGPVO2zO5i11xDQb" target="_blank" rel="noopener">
+      <div class="thumb">
+        <span class="label">Podcast</span>
+        <span class="ext"><svg width="14" height="14"><use href="#ext-arrow"/></svg></span>
+        <span class="glyph"><svg><use href="#g-podcast"/></svg></span>
+        <span class="pile" aria-label="Speakers"><span class="avatar kate" title="Kate Pincott">KP</span><span class="avatar host" title="Homelife (host)">HL</span></span>
+      </div>
+      <p class="meta">Homelife for Extraordinary Impact</p>
+      <h3 class="title">Running Experiments on Your Home</h3>
+      <p class="desc">Experimenting with work-from-home boundaries, morning rhythms, and lessons from the dutar.</p>
+      <div class="tags"><span class="tag">Lifestyle</span><span class="tag">Balance</span><span class="tag">Intuition</span></div>
+    </a>
+
+    <a class="card reveal" data-type="podcast" data-year="" href="https://open.spotify.com/episode/4mrLLIDBQIFJNTiJNq7SkX" target="_blank" rel="noopener">
+      <div class="thumb">
+        <span class="label">Podcast</span>
+        <span class="ext"><svg width="14" height="14"><use href="#ext-arrow"/></svg></span>
+        <span class="glyph"><svg><use href="#g-podcast"/></svg></span>
+        <span class="pile" aria-label="Speakers"><span class="avatar kate" title="Kate Pincott">KP</span><span class="avatar host" title="Nirish Shakya · host of Unthinking Space">NS</span></span>
+      </div>
+      <p class="meta">Unthinking Space</p>
+      <h3 class="title">Laid Off? Look Inside Before You Look Outside</h3>
+      <p class="desc">Turning a layoff into an opportunity for personal growth through reflection and recalibration.</p>
+      <div class="tags"><span class="tag">Career</span><span class="tag">Layoffs</span><span class="tag">Growth</span></div>
+    </a>
+
+    <a class="card reveal" data-type="workshop" data-year="" href="https://www.youtube.com/watch?v=y-iRSdR4X7g" target="_blank" rel="noopener">
+      <div class="thumb">
+        <span class="label">Workshop</span>
+        <span class="ext"><svg width="14" height="14"><use href="#ext-arrow"/></svg></span>
+        <span class="glyph"><svg><use href="#g-workshop"/></svg></span>
+        <span class="pile" aria-label="Speakers"><span class="avatar kate" title="Kate Pincott">KP</span></span>
+      </div>
+      <p class="meta">Ustwo London</p>
+      <h3 class="title">Framer Prototyping Workshop</h3>
+      <p class="desc">A workshop series teaching Framer prototyping techniques at Ustwo London.</p>
+      <div class="tags"><span class="tag">Prototyping</span><span class="tag">Framer</span><span class="tag">Workshop</span></div>
+    </a>
+
+    <div class="empty" id="empty">No items in this category yet.</div>
+  </section>
+
+  <section class="cta reveal">
+    <div>
+      <h2>Got a stage, mic, or workshop slot? <em>Get in touch.</em></h2>
+    </div>
+    <div>
+      <p>I'm available for talks, workshops, and podcast appearances on design leadership, career coaching, reframing, AI-native teams, and the intersection of design and emerging tech.</p>
+      <a class="invite" href="mailto:kate.pincott@gmail.com?subject=Speaking invitation">kate.pincott@gmail.com <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <span>© Kate Pincott 2026</span>
+    <span>Made with Claude Design</span>
+  </footer>
+
+</div>
+
+
+<script>
+// Filter chips
+(function(){
+  const buttons = document.querySelectorAll('.filter button');
+  const cards = document.querySelectorAll('.card');
+  const grid = document.getElementById('cards');
+  const empty = document.getElementById('empty');
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const f = btn.dataset.filter;
+      // Update grid filter class for order-based pinning
+      if (grid) {
+        grid.className = grid.className.replace(/\bf-(all|talk|podcast|workshop)\b/g, '').replace(/\s+/g,' ').trim() + ' f-' + f;
+      }
+      buttons.forEach(b => {
+        const on = b === btn;
+        b.classList.toggle('on', on);
+        b.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+      let visible = 0;
+      cards.forEach(c => {
+        const show = (f === 'all' || c.dataset.type === f);
+        c.classList.toggle('hide', !show);
+        if (show) visible++;
+      });
+      empty.classList.toggle('show', visible === 0);
+    });
+  });
+})();
+
+// Scroll reveal
+(function(){
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+    return;
+  }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.reveal').forEach((el, i) => {
+    if (el.classList.contains('card')) {
+      el.style.transitionDelay = (Math.min(i % 6, 5) * 100) + 'ms';
+    }
+    io.observe(el);
+  });
+})();
+</script>
+
+
+</body>
+</html>
