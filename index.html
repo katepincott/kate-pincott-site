@@ -569,7 +569,7 @@ footer .links a{
   text-decoration:none;
   padding:8px 0;
   border-bottom:1px solid var(--line);
-  transition:color .15s, border-color .15s;
+  transition:color .15s, border-color .15s, transform .25s cubic-bezier(.2,.7,.2,1);
 }
 footer .links a:hover{color:var(--accent);border-color:var(--accent)}
 footer .links a .arrow{
@@ -644,6 +644,32 @@ footer .links a:hover .arrow{transform:translateX(4px);color:var(--accent)}
 .cv .item .year{transition:color .25s ease, transform .25s ease;transform-origin:left center}
 .cv .item:hover{background-color:var(--accent-soft)}
 .cv .item:hover .year{color:var(--accent)}
+
+/* Pronounced staggered CV row reveal (uses animation so it doesn't conflict with .cv .item's hover transition) */
+.cv .item.reveal{opacity:0;transform:translateY(40px)}
+.cv .item.reveal.in{animation:cv-row-in .7s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes cv-row-in{
+  from{opacity:0;transform:translateY(40px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@media (prefers-reduced-motion: reduce){
+  .cv .item.reveal{opacity:1;transform:none;animation:none}
+}
+
+/* Hero h1 split-text reveal (each word fades up on load) */
+.hero h1 .h1-word{
+  display:inline-block;
+  opacity:0;
+  transform:translateY(0.4em);
+  animation:h1-word-in .7s cubic-bezier(.2,.7,.2,1) forwards;
+  will-change:opacity,transform;
+}
+@keyframes h1-word-in{
+  to{opacity:1;transform:translateY(0)}
+}
+@media (prefers-reduced-motion: reduce){
+  .hero h1 .h1-word{animation:none;opacity:1;transform:none}
+}
 
 /* Dictionary-style definition term - inline tooltip on hover */
 .def{
@@ -1003,8 +1029,8 @@ footer .links a:hover .arrow{transform:translateX(4px);color:var(--accent)}
       <p class="big">Let's <em>talk</em>.</p>
     </div>
     <div class="links">
-      <a href="mailto:kate.pincott@gmail.com">kate.pincott@gmail.com <span class="arrow">→</span></a>
-      <a href="https://www.linkedin.com/in/pincott/" target="_blank" rel="noopener">LinkedIn <span class="arrow">→</span></a>
+      <a data-magnetic href="mailto:kate.pincott@gmail.com">kate.pincott@gmail.com <span class="arrow">→</span></a>
+      <a data-magnetic href="https://www.linkedin.com/in/pincott/" target="_blank" rel="noopener">LinkedIn <span class="arrow">→</span></a>
     </div>
   </footer>
 
@@ -1054,7 +1080,7 @@ footer .links a:hover .arrow{transform:translateX(4px);color:var(--accent)}
   const cvItems = document.querySelectorAll('.cv .item');
   cvItems.forEach((it, i) => {
     it.classList.add('reveal');
-    it.style.transitionDelay = (Math.min(i, 5) * 100) + 'ms';
+    it.style.animationDelay = (Math.min(i, 6) * 140) + 'ms';
     io.observe(it);
   });
 })();
@@ -1127,8 +1153,51 @@ footer .links a:hover .arrow{transform:translateX(4px);color:var(--accent)}
     if (currentTerm) position(currentTerm);
   }, { passive: true });
 })();
+
+// Split the hero h1 into per-word spans with staggered fade-up animation.
+// Keeps the existing .cycle element intact (treats it as one token).
+(function(){
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const h1 = document.querySelector('.hero h1');
+  if (!h1) return;
+
+  // Tokenize: each word (text-node fragment) and each inline element becomes one token.
+  const tokens = [];
+  for (const node of [...h1.childNodes]){
+    if (node.nodeType === Node.TEXT_NODE){
+      node.textContent.split(/(\s+)/).forEach(part => {
+        if (part.trim())      tokens.push({kind:'word', text:part});
+        else if (part)        tokens.push({kind:'space', text:part});
+      });
+    } else if (node.nodeType === Node.ELEMENT_NODE){
+      tokens.push({kind:'el', el:node});
+    }
+  }
+
+  h1.innerHTML = '';
+  let i = 0;
+  tokens.forEach(t => {
+    if (t.kind === 'word'){
+      const s = document.createElement('span');
+      s.className = 'h1-word';
+      s.style.animationDelay = (i * 70 + 200) + 'ms';
+      s.textContent = t.text;
+      h1.appendChild(s);
+      i++;
+    } else if (t.kind === 'space'){
+      h1.appendChild(document.createTextNode(t.text));
+    } else if (t.kind === 'el'){
+      t.el.classList.add('h1-word');
+      t.el.style.animationDelay = (i * 70 + 200) + 'ms';
+      h1.appendChild(t.el);
+      i++;
+    }
+  });
+})();
 </script>
 
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="motion.js"></script>
 
 </body>
 </html>

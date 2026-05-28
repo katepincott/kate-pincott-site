@@ -460,7 +460,7 @@ nav.top a.current{color:var(--fg);font-weight:500}
   border-bottom:1px solid var(--fg);
   padding-bottom:2px;
   margin-top:16px;
-  transition: color .2s, border-color .2s;
+  transition: color .2s, border-color .2s, transform .25s cubic-bezier(.2,.7,.2,1);
 }
 .cta a.invite:hover{color:var(--accent);border-color:var(--accent)}
 
@@ -853,7 +853,7 @@ footer.foot{
     </div>
     <div>
       <p>I'm available for talks, workshops, and podcast appearances on design leadership, career coaching, reframing, AI-native teams, and the intersection of design and emerging tech.</p>
-      <a class="invite" href="mailto:kate.pincott@gmail.com?subject=Speaking invitation">kate.pincott@gmail.com <span aria-hidden="true">→</span></a>
+      <a class="invite" data-magnetic href="mailto:kate.pincott@gmail.com?subject=Speaking invitation">kate.pincott@gmail.com <span aria-hidden="true">→</span></a>
     </div>
   </section>
 
@@ -918,6 +918,8 @@ footer.foot{
 })();
 </script>
 
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="motion.js"></script>
 
 </body>
 </html>
