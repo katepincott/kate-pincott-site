@@ -6,7 +6,7 @@
 <title>Kate Pincott - Design Manager &amp; Coach</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
 
 <style>
 :root{
@@ -72,6 +72,8 @@ nav.top .brand{
   letter-spacing:-0.005em;
 }
 nav.top .brand .dot{color:var(--accent)}
+nav.top .brand{transition:font-weight .35s ease}
+nav.top .brand:hover{font-weight:600}
 nav.top ul{
   list-style:none;
   display:flex;
@@ -87,6 +89,8 @@ nav.top a{
   transition: color .18s ease, border-color .18s ease;
 }
 nav.top a:hover{color:var(--accent);border-bottom-color:var(--accent)}
+nav.top a.contact-cta{display:inline-block;background:var(--fg);color:var(--bg);padding:7px 16px;border-radius:4px;border-bottom:none;transition:border-radius .18s ease-out,background-color .18s ease,color .18s ease}
+nav.top a.contact-cta:hover{background:var(--accent);color:var(--bg);border-radius:999px}
 
 /* Hero */
 .hero{
@@ -264,11 +268,12 @@ nav.top a:hover{color:var(--accent);border-bottom-color:var(--accent)}
   color:inherit;
   text-decoration:none;
   border-bottom:1px solid transparent;
-  transition: color .15s ease, border-color .15s ease;
+  transition: color .15s ease, border-color .15s ease, font-weight .35s ease;
 }
 .cv .body .role a:hover{
   color:var(--accent);
   border-bottom-color:var(--accent);
+  font-weight:600;
 }
 .cv .body ul.highlights{
   list-style:none;
@@ -662,7 +667,9 @@ footer .links a:hover .arrow{transform:translateX(4px);color:var(--accent)}
   transform:translateY(0.4em);
   animation:h1-word-in .7s cubic-bezier(.2,.7,.2,1) forwards;
   will-change:opacity,transform;
+  transition:font-weight .3s ease;
 }
+.hero h1 .h1-word:not(.cycle):hover{font-weight:600}
 @keyframes h1-word-in{
   to{opacity:1;transform:translateY(0)}
 }
@@ -749,7 +756,7 @@ footer .links a:hover .arrow{transform:translateX(4px);color:var(--accent)}
       <li><a href="speaking.html">Speaking</a></li>
       <li><a href="testimonials.html">Testimonials</a></li>
       <li><a href="leadership.html">Leadership</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#contact" class="contact-cta">Contact</a></li>
     </ul>
   </nav>
 
