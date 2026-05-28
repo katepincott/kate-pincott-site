@@ -311,11 +311,10 @@ nav.top a:hover{color:var(--accent);border-bottom-color:var(--accent)}
 }
 .cv .body .more:hover{text-decoration:underline}
 .cv .tags{
-  display:grid;
-  grid-template-columns: repeat(2, max-content);
+  display:flex;
+  flex-wrap:wrap;
   gap:6px 8px;
-  justify-content:end;
-  justify-items:end;
+  justify-content:flex-end;
   padding-top:4px;
 }
 .cv .tag{
