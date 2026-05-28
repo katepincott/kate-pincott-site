@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Kate Pincott — Design Manager &amp; Coach</title>
+<title>Kate Pincott - Design Manager &amp; Coach</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
@@ -138,6 +138,33 @@ nav.top a:hover{color:var(--accent);border-bottom-color:var(--accent)}
   max-width:46ch;
   margin:0;
 }
+.hero ul.intro-list{
+  list-style:none;
+  padding:0;
+  margin:0;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  max-width:46ch;
+}
+.hero ul.intro-list li{
+  font-size:17px;
+  line-height:1.55;
+  color:var(--fg-mute);
+  padding-left:30px;
+  position:relative;
+}
+.hero ul.intro-list li::before{
+  content:"→";
+  position:absolute;
+  left:0;
+  top:0;
+  color:var(--accent);
+  font-family:var(--font-display);
+  font-size:20px;
+  font-weight:500;
+  line-height:1.4;
+}
 .hero .meta{
   display:flex;
   flex-direction:column;
@@ -196,7 +223,7 @@ nav.top a:hover{color:var(--accent);border-bottom-color:var(--accent)}
   letter-spacing:0.06em;
 }
 
-/* Project list — matches the CV reference */
+/* Project list - matches the CV reference */
 .cv{display:flex;flex-direction:column}
 .cv .item{
   display:grid;
@@ -243,23 +270,6 @@ nav.top a:hover{color:var(--accent);border-bottom-color:var(--accent)}
   color:var(--accent);
   border-bottom-color:var(--accent);
 }
-.cv .body p.company{
-  margin:0 0 14px 0;
-  font-family:var(--font-display-italic);
-  font-style:italic;
-  font-size:14.5px;
-  color:var(--fg-faint);
-  line-height:1.45;
-  max-width:62ch;
-  letter-spacing:-0.003em;
-}
-.cv .body p{
-  margin:0;
-  font-size:14.5px;
-  color:var(--fg-mute);
-  line-height:1.5;
-  max-width:62ch;
-}
 .cv .body ul.highlights{
   list-style:none;
   margin:14px 0 0 0;
@@ -273,18 +283,19 @@ nav.top a:hover{color:var(--accent);border-bottom-color:var(--accent)}
   font-size:14px;
   color:var(--fg-mute);
   line-height:1.5;
-  padding-left:22px;
+  padding-left:28px;
   position:relative;
 }
 .cv .body ul.highlights li::before{
   content:"→";
   position:absolute;
   left:0;
-  top:0;
+  top:-1px;
   color:var(--accent);
-  font-family:var(--font-mono);
-  font-size:13px;
-  line-height:1.5;
+  font-family:var(--font-display);
+  font-size:18px;
+  font-weight:500;
+  line-height:1.4;
 }
 .cv .body .more{
   display:inline-flex;
@@ -633,7 +644,7 @@ footer .links a:hover .arrow{transform:translateX(4px);color:var(--accent)}
 .cv .item:hover{background-color:var(--accent-soft)}
 .cv .item:hover .year{color:var(--accent)}
 
-/* Dictionary-style definition term — inline tooltip on hover */
+/* Dictionary-style definition term - inline tooltip on hover */
 .def{
   position:relative;
   border-bottom:1px dotted var(--fg-faint);
@@ -721,9 +732,11 @@ footer .links a:hover .arrow{transform:translateX(4px);color:var(--accent)}
     <div>
       <div class="eyebrow"><span class="dot"></span>Director of Experience · Coach · London, UK</div>
       <h1>I help product organisations figure out what design means in an <em class="cycle" data-words="AI-first,AI-native,agent-first,post-AI">AI-first</em> world.</h1>
-      <p class="intro">
-        Currently leading Experience at Multiverse &mdash; Product Design, Research, Brand, Design Systems and Accessibility across a team of up to 20. Previously Cleo, Mattereum, GfK, Facebook, Ustwo, Barclays, Pentagram. Seven years coaching designers and managers at Amazon, Monzo, Figma, Google, Meta, IDEO and beyond.
-      </p>
+      <ul class="intro-list">
+        <li>Currently leading Experience at Multiverse: Product Design, Research, Brand, Design Systems and Accessibility across a team of up to 20.</li>
+        <li>Previously Cleo, Mattereum, GfK, Facebook, Ustwo, Barclays, Pentagram - across 15 years.</li>
+        <li>Coaching designers and managers at Amazon, Monzo, Figma, Google, Meta, IDEO and more.</li>
+      </ul>
     </div>
     <div class="meta">
       <div class="row"><span class="k">Currently</span><span class="v">Director of Experience, Multiverse</span></div>
@@ -736,23 +749,23 @@ footer .links a:hover .arrow{transform:translateX(4px);color:var(--accent)}
   <section class="section reveal" id="work">
     <div class="section-head">
       <h2>Selected work</h2>
-      <span class="count">2010 — Now</span>
+      <span class="count">2010 - Now</span>
     </div>
 
     <div class="cv">
 
       <div class="item">
-        <div class="year">2025 — Now</div>
+        <div class="year">2025 - Now</div>
         <div class="body">
-          <h3 class="role"><a href="https://www.multiverse.io/" target="_blank" rel="noopener">Multiverse</a> <span class="at">— Director of Experience</span></h3>
-          <p class="company">Apprenticeship platform for tech, data and AI careers.</p>
-          <p>Built Multiverse's Design function from the ground up inside the Tech org &mdash; hiring 8 very strong candidates (incl. a Research Manager from Meta and a Product Design Manager from Carta) and growing to a team of 20 across Product Design, Research, Brand, Design Systems and Accessibility.</p>
+          <h3 class="role"><a href="https://www.multiverse.io/" target="_blank" rel="noopener">Multiverse</a> <span class="at">- Director of Experience</span></h3>
           <ul class="highlights">
-            <li>Built an <span class="def" data-term="AI-native" data-pron="/eɪ aɪ ˈneɪtɪv/" data-pos="adjective" data-def="Designed with AI tools embedded in every step of the workflow — not bolted on after.">AI-native</span> design culture: Claude Code 101 sessions, Figma Make jams, hybrid designer-developer roles, AI-assisted design system prototyping workflow.</li>
-            <li>Deployed the first known <span class="def" data-term="agentic" data-pron="/eɪˈdʒɛntɪk/" data-pos="adjective" data-def="Driven by an autonomous AI agent that plans and executes work end-to-end with minimal human-in-the-loop oversight.">agentic</span> <span class="def" data-term="VPAT" data-pron="/ˈviː pat/" data-pos="noun" data-def="Voluntary Product Accessibility Template — a self-disclosure document mapping a product against WCAG accessibility criteria.">VPAT</span> accessibility programme — 1 engineer, 13 PRs, 22 production fixes, 50% of WCAG 2.1 AA backlog cleared with zero squad capacity (vs. industry standard 4–6 people at $10k+).</li>
+            <li>Apprenticeship platform for tech, data and AI careers.</li>
+            <li>Built Multiverse's Design function from the ground up inside the Tech org - hiring 8 very strong candidates (incl. a Research Manager from Meta and a Product Design Manager from Carta and to Staff from Meta + Wise) and growing to a team of 20 across Product Design, Research, Brand, Design Systems and Accessibility.</li>
+            <li>Built an <span class="def" data-term="AI-native" data-pron="/eɪ aɪ ˈneɪtɪv/" data-pos="adjective" data-def="Designed with AI tools embedded in every step of the workflow - not bolted on after.">AI-native</span> design culture: Claude Code 101 sessions, Figma Make jams, hybrid designer-developer roles, AI-assisted design system prototyping workflow.</li>
+            <li>Deployed the first known <span class="def" data-term="agentic" data-pron="/eɪˈdʒɛntɪk/" data-pos="adjective" data-def="Driven by an autonomous AI agent that plans and executes work end-to-end with minimal human-in-the-loop oversight.">agentic</span> <span class="def" data-term="VPAT" data-pron="/ˈviː pat/" data-pos="noun" data-def="Voluntary Product Accessibility Template - a self-disclosure document mapping a product against WCAG accessibility criteria.">VPAT</span> accessibility programme - 1 engineer, 13 PRs, 22 production fixes, 50% of WCAG 2.1 AA backlog cleared with zero squad capacity (vs. industry standard 4–6 people at $10k+).</li>
             <li>Led a full AI first brand refresh using an AI-readable design system with semantic tokens, AGENTS.md rules and self-serve tooling. SLAs dropped from 5 days to under 2 hours. Set to launch end of year.</li>
-            <li>Established Multiverse's first <span class="def" data-term="Voice of User" data-pron="/vɔɪs əv ˈjuːzər/" data-pos="noun" data-def="An always-on programme that surfaces customer and learner feedback to leadership continuously — instead of via quarterly surveys.">Voice of User</span> function and CSAT audit programme — a continuous insight loop into senior leadership for the first time.</li>
-            <li>Established first ever fully staffed Agentic Design System Team. Published the company's first AI led <span class="def" data-term="competency framework" data-pron="/ˈkɒmpɪtənsi ˈfreɪmwɜːk/" data-pos="noun" data-def="A leveled rubric defining what 'good' looks like at each career stage — across both IC and management tracks.">competency framework</span> across Design &amp; UXR.</li>
+            <li>Established Multiverse's first <span class="def" data-term="Voice of User" data-pron="/vɔɪs əv ˈjuːzər/" data-pos="noun" data-def="An always-on programme that surfaces customer and learner feedback to leadership continuously - instead of via quarterly surveys.">Voice of User</span> function and CSAT audit programme - a continuous insight loop into senior leadership for the first time.</li>
+            <li>Established first ever fully staffed Agentic Design System Team. Published the company's first AI led <span class="def" data-term="competency framework" data-pron="/ˈkɒmpɪtənsi ˈfreɪmwɜːk/" data-pos="noun" data-def="A leveled rubric defining what 'good' looks like at each career stage - across both IC and management tracks.">competency framework</span> across Design &amp; UXR.</li>
           </ul>
         </div>
         <div class="tags">
@@ -766,11 +779,13 @@ footer .links a:hover .arrow{transform:translateX(4px);color:var(--accent)}
       </div>
 
       <div class="item">
-        <div class="year">2023 — 24</div>
+        <div class="year">2023 - 24</div>
         <div class="body">
-          <h3 class="role"><a href="https://web.meetcleo.com/" target="_blank" rel="noopener">Cleo</a> <span class="at">— Interim Head of Design</span></h3>
-          <p class="company">AI-powered financial assistant app helping Gen Z manage their money.</p>
-          <p>Scaled the design team from 8 to 20. Pitched and won budget for the company's first ever Design Systems squad. Led the <span class="def" data-term="IA" data-pron="/aɪ eɪ/" data-pos="noun" data-def="Information Architecture — the underlying structure, hierarchy and navigation model of a product.">IA</span> redesign that cut the app's tabs from six to four, and rolled out CSAT &amp; UX Quality standards across 17 squads.</p>
+          <h3 class="role"><a href="https://web.meetcleo.com/" target="_blank" rel="noopener">Cleo</a> <span class="at">- Interim Head of Design</span></h3>
+          <ul class="highlights">
+            <li>AI-powered financial assistant app helping Gen Z manage their money.</li>
+            <li>Scaled the design team from 8 to 20. Pitched and won budget for the company's first ever Design Systems squad. Led the <span class="def" data-term="IA" data-pron="/aɪ eɪ/" data-pos="noun" data-def="Information Architecture - the underlying structure, hierarchy and navigation model of a product.">IA</span> redesign that cut the app's tabs from six to four, and rolled out CSAT &amp; UX Quality standards across 17 squads.</li>
+          </ul>
         </div>
         <div class="tags">
           <span class="tag">Design Leadership</span>
@@ -781,11 +796,13 @@ footer .links a:hover .arrow{transform:translateX(4px);color:var(--accent)}
       </div>
 
       <div class="item">
-        <div class="year">2019 — Now</div>
+        <div class="year">2019 - Now</div>
         <div class="body">
-          <h3 class="role"><a href="https://www.linkedin.com/company/76970361/" target="_blank" rel="noopener">Reality Prototyping</a> <span class="at">— Founder &amp; Coach</span></h3>
-          <p class="company">My own coaching practice for designers and design leaders.</p>
-          <p>Coaching designers and managers from Amazon, Monzo, Figma, Google, Meta, IDEO, IKEA, Lloyds, and more. A self-coaching syllabus built on lean loops and continuous delivery &mdash; helping designers find their voice, grow influence, and prototype their careers like they would a product.</p>
+          <h3 class="role"><a href="https://www.linkedin.com/company/76970361/" target="_blank" rel="noopener">Reality Prototyping</a> <span class="at">- Founder &amp; Coach</span></h3>
+          <ul class="highlights">
+            <li>My own coaching practice for designers and design leaders.</li>
+            <li>Coaching designers and managers from Amazon, Monzo, Figma, Google, Meta, IDEO, IKEA, Lloyds, and more. A self-coaching syllabus built on lean loops and continuous delivery - helping designers find their voice, grow influence, and prototype their careers like they would a product.</li>
+          </ul>
         </div>
         <div class="tags">
           <span class="tag">Coaching</span>
@@ -796,11 +813,13 @@ footer .links a:hover .arrow{transform:translateX(4px);color:var(--accent)}
       </div>
 
       <div class="item">
-        <div class="year">2021 — 23</div>
+        <div class="year">2021 - 23</div>
         <div class="body">
-          <h3 class="role"><a href="https://mattereum.com/" target="_blank" rel="noopener">Mattereum</a> <span class="at">— Head of Design</span></h3>
-          <p class="company">Web3 infrastructure for trading physical assets on the blockchain with legal certainty.</p>
-          <p>Led the design direction for a breakthrough Web3 legal innovation: digital passports for physical assets. Directed pitch deck and fundraise narrative &mdash; a 4,700% increase in follow-up VC calls and a £550K bridge round. Found product-market fit with B2B high-value assets and tripled the enterprise pipeline.</p>
+          <h3 class="role"><a href="https://mattereum.com/" target="_blank" rel="noopener">Mattereum</a> <span class="at">- Head of Design</span></h3>
+          <ul class="highlights">
+            <li>Web3 infrastructure for trading physical assets on the blockchain with legal certainty.</li>
+            <li>Led the design direction for a breakthrough Web3 legal innovation: digital passports for physical assets. Directed pitch deck and fundraise narrative - a 4,700% increase in follow-up VC calls and a £550K bridge round. Found product-market fit with B2B high-value assets and tripled the enterprise pipeline.</li>
+          </ul>
         </div>
         <div class="tags">
           <span class="tag">Web3</span>
@@ -811,11 +830,13 @@ footer .links a:hover .arrow{transform:translateX(4px);color:var(--accent)}
       </div>
 
       <div class="item">
-        <div class="year">2020 — 21</div>
+        <div class="year">2020 - 21</div>
         <div class="body">
-          <h3 class="role"><a href="https://www.gfk-media-measurement.com/global/en/" target="_blank" rel="noopener">GfK</a> <span class="at">— Interim Head of Design</span></h3>
-          <p class="company">Global consumer intelligence and market measurement company.</p>
-          <p>Scaled the design team from 5 to 15. Established the first ever UXR team. Trained 30+ PMs and 15 designers in hypothesis-driven design and seeded product trios across the org. Shipped gfknewron 1.1 — the first paying client in two years.</p>
+          <h3 class="role"><a href="https://www.gfk-media-measurement.com/global/en/" target="_blank" rel="noopener">GfK</a> <span class="at">- Interim Head of Design</span></h3>
+          <ul class="highlights">
+            <li>Global consumer intelligence and market measurement company.</li>
+            <li>Scaled the design team from 5 to 15. Established the first ever UXR team. Trained 30+ PMs and 15 designers in hypothesis-driven design and seeded product trios across the org. Shipped gfknewron 1.1 - the first paying client in two years.</li>
+          </ul>
         </div>
         <div class="tags">
           <span class="tag">Design Leadership</span>
@@ -826,11 +847,13 @@ footer .links a:hover .arrow{transform:translateX(4px);color:var(--accent)}
       </div>
 
       <div class="item">
-        <div class="year">2019 — 20</div>
+        <div class="year">2019 - 20</div>
         <div class="body">
-          <h3 class="role"><a href="https://www.playdeo.co.uk/" target="_blank" rel="noopener">Playdeo</a> <span class="at">— Product Design Manager</span></h3>
-          <p class="company">Interactive video studio creating playable stories on mobile.</p>
-          <p>Contract role leading product design and managing a team of four on an interactive video platform.</p>
+          <h3 class="role"><a href="https://www.playdeo.co.uk/" target="_blank" rel="noopener">Playdeo</a> <span class="at">- Product Design Manager</span></h3>
+          <ul class="highlights">
+            <li>Interactive video studio creating playable stories on mobile.</li>
+            <li>Contract role leading product design and managing a team of four on an interactive video platform.</li>
+          </ul>
         </div>
         <div class="tags">
           <span class="tag">Product Design</span>
@@ -839,11 +862,13 @@ footer .links a:hover .arrow{transform:translateX(4px);color:var(--accent)}
       </div>
 
       <div class="item">
-        <div class="year">2015 — 18</div>
+        <div class="year">2015 - 18</div>
         <div class="body">
-          <h3 class="role"><a href="https://www.meta.com/" target="_blank" rel="noopener">Facebook (Meta)</a> <span class="at">— Senior Product Designer</span></h3>
-          <p class="company">Social technology company behind Facebook, Instagram and WhatsApp.</p>
-          <p>Built and launched Creative Hub &mdash; a WhatsApp / Instagram / Facebook advertising mockup tool &mdash; from <span class="def" data-term="0 → 1" data-pron="/ˈzɪərəʊ tuː wʌn/" data-pos="phrase" data-def="Building a product from nothing into a working, validated first version — the riskiest, most ambiguous phase of product development.">alpha to acquisition</span> by Ads Manager over three years. Improved Ad ROI by 30%.</p>
+          <h3 class="role"><a href="https://www.meta.com/" target="_blank" rel="noopener">Facebook (Meta)</a> <span class="at">- Senior Product Designer</span></h3>
+          <ul class="highlights">
+            <li>Social technology company behind Facebook, Instagram and WhatsApp.</li>
+            <li>Built and launched Creative Hub - a WhatsApp / Instagram / Facebook advertising mockup tool - from <span class="def" data-term="0 → 1" data-pron="/ˈzɪərəʊ tuː wʌn/" data-pos="phrase" data-def="Building a product from nothing into a working, validated first version - the riskiest, most ambiguous phase of product development.">alpha to acquisition</span> by Ads Manager over three years. Improved Ad ROI by 30%.</li>
+          </ul>
         </div>
         <div class="tags">
           <span class="tag">Product Design</span>
@@ -855,9 +880,11 @@ footer .links a:hover .arrow{transform:translateX(4px);color:var(--accent)}
       <div class="item">
         <div class="year">2015</div>
         <div class="body">
-          <h3 class="role"><a href="https://ustwo.com/" target="_blank" rel="noopener">Ustwo</a> <span class="at">— Senior Product Designer</span></h3>
-          <p class="company">Independent digital product studio &mdash; creators of Monument Valley.</p>
-          <p>Contract role launching the Barclays Mobile Banking design guidelines.</p>
+          <h3 class="role"><a href="https://ustwo.com/" target="_blank" rel="noopener">Ustwo</a> <span class="at">- Senior Product Designer</span></h3>
+          <ul class="highlights">
+            <li>Independent digital product studio - creators of Monument Valley.</li>
+            <li>Contract role launching the Barclays Mobile Banking design guidelines.</li>
+          </ul>
         </div>
         <div class="tags">
           <span class="tag">Product Design</span>
@@ -867,11 +894,13 @@ footer .links a:hover .arrow{transform:translateX(4px);color:var(--accent)}
       </div>
 
       <div class="item">
-        <div class="year">2013 — 14</div>
+        <div class="year">2013 - 14</div>
         <div class="body">
-          <h3 class="role"><a href="https://speakerdeck.com/zboralski/belua-pitch-deck" target="_blank" rel="noopener">Belua</a> <span class="at">— Founder &amp; Director of Design</span></h3>
-          <p class="company">Early Web3 consumer product, covered by TechCrunch.</p>
-          <p>Co-founded an early Web3 product (covered by TechCrunch), running design end-to-end across brand, product, and pitch.</p>
+          <h3 class="role"><a href="https://speakerdeck.com/zboralski/belua-pitch-deck" target="_blank" rel="noopener">Belua</a> <span class="at">- Founder &amp; Director of Design</span></h3>
+          <ul class="highlights">
+            <li>Early Web3 consumer product, covered by TechCrunch.</li>
+            <li>Co-founded an early Web3 product (covered by TechCrunch), running design end-to-end across brand, product, and pitch.</li>
+          </ul>
         </div>
         <div class="tags">
           <span class="tag">Founder</span>
@@ -881,11 +910,13 @@ footer .links a:hover .arrow{transform:translateX(4px);color:var(--accent)}
       </div>
 
       <div class="item">
-        <div class="year">2012 — 13</div>
+        <div class="year">2012 - 13</div>
         <div class="body">
-          <h3 class="role"><a href="https://www.barclays.co.uk/" target="_blank" rel="noopener">Barclays</a> <span class="at">— Senior Visual Designer</span></h3>
-          <p class="company">British multinational bank.</p>
-          <p>Contract role on the Barclays Mobile Banking app.</p>
+          <h3 class="role"><a href="https://www.barclays.co.uk/" target="_blank" rel="noopener">Barclays</a> <span class="at">- Senior Visual Designer</span></h3>
+          <ul class="highlights">
+            <li>British multinational bank.</li>
+            <li>Contract role on the Barclays Mobile Banking app.</li>
+          </ul>
         </div>
         <div class="tags">
           <span class="tag">Visual Design</span>
@@ -894,11 +925,13 @@ footer .links a:hover .arrow{transform:translateX(4px);color:var(--accent)}
       </div>
 
       <div class="item">
-        <div class="year">2010 — 12</div>
+        <div class="year">2010 - 12</div>
         <div class="body">
-          <h3 class="role"><a href="https://www.pentagram.com/" target="_blank" rel="noopener">Pentagram NYC</a> <span class="at">— Product Designer</span></h3>
-          <p class="company">The world&rsquo;s largest independent design consultancy.</p>
-          <p>Contract role at Pentagram's New York studio across product and brand engagements.</p>
+          <h3 class="role"><a href="https://www.pentagram.com/" target="_blank" rel="noopener">Pentagram NYC</a> <span class="at">- Product Designer</span></h3>
+          <ul class="highlights">
+            <li>The world&rsquo;s largest independent design consultancy.</li>
+            <li>Contract role at Pentagram's New York studio across product and brand engagements.</li>
+          </ul>
         </div>
         <div class="tags">
           <span class="tag">Product Design</span>
