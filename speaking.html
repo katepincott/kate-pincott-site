@@ -386,6 +386,22 @@ nav.top a.current{color:var(--fg);font-weight:500}
   line-height:1.4;
 }
 
+/* Ghost-link cards: whole card clicks through via overlay <a>, inner <a>s sit above */
+.card-link{
+  position:absolute;
+  inset:0;
+  z-index:1;
+}
+.card .desc a{
+  position:relative;
+  z-index:2;
+  color:var(--accent);
+  text-decoration:none;
+  border-bottom:1px solid currentColor;
+  transition:opacity .15s ease;
+}
+.card .desc a:hover{opacity:.75}
+
 /* Empty state */
 .empty{
   grid-column: 1 / -1;
@@ -513,9 +529,9 @@ footer.foot{
   </header>
 
   <div class="filter reveal" role="tablist">
-    <button data-filter="all" class="on" type="button" role="tab" aria-selected="true">All <span class="count">19</span></button>
+    <button data-filter="all" class="on" type="button" role="tab" aria-selected="true">All <span class="count">20</span></button>
     <button data-filter="talk" type="button" role="tab" aria-selected="false">Talks <span class="count">4</span></button>
-    <button data-filter="podcast" type="button" role="tab" aria-selected="false">Podcasts <span class="count">11</span></button>
+    <button data-filter="podcast" type="button" role="tab" aria-selected="false">Podcasts <span class="count">12</span></button>
     <button data-filter="workshop" type="button" role="tab" aria-selected="false">Workshops <span class="count">4</span></button>
   </div>
 
@@ -614,18 +630,19 @@ footer.foot{
       <div class="tags"><span class="tag">Creativity</span><span class="tag">Blockchain</span><span class="tag">Design Roles</span></div>
     </a>
 
-    <a class="card reveal" data-type="workshop" data-year="2023" href="https://www.linkedin.com/posts/pincott_designers-uxui-coaching-activity-7047233326755024896-lkpo" target="_blank" rel="noopener">
+    <div class="card reveal" data-type="workshop" data-year="2023">
+      <a class="card-link" href="https://www.linkedin.com/posts/pincott_designers-uxui-coaching-activity-7047233326755024896-lkpo" target="_blank" rel="noopener" aria-label="Name it &amp; Reframe it workshop"></a>
       <div class="thumb">
         <span class="label">Workshop <span class="yr">· 2023</span></span>
         <span class="ext"><svg width="14" height="14"><use href="#ext-arrow"/></svg></span>
         <span class="glyph"><svg><use href="#g-workshop"/></svg></span>
-        <span class="pile" aria-label="Speakers"><span class="avatar kate" title="Kate Pincott">KP</span></span>
+        <span class="pile" aria-label="Speakers"><span class="avatar kate" title="Kate Pincott">KP</span><span class="avatar host" title="Fons Manns · 10X Designers">FM</span></span>
       </div>
       <p class="meta">10X Designers · March 2023</p>
       <h3 class="title">Name it &amp; Reframe it: How to Land Your Message and Grow Your Influence</h3>
-      <p class="desc">A reflective 2-hour live workshop on the power of reframing to develop your messaging and expand your influence.</p>
+      <p class="desc">A reflective 2-hour live workshop on the power of reframing to develop your messaging and expand your influence with <a href="https://fonsmans.com/" target="_blank" rel="noopener">Fons Manns</a> of <a href="https://10x.framer.website/" target="_blank" rel="noopener">10X Designers</a>.</p>
       <div class="tags"><span class="tag">Reframing</span><span class="tag">Influence</span><span class="tag">Design Leadership</span></div>
-    </a>
+    </div>
 
     <a class="card reveal" data-type="podcast" data-year="2023" href="https://www.youtube.com/watch?v=8or7tLoZf58" target="_blank" rel="noopener">
       <div class="thumb">
@@ -785,6 +802,20 @@ footer.foot{
       <p class="desc">Turning a layoff into an opportunity for personal growth through reflection and recalibration.</p>
       <div class="tags"><span class="tag">Career</span><span class="tag">Layoffs</span><span class="tag">Growth</span></div>
     </a>
+
+    <div class="card reveal" data-type="podcast" data-year="">
+      <a class="card-link" href="https://www.youtube.com/watch?v=Ye-bEv8OvHY" target="_blank" rel="noopener" aria-label="Watch AMA with UX Playbook on YouTube"></a>
+      <div class="thumb">
+        <span class="label">Podcast</span>
+        <span class="ext"><svg width="14" height="14"><use href="#ext-arrow"/></svg></span>
+        <span class="glyph"><svg><use href="#g-podcast"/></svg></span>
+        <span class="pile" aria-label="Speakers"><span class="avatar kate" title="Kate Pincott">KP</span><span class="avatar host" title="Chris Nguyen · host of UX Playbook">CN</span></span>
+      </div>
+      <p class="meta">UX Playbook · with Chris Nguyen</p>
+      <h3 class="title">AMA with UX Playbook</h3>
+      <p class="desc">An AMA on design leadership, coaching and AI-native teams with Chris from <a href="https://uxplaybook.org/" target="_blank" rel="noopener">UX Playbook</a>.</p>
+      <div class="tags"><span class="tag">Coaching</span><span class="tag">AMA</span><span class="tag">Design Leadership</span></div>
+    </div>
 
     <a class="card reveal" data-type="workshop" data-year="" href="https://www.youtube.com/watch?v=y-iRSdR4X7g" target="_blank" rel="noopener">
       <div class="thumb">
