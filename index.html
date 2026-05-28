@@ -661,6 +661,13 @@ footer .links a:hover .arrow{transform:translateX(4px);color:var(--accent)}
 @media (prefers-reduced-motion: reduce){
   .cv .item.reveal{opacity:1;transform:none;animation:none}
 }
+/* On small screens the stacked rows are tall and the staggered delay makes
+   already-visible rows pop in late — which reads as a glitch while scrolling.
+   Show CV rows immediately on mobile instead. */
+@media (max-width: 880px){
+  .cv .item.reveal,
+  .cv .item.reveal.in{opacity:1;transform:none;animation:none}
+}
 
 /* Hero h1 split-text reveal (each word fades up on load) */
 .hero h1 .h1-word{
