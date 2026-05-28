@@ -123,3 +123,45 @@
     });
   }
 })();
+
+/* ------------------------------------------------------------ *
+ *  Mobile nav menu (runs on all devices, incl. touch/reduced)  *
+ * ------------------------------------------------------------ */
+(function () {
+  const toggle = document.querySelector('.nav-toggle');
+  const menu   = document.getElementById('nav-menu');
+  if (!toggle || !menu) return;
+
+  const backdrop = document.createElement('div');
+  backdrop.className = 'nav-backdrop';
+  backdrop.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(backdrop);
+
+  const isOpen = () => menu.classList.contains('open');
+
+  const open = () => {
+    menu.classList.add('open');
+    backdrop.classList.add('open');
+    document.body.classList.add('nav-open');
+    toggle.setAttribute('aria-expanded', 'true');
+    toggle.setAttribute('aria-label', 'Close menu');
+  };
+  const close = () => {
+    menu.classList.remove('open');
+    backdrop.classList.remove('open');
+    document.body.classList.remove('nav-open');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', 'Open menu');
+  };
+
+  toggle.addEventListener('click', () => { isOpen() ? close() : open(); });
+  backdrop.addEventListener('click', close);
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && isOpen()) close();
+  });
+  // Snap back to the inline desktop nav if the viewport grows past the breakpoint
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 720 && isOpen()) close();
+  });
+})();
