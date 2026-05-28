@@ -622,6 +622,12 @@ footer.foot{
   .hero{grid-template-columns:1fr;gap:32px;align-items:start}
   .principles .p{grid-template-columns:40px 1fr;gap:18px}
   .principles .p p{grid-column:2 / -1}
+  /* Unnumbered principles have no index column. Their desktop rule
+     (.principles.unnumbered .p) has higher specificity than the generic
+     mobile rule above, so it wins even on phones — crushing the heading
+     into a one-word-per-line strip. Collapse to a single stacked column. */
+  .principles.unnumbered .p{grid-template-columns:1fr;gap:10px}
+  .principles.unnumbered .p p{grid-column:1 / -1}
   .values{grid-template-columns:1fr}
   .cols{grid-template-columns:1fr;gap:32px}
   .brave{grid-template-columns:1fr;gap:24px;padding:32px}
