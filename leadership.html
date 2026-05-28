@@ -235,6 +235,8 @@ nav.top a.current{color:var(--fg);font-weight:500}
   color:var(--fg-mute);
   line-height:1.55;
 }
+/* Unnumbered variant: drop the 60px numeric column when the .ix prefix is removed */
+.principles.unnumbered .p{grid-template-columns: 1fr minmax(0, 360px)}
 
 /* Dictionary term */
 .def{
@@ -717,40 +719,33 @@ footer.foot{
       <h1>A user manual for <em>working with me</em>.</h1>
     </div>
     <p class="intro">
-      Half coach, half operator. This is how I lead, what I value, how I give feedback, and the bits I'm still working on. Read it before we work together - it'll save us both a quarter.
-    </p>
-    <p class="intro">
-      The thread through my whole career - blockchain, then helping people save money with humour, now helping people learn AI by using AI - is the same: I don't want people like my parents left behind by the shift to AI. That's the work.
+      "My job as a leader is to set clear direction, foster alignment, and remove obstacles - so others can do their best work."
     </p>
   </header>
 
   <section class="section reveal" id="how-i-lead">
     <div class="section-head">
       <h2>How I lead</h2>
-      <span class="ix">Four principles</span>
+
     </div>
-    <div class="principles">
+    <div class="principles unnumbered">
 
       <div class="p">
-        <span class="ix">01</span>
         <h3>Listen <em>first</em>. Reframe before solving.</h3>
         <p>Most problems aren't what they look like. I'll ask first.</p>
       </div>
 
       <div class="p">
-        <span class="ix">02</span>
         <h3>Start with the <em>user</em>, work back from there.</h3>
         <p>User up, team up, me last - even when politics tries to turn the arrow.</p>
       </div>
 
       <div class="p">
-        <span class="ix">03</span>
         <h3>Set <em>direction</em>. Then get out of the way.</h3>
         <p>Vision and metrics come from me. The "how" comes from the team. I'll write the brief, give context, and ask harder questions than the brief itself - but I won't redesign the work over your shoulder.</p>
       </div>
 
       <div class="p">
-        <span class="ix">04</span>
         <h3>Make space for <em>experiments</em> - including ones that fail.</h3>
         <p>Especially with AI tooling, new design system rituals, hybrid roles. I'll back a 70%-confident prototype over a 100%-talked-about idea. If it doesn't work we learn it cost us two weeks, not two quarters.</p>
       </div>
@@ -758,45 +753,39 @@ footer.foot{
     </div>
   </section>
 
-  <section class="pull reveal">
-    <p>
-      "My job as a leader is to set <span class="accent">clear direction</span>, foster alignment, and remove obstacles - so others can do their best work."
-    </p>
-  </section>
-
   <section class="section reveal" id="values">
     <div class="section-head">
       <h2>What I value most</h2>
-      <span class="ix">In the team</span>
+
     </div>
     <div class="values">
       <div class="v">
-        <span class="n">01</span>
+        
         <h4>Curiosity over certainty</h4>
         <p>People who ask the second question. Strong opinions, held loosely.</p>
       </div>
       <div class="v">
-        <span class="n">02</span>
+        
         <h4>Craft with intent</h4>
         <p>Beautiful work, in service of the user - not the portfolio.</p>
       </div>
       <div class="v">
-        <span class="n">03</span>
+        
         <h4>Speed with humility</h4>
         <p>Ship fast, then own what went wrong. The pace is non-negotiable; the ego is.</p>
       </div>
       <div class="v">
-        <span class="n">04</span>
+        
         <h4>Diverse perspectives</h4>
         <p>Different backgrounds, different brains. Where I've built teams, this has been the unfair advantage.</p>
       </div>
       <div class="v">
-        <span class="n">05</span>
+        
         <h4>AI fluency</h4>
         <p>Not flair. Real, daily, opinionated use of AI tooling across research, design, and delivery.</p>
       </div>
       <div class="v">
-        <span class="n">06</span>
+        
         <h4>Calm under ambiguity</h4>
         <p>Most of the interesting problems are messy. The willingness to sit with that is half the job.</p>
       </div>
@@ -838,7 +827,7 @@ footer.foot{
   <section class="section reveal" id="feedback">
     <div class="section-head">
       <h2>How I give feedback</h2>
-      <span class="ix">Cadence + style</span>
+
     </div>
     <div class="cols">
       <div class="col">
@@ -863,7 +852,7 @@ footer.foot{
   <section class="section reveal" id="work-with-me">
     <div class="section-head">
       <h2>How to work with me</h2>
-      <span class="ix">Operating defaults</span>
+
     </div>
     <div class="cols single">
       <div class="col">
@@ -908,7 +897,7 @@ footer.foot{
   <section class="section reveal" id="energy">
     <div class="section-head">
       <h2>Energy</h2>
-      <span class="ix">What lights me up · what drains me</span>
+
     </div>
     <div class="cols">
       <div class="col">
@@ -933,7 +922,7 @@ footer.foot{
   <section class="section reveal" id="fit-test">
     <div class="section-head">
       <h2>The fit test</h2>
-      <span class="ix">Hire me if · don't hire me if</span>
+
     </div>
     <div class="cols">
       <div class="col">
@@ -958,7 +947,7 @@ footer.foot{
   <section class="section reveal" id="working-on">
     <div class="section-head">
       <h2>What I'm working on</h2>
-      <span class="ix">Growth edges · the brave bit</span>
+
     </div>
     <div class="brave">
       <p class="lede">The bits I'm <em>still</em> getting better at. Read this so you can hold me to it.</p>
