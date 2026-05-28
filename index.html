@@ -36,6 +36,7 @@
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
 html{background:var(--bg);overflow-x:hidden}
+body{overflow-x:hidden}
 body{
   font-family:var(--font-body);
   color:var(--fg);
@@ -744,6 +745,83 @@ footer .links a:hover .arrow{transform:translateX(4px);color:var(--accent)}
   footer{grid-template-columns:1fr;gap:40px}
   .wish .w{grid-template-columns:1fr;gap:6px}
 }
+
+/* ---- Mobile nav menu ---- */
+.nav-toggle{
+  display:none;
+  position:relative;
+  z-index:60;
+  width:44px;
+  height:44px;
+  margin:-10px -10px -10px 0;
+  padding:0;
+  border:0;
+  background:transparent;
+  color:var(--fg);
+  cursor:pointer;
+}
+.nav-toggle span{
+  display:block;
+  width:22px;
+  height:1.5px;
+  margin:5px auto;
+  background:currentColor;
+  transition:transform .3s cubic-bezier(.2,.7,.2,1), opacity .2s ease;
+}
+.nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+.nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.nav-backdrop{
+  position:fixed;
+  inset:0;
+  z-index:40;
+  background:oklch(0.22 0.012 60 / 0.32);
+  opacity:0;
+  visibility:hidden;
+  transition:opacity .3s ease, visibility .3s ease;
+}
+.nav-backdrop.open{opacity:1;visibility:visible}
+
+@media (max-width: 720px){
+  nav.top{align-items:center;flex-wrap:nowrap}
+  .nav-toggle{display:block}
+  nav.top ul{
+    position:fixed;
+    top:0;
+    right:0;
+    bottom:0;
+    width:min(78vw, 300px);
+    flex-direction:column;
+    align-items:flex-start;
+    justify-content:flex-start;
+    gap:4px;
+    margin:0;
+    padding:88px 32px 40px;
+    background:var(--surface);
+    border-left:1px solid var(--line);
+    box-shadow:-24px 0 60px -28px rgba(0,0,0,.45);
+    font-size:16px;
+    transform:translateX(100%);
+    transition:transform .35s cubic-bezier(.2,.7,.2,1);
+    z-index:50;
+    overflow-y:auto;
+  }
+  nav.top ul.open{transform:translateX(0)}
+  nav.top li{width:100%}
+  nav.top a{
+    display:block;
+    width:100%;
+    padding:12px 0;
+    font-size:18px;
+  }
+  nav.top a.contact-cta{
+    display:inline-block;
+    width:auto;
+    margin-top:12px;
+    padding:10px 20px;
+  }
+  body.nav-open{overflow:hidden}
+}
 </style>
 </head>
 <body>
@@ -752,7 +830,10 @@ footer .links a:hover .arrow{transform:translateX(4px);color:var(--accent)}
 
   <nav class="top">
     <div class="brand">Kate Pincott<span class="dot">.</span></div>
-    <ul>
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul id="nav-menu">
       <li><a href="#work">Work</a></li>
       <li><a href="speaking.html">Speaking</a></li>
       <li><a href="testimonials.html">Testimonials</a></li>
