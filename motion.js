@@ -126,21 +126,25 @@
   /* ---------------------------------------------------------- *
    *  4) Auto-mark the current nav tab                          *
    * ---------------------------------------------------------- *
-   * Walks every <a> in nav.top, compares its href's file part  *
-   * to the current page's file part, and adds .current to the  *
-   * match. No per-page hardcoding needed — add a new nav item  *
-   * or new page and it just works.                              */
+   * Walks every <a> in nav.top, normalises its href and the    *
+   * current pathname, and adds .current if they match.         *
+   * Handles both /speaking/ and /speaking/index.html shapes.   */
   (function(){
-    const currentFile = (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
+    const normalise = (path) => {
+      let p = (path || '').toLowerCase().split('#')[0].split('?')[0];
+      p = p.replace(/index\.html$/, '');
+      p = p.replace(/\.html$/, '');
+      p = p.replace(/\/$/, '');
+      return p || '/';
+    };
+    const currentPath = normalise(window.location.pathname);
     document.querySelectorAll('nav.top a').forEach(a => {
       const href = a.getAttribute('href');
       if (!href) return;
-      // Skip anchor-only links, mailto/tel, and external URLs
+      // Skip anchor-only, mailto/tel, and full external URLs
       if (href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') || /^[a-z]+:\/\//i.test(href)) return;
-      // Extract just the file part (drop any #hash)
-      const file = href.split('#')[0].toLowerCase();
-      if (!file) return;
-      if (file === currentFile) a.classList.add('current');
+      const hrefPath = normalise(href);
+      if (hrefPath === currentPath) a.classList.add('current');
     });
   })();
 
