@@ -368,14 +368,31 @@ footer.foot{
 }
 
 @media (max-width: 880px){
-  .shell{padding:32px 24px 64px}
-  nav.top{margin-bottom:48px}
-  nav.top ul{gap:18px;font-size:12.5px}
+  .shell{padding:32px 20px 64px}
+  nav.top{margin-bottom:48px;flex-wrap:wrap;gap:12px 0}
+  nav.top ul{gap:14px;font-size:12.5px;flex-wrap:wrap}
   .hero{grid-template-columns:1fr;gap:32px;align-items:start}
   .stats{grid-template-columns:1fr;gap:16px;padding:24px 0}
-  .cta{grid-template-columns:1fr;gap:24px;padding:32px}
-  .testimonial{padding:28px 24px 20px}
+  .cta{grid-template-columns:1fr;gap:24px;padding:28px}
+
+  /* Replace fragile column-count masonry with a reliable flex column */
+  .grid{column-count:unset;column-gap:0;display:flex;flex-direction:column;gap:20px}
+  .testimonial{display:block;width:auto;margin-bottom:0;padding:24px 22px 20px;border-radius:14px}
+  .testimonial blockquote{font-size:16px;padding-right:32px}
+  .testimonial .mark{font-size:60px;right:18px;top:10px}
 }
+
+/* Very narrow phones (iPhone SE etc.) */
+@media (max-width: 420px){
+  .shell{padding:24px 16px 48px}
+  .testimonial{padding:22px 18px 18px}
+  .stats .stat .n{font-size:26px}
+  .cta{padding:24px}
+  .cta h2{font-size:22px}
+}
+
+/* Belt-and-braces against horizontal scroll on any viewport */
+html,body{overflow-x:hidden}
 </style>
 </head>
 <body>
