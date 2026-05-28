@@ -355,6 +355,38 @@ nav.top a.current{color:var(--fg);font-weight:500}
   font-size:14px;
 }
 
+/* Callout box - accent-tinted, left rule */
+.callout{
+  margin-top:32px;
+  padding:22px 26px;
+  background:var(--accent-soft);
+  border-left:3px solid var(--accent);
+  border-radius:0 8px 8px 0;
+}
+.callout p{
+  margin:0;
+  font-size:15px;
+  line-height:1.55;
+  color:var(--fg);
+}
+.callout p em{font-family:var(--font-display-italic);font-style:italic;color:var(--accent);font-weight:400}
+
+/* Section-level lede paragraph (above principles list) */
+.section .sub-lede{
+  font-family:var(--font-display-italic);
+  font-style:italic;
+  font-size:17px;
+  color:var(--fg-mute);
+  margin:0 0 8px 0;
+}
+.section .sub-body{
+  font-size:15px;
+  color:var(--fg-mute);
+  line-height:1.55;
+  margin:0 0 32px 0;
+  max-width:62ch;
+}
+
 /* Brave bit - growth edges */
 .brave{
   display:grid;
@@ -581,6 +613,9 @@ footer.foot{
     <p class="intro">
       Half coach, half operator. This is how I lead, what I value, how I give feedback, and the bits I'm still working on. Read it before we work together - it'll save us both a quarter.
     </p>
+    <p class="intro">
+      The thread through my whole career - blockchain, then helping people save money with humour, now helping people learn AI by using AI - is the same: I don't want people like my parents left behind by the shift to AI. That's the work.
+    </p>
   </header>
 
   <section class="section reveal">
@@ -598,7 +633,7 @@ footer.foot{
 
       <div class="p">
         <span class="ix">02</span>
-        <h3>Listen <em>first</em>. Reframe before you solve.</h3>
+        <h3>Listen <em>first</em>. Reframe before solving.</h3>
         <p>Most "problems" land mis-named. I'll ask thoughtful questions in 1:1s, calibrations, and strategy sessions - not because I don't have a view, but because the right reframe usually unlocks more than the right answer.</p>
       </div>
 
@@ -648,7 +683,7 @@ footer.foot{
       <div class="v">
         <span class="n">03</span>
         <h4>Speed with humility</h4>
-        <p>Ship fast, then own what you got wrong. The pace is non-negotiable; the ego is.</p>
+        <p>Ship fast, then own what went wrong. The pace is non-negotiable; the ego is.</p>
       </div>
       <div class="v">
         <span class="n">04</span>
@@ -670,6 +705,41 @@ footer.foot{
 
   <section class="section reveal">
     <div class="section-head">
+      <h2>How I hold the craft bar</h2>
+      <span class="ix">Four questions · the standard</span>
+    </div>
+    <p class="sub-lede">Direction and values are cheap without a standard.</p>
+    <p class="sub-body">Before work ships, it passes four questions. Unsure on any of them and it isn't done.</p>
+    <div class="principles">
+
+      <div class="p">
+        <span class="ix">01</span>
+        <h3>Have we thought holistically about what the user is actually <em>hiring</em> this product to do?</h3>
+      </div>
+
+      <div class="p">
+        <span class="ix">02</span>
+        <h3>Are we honest about what the user <em>wants</em> - versus what we want them to want?</h3>
+      </div>
+
+      <div class="p">
+        <span class="ix">03</span>
+        <h3>Would we use this <em>ourselves</em>? No data answers that one. We just know.</h3>
+      </div>
+
+      <div class="p">
+        <span class="ix">04</span>
+        <h3>Can we describe the job to be done clearly on a <em>whiteboard</em>? If we can't, we don't understand it yet.</h3>
+      </div>
+
+    </div>
+    <div class="callout">
+      <p>We run these together every week in crit. I call it <em>Raise the Bar</em>. The team brings work in progress, not finished work - early and rough is the point.</p>
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <div class="section-head">
       <h2>How I give feedback</h2>
       <span class="ix">Cadence + style</span>
     </div>
@@ -677,10 +747,11 @@ footer.foot{
       <div class="col">
         <h3><span class="sign">→</span> Rhythm</h3>
         <ul>
-          <li><b>Weekly 1:1s</b><span>Always. 50 minutes. Owned by you, not me - you bring the agenda.</span></li>
+          <li><b>Biweekly 1:1s</b><span>Always. Fifty minutes, owned by my report, not me - they bring the agenda. Not for status; for coaching, career, blockers, and whatever's on their mind.</span></li>
           <li><b>Live coaching in the moment</b><span>I'll surface feedback in the work itself rather than save it for a quarterly review.</span></li>
           <li><b>Written calibration notes</b><span>Before any promotion or performance cycle, you'll see my written take with time to respond.</span></li>
           <li><b>Annual self-review</b><span>I do mine first and share it. Goes both ways.</span></li>
+          <li><b>Quiet isn't approval</b><span>If I've gone silent on a piece of work, that's not a yes - worth a nudge.</span></li>
         </ul>
       </div>
       <div class="col">
@@ -705,6 +776,7 @@ footer.foot{
         <h3><span class="sign">→</span> Comms &amp; meetings</h3>
         <ul>
           <li><b>Async-first</b><span>Default to a doc or a Loom before a meeting. If you need me live, say why.</span></li>
+          <li><b>Updates live in Slack</b><span>Every few days, or weekly - what moved, what's stuck, what's needed. That's why 1:1s aren't for status: the update has already happened.</span></li>
           <li><b>25 / 50 minute meetings</b><span>Never the full hour. Always an agenda.</span></li>
           <li><b>Deep work in the mornings</b><span>Don't book me before 11 unless it's strategic. I'll do the same for you.</span></li>
           <li><b>Slack is for fast, doc is for slow</b><span>Big decisions belong in writing, not in DMs.</span></li>
@@ -717,6 +789,43 @@ footer.foot{
           <li><b>Disagree &amp; commit</b><span>Once a decision is made, I expect public alignment - even if you pushed back inside the room.</span></li>
           <li><b>Reversible vs one-way</b><span>For two-way doors, decide in a day. For one-way doors, take a week and write a memo.</span></li>
           <li><b>Default to clarity over consensus</b><span>I'd rather be 80% right and decided than 100% right and stuck.</span></li>
+          <li><b>Written, or it didn't happen</b><span>Decisions live in a doc, not in someone's memory.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- §9: How I measure people - full-width row beneath the two columns -->
+    <div class="cols" style="grid-template-columns:1fr;margin-top:48px">
+      <div class="col">
+        <h3><span class="sign">→</span> How I measure people</h3>
+        <p style="margin:0;font-size:15px;color:var(--fg);line-height:1.55;max-width:62ch">On outcomes and judgement, not activity: did the work move what it was meant to, were the calls sound with incomplete information, did the person lift those around them. Hours, meetings attended, and screens produced aren't on the list.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- §10: New section - What earns and loses my trust -->
+  <section class="section reveal">
+    <div class="section-head">
+      <h2>What earns and loses my trust</h2>
+      <span class="ix">Signal · noise</span>
+    </div>
+    <div class="cols">
+      <div class="col">
+        <h3><span class="sign">→</span> I trust people who</h3>
+        <ul>
+          <li><b>Do what they said</b><span>- or flag early when they can't.</span></li>
+          <li><b>Show their reasoning</b><span>Not just the conclusion.</span></li>
+          <li><b>Surface their own mistakes</b><span>Before I find them.</span></li>
+          <li><b>Make the people around them better</b><span>A real multiplier, not a soloist.</span></li>
+        </ul>
+      </div>
+      <div class="col">
+        <h3><span class="sign">→</span> I lose faith with</h3>
+        <ul>
+          <li><b>Surprises</b><span>Bad news heard late, from someone else.</span></li>
+          <li><b>Polish instead of shipping</b><span>The deck instead of the working version.</span></li>
+          <li><b>Yes in the room, no in the actions</b><span>The decision sticks; the behaviour drifts.</span></li>
+          <li><b>Treating the quality bar as optional</b><span>It's the standard, not a preference.</span></li>
         </ul>
       </div>
     </div>
@@ -731,7 +840,7 @@ footer.foot{
       <div class="col">
         <h3><span class="sign">+</span> Energises me</h3>
         <ul>
-          <li><b>Low-maturity teams</b><span>Brand new functions, missing playbooks, no manager. Sweet spot.</span></li>
+          <li><b>Early-stage functions</b><span>Brand new functions, missing playbooks, no manager. Sweet spot.</span></li>
           <li><b>Ambiguous, high-stakes problems</b><span>The messier the brief, the more interesting it is.</span></li>
           <li><b>Coaching IC → manager transitions</b><span>The hardest career jump in design. I love being there for it.</span></li>
           <li><b>AI-native design systems &amp; tooling</b><span>Where craft and ops meet - the future of how we work.</span></li>
@@ -742,7 +851,7 @@ footer.foot{
         <h3><span class="sign">−</span> Drains me</h3>
         <ul>
           <li><b>Politics dressed as strategy</b><span>I'll call it gently the first time and bluntly the second.</span></li>
-          <li><b>Theatre meetings</b><span>Long status updates that should have been a doc. Multi-meeting decision loops.</span></li>
+          <li><b>Theatre meetings</b><span>Decision loops that should've been one conversation.</span></li>
           <li><b>Command-and-control leadership above me</b><span>I'll struggle in an org that doesn't see coaching as real work.</span></li>
           <li><b>Perfectionism on low-stakes work</b><span>Polishing the inbox while the launch slips. Hard pass.</span></li>
         </ul>
@@ -759,19 +868,17 @@ footer.foot{
       <div class="col">
         <h3><span class="sign">✓</span> Hire me if</h3>
         <ul>
-          <li><b>You're scaling a design function from near-scratch</b><span>I've done it three times. Love it every time.</span></li>
-          <li><b>You want AI-native craft, not AI-flavoured slideware</b><span>Real workflows, real tooling, real upskilling - not a deck about it.</span></li>
-          <li><b>You see coaching as an asset, not extracurricular</b><span>If "spends too much time with their reports" sounds like a compliment to you, we'll get along.</span></li>
-          <li><b>You want direction <i>and</i> autonomy</b><span>I'll set both and ask for both.</span></li>
+          <li><b>Building, scaling, or untangling a design function</b><span>I've done all three. Love it every time.</span></li>
+          <li><b>Demos not decks</b><span>Building and learning beats endless discovery. The work is the demo, not the slides about it.</span></li>
+          <li><b>The role wants direction <i>and</i> autonomy</b><span>I'll set both and ask for both.</span></li>
         </ul>
       </div>
       <div class="col">
         <h3><span class="sign">✗</span> Don't hire me if</h3>
         <ul>
-          <li><b>You need a pure IC, no team</b><span>I'll be in the work, but I lead through the team.</span></li>
-          <li><b>The mandate is "maintain"</b><span>I'm a builder. If the function is already humming and just needs steering, you want someone else.</span></li>
+          <li><b>The role is a pure IC, no team</b><span>I'll be in the work, but I lead through the team.</span></li>
           <li><b>Design Systems, Brand, Research are seen as overhead</b><span>I treat them as growth multipliers. We'll fight if you don't.</span></li>
-          <li><b>Decisions take five meetings</b><span>I won't last the trial.</span></li>
+          <li><b>No room to learn out loud, or where upskilling and feedback aren't valued</b><span>I need to grow too, not just my team.</span></li>
         </ul>
       </div>
     </div>
@@ -786,10 +893,8 @@ footer.foot{
       <p class="lede">The bits I'm <em>still</em> getting better at. Read this so you can hold me to it.</p>
       <ul>
         <li>Saying no faster - instead of saying yes and rebalancing the load three weeks later.</li>
-        <li>Shipping drafts to my team earlier - less polish, more "here's where I'm at, push back".</li>
-        <li>Asking for help before I need it, not after.</li>
+        <li>Shipping my own drafts earlier - less polish, more "here's where I'm at, push back."</li>
         <li>Letting silence sit longer in 1:1s - the best stuff is usually on the other side of it.</li>
-        <li>Choosing fewer priorities and protecting them ruthlessly.</li>
       </ul>
     </div>
   </section>
