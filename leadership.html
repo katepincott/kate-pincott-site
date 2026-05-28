@@ -143,16 +143,17 @@ nav.top a.current{color:var(--fg);font-weight:500}
   border-bottom:1px solid var(--line);
 }
 .pull p{
-  margin:0;
-  font-family:var(--font-display-italic);
-  font-style:italic;
+  margin:0 auto;
+  text-align:center;
+  font-family:var(--font-display);
+  font-style:normal;
+  font-weight:500;
   font-size:clamp(28px, 3.4vw, 40px);
-  line-height:1.18;
-  letter-spacing:-0.012em;
+  line-height:1.2;
+  letter-spacing:-0.022em;
   color:var(--fg);
   text-wrap:balance;
   max-width:26ch;
-  font-weight:400;
 }
 .pull p .accent{color:var(--accent)}
 
@@ -495,12 +496,6 @@ footer.foot{
     </p>
   </header>
 
-  <section class="pull reveal">
-    <p>
-      "My job as a leader is to set <span class="accent">clear direction</span>, foster alignment, and remove obstacles - so others can do their best work."
-    </p>
-  </section>
-
   <section class="section reveal">
     <div class="section-head">
       <h2>How I lead</h2>
@@ -539,6 +534,12 @@ footer.foot{
       </div>
 
     </div>
+  </section>
+
+  <section class="pull reveal">
+    <p>
+      "My job as a leader is to set <span class="accent">clear direction</span>, foster alignment, and remove obstacles - so others can do their best work."
+    </p>
   </section>
 
   <section class="section reveal">
