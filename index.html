@@ -311,10 +311,11 @@ nav.top a:hover{color:var(--accent);border-bottom-color:var(--accent)}
 }
 .cv .body .more:hover{text-decoration:underline}
 .cv .tags{
-  display:flex;
-  flex-wrap:wrap;
-  gap:6px;
-  justify-content:flex-end;
+  display:grid;
+  grid-template-columns: repeat(2, max-content);
+  gap:6px 8px;
+  justify-content:end;
+  justify-items:end;
   padding-top:4px;
 }
 .cv .tag{
@@ -705,7 +706,7 @@ footer .links a:hover .arrow{transform:translateX(4px);color:var(--accent)}
   .hero{grid-template-columns:1fr;gap:40px}
   .cv .item{grid-template-columns:1fr;gap:14px}
   .cv .year{padding-top:0}
-  .cv .tags{justify-content:flex-start;padding-top:4px}
+  .cv .tags{display:flex;flex-wrap:wrap;justify-content:flex-start;padding-top:4px}
   .now{grid-template-columns:1fr;gap:40px}
   footer{grid-template-columns:1fr;gap:40px}
   .wish .w{grid-template-columns:1fr;gap:6px}
