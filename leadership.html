@@ -238,6 +238,20 @@ nav.top a.current{color:var(--fg);font-weight:500}
 /* Unnumbered variant: drop the 60px numeric column when the .ix prefix is removed */
 .principles.unnumbered .p{grid-template-columns: 1fr minmax(0, 360px)}
 
+/* Compact variant for the craft-bar four questions: ~half height, smaller text */
+#craft-bar .principles .p{
+  grid-template-columns: 40px 1fr;
+  gap: 20px;
+  padding: 14px 0;
+}
+#craft-bar .principles .p h3{
+  font-size: 15px;
+  line-height: 1.45;
+  max-width: 60ch;
+  font-weight: 500;
+}
+#craft-bar .principles .p .ix{font-size:11px}
+
 /* Dictionary term */
 .def{
   position:relative;
@@ -797,8 +811,6 @@ footer.foot{
       <h2>How I hold the craft bar</h2>
       <span class="ix">Four questions · the standard</span>
     </div>
-    <p class="sub-lede">Direction and values are cheap without a standard.</p>
-    <p class="sub-body">Before work ships, it passes four questions. Unsure on any of them and it isn't done.</p>
     <div class="principles">
 
       <div class="p">
