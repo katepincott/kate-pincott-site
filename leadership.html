@@ -387,6 +387,93 @@ nav.top a.current{color:var(--fg);font-weight:500}
   max-width:62ch;
 }
 
+/* Single-column variant of .cols (used in Feedback + Work-with-me after collapse) */
+.cols.single{grid-template-columns:minmax(0,1fr);max-width:70ch}
+
+/* Sticky right-rail TOC */
+.toc{
+  position:fixed;
+  right:32px;
+  top:120px;
+  width:200px;
+  z-index:30;
+  font-family:var(--font-mono);
+  font-size:11.5px;
+  color:var(--fg-faint);
+  letter-spacing:0.04em;
+  text-transform:uppercase;
+  user-select:none;
+}
+.toc-label{
+  display:block;
+  margin-bottom:14px;
+  color:var(--fg-faint);
+}
+.toc ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.toc a{
+  display:block;
+  padding:4px 0;
+  color:var(--fg-faint);
+  text-decoration:none;
+  border-left:1px solid var(--line);
+  padding-left:12px;
+  transition:color .15s ease, border-color .15s ease, padding .2s ease;
+}
+.toc a:hover{color:var(--fg)}
+.toc a.active{
+  color:var(--accent);
+  border-left-color:var(--accent);
+  padding-left:16px;
+}
+.toc .skim-toggle{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom:18px;
+  padding:6px 0;
+  cursor:pointer;
+  color:var(--fg-mute);
+  transition:color .15s ease;
+}
+.toc .skim-toggle:hover{color:var(--fg)}
+.toc .skim-toggle .switch{
+  width:26px;
+  height:14px;
+  border-radius:999px;
+  background:var(--line);
+  position:relative;
+  transition:background-color .2s ease;
+  flex-shrink:0;
+}
+.toc .skim-toggle .switch::after{
+  content:"";
+  position:absolute;
+  top:2px;
+  left:2px;
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:var(--bg);
+  transition:transform .2s ease;
+}
+body.skim .toc .skim-toggle .switch{background:var(--accent)}
+body.skim .toc .skim-toggle .switch::after{transform:translateX(12px)}
+@media (max-width:1280px){.toc{display:none}}
+
+/* Skim mode: hide bullet supporting copy + decorative blocks */
+body.skim .col ul li span{display:none}
+body.skim .col ul li{padding:8px 0}
+body.skim .col ul li b{font-weight:500}
+body.skim .values .v p{display:none}
+body.skim .principles .p p{display:none}
+body.skim .callout,
+body.skim .pull,
+body.skim .sub-body,
+body.skim .sub-lede{display:none}
+body.skim .brave ul li{padding:8px 0}
+body.skim .cols .col > h3 + p{display:none}
+body.skim .hero p.intro:nth-of-type(2){display:none}
+
 /* Brave bit - growth edges */
 .brave{
   display:grid;
@@ -589,6 +676,25 @@ footer.foot{
 </head>
 <body>
 
+<aside class="toc" aria-label="Page contents">
+  <span class="toc-label">On this page</span>
+  <div class="skim-toggle" role="switch" tabindex="0" aria-checked="false" aria-label="Toggle skim mode">
+    <span class="switch" aria-hidden="true"></span>
+    <span>Skim</span>
+  </div>
+  <ul>
+    <li><a href="#how-i-lead">How I lead</a></li>
+    <li><a href="#values">What I value</a></li>
+    <li><a href="#craft-bar">Craft bar</a></li>
+    <li><a href="#feedback">Feedback</a></li>
+    <li><a href="#work-with-me">Work with me</a></li>
+    <li><a href="#trust">Trust</a></li>
+    <li><a href="#energy">Energy</a></li>
+    <li><a href="#fit-test">Fit test</a></li>
+    <li><a href="#working-on">Working on</a></li>
+  </ul>
+</aside>
+
 <div class="shell">
 
   <nav class="top">
@@ -618,10 +724,10 @@ footer.foot{
     </p>
   </header>
 
-  <section class="section reveal">
+  <section class="section reveal" id="how-i-lead">
     <div class="section-head">
       <h2>How I lead</h2>
-      <span class="ix">Five principles</span>
+      <span class="ix">Four principles</span>
     </div>
     <div class="principles">
 
@@ -634,25 +740,19 @@ footer.foot{
       <div class="p">
         <span class="ix">02</span>
         <h3>Listen <em>first</em>. Reframe before solving.</h3>
-        <p>Most "problems" land mis-named. I'll ask thoughtful questions in 1:1s, calibrations, and strategy sessions - not because I don't have a view, but because the right reframe usually unlocks more than the right answer.</p>
+        <p>Most problems aren't what they look like. I'll ask first.</p>
       </div>
 
       <div class="p">
         <span class="ix">03</span>
-        <h3>Coaching is a <em>leadership skill</em>, not a side activity.</h3>
-        <p>I coach my reports as a primary part of the job, not a bonus. I expect the same of any manager I hire. <span class="def" data-term="psychological safety" data-pron="/saɪkəˈlɒdʒɪkəl ˈseɪfti/" data-pos="noun" data-def="A shared belief in a team that it's safe to take interpersonal risks - to disagree, admit mistakes, and ask questions without fear of being punished or judged.">Psychological safety</span> isn't a vibe; it's a daily practice.</p>
-      </div>
-
-      <div class="p">
-        <span class="ix">04</span>
         <h3>Make space for <em>experiments</em> - including ones that fail.</h3>
         <p>Especially with AI tooling, new design system rituals, hybrid roles. I'll back a 70%-confident prototype over a 100%-talked-about idea. If it doesn't work we learn it cost us two weeks, not two quarters.</p>
       </div>
 
       <div class="p">
-        <span class="ix">05</span>
-        <h3>Service mindset, all the way <em>down</em>.</h3>
-        <p>The org exists to make the team great. The team exists to make the user great. My job is to keep that arrow pointing the right way, even when politics tries to turn it.</p>
+        <span class="ix">04</span>
+        <h3>Start with the <em>user</em>, work back from there.</h3>
+        <p>User up, team up, me last - even when politics tries to turn the arrow.</p>
       </div>
 
     </div>
@@ -664,7 +764,7 @@ footer.foot{
     </p>
   </section>
 
-  <section class="section reveal">
+  <section class="section reveal" id="values">
     <div class="section-head">
       <h2>What I value most</h2>
       <span class="ix">In the team</span>
@@ -703,7 +803,7 @@ footer.foot{
     </div>
   </section>
 
-  <section class="section reveal">
+  <section class="section reveal" id="craft-bar">
     <div class="section-head">
       <h2>How I hold the craft bar</h2>
       <span class="ix">Four questions · the standard</span>
@@ -738,73 +838,46 @@ footer.foot{
     </div>
   </section>
 
-  <section class="section reveal">
+  <section class="section reveal" id="feedback">
     <div class="section-head">
       <h2>How I give feedback</h2>
       <span class="ix">Cadence + style</span>
     </div>
-    <div class="cols">
+    <div class="cols single">
       <div class="col">
-        <h3><span class="sign">→</span> Rhythm</h3>
         <ul>
-          <li><b>Biweekly 1:1s</b><span>Always. Fifty minutes, owned by my report, not me - they bring the agenda. Not for status; for coaching, career, blockers, and whatever's on their mind.</span></li>
-          <li><b>Live coaching in the moment</b><span>I'll surface feedback in the work itself rather than save it for a quarterly review.</span></li>
-          <li><b>Written calibration notes</b><span>Before any promotion or performance cycle, you'll see my written take with time to respond.</span></li>
-          <li><b>Annual self-review</b><span>I do mine first and share it. Goes both ways.</span></li>
-          <li><b>Quiet isn't approval</b><span>If I've gone silent on a piece of work, that's not a yes - worth a nudge.</span></li>
-        </ul>
-      </div>
-      <div class="col">
-        <h3><span class="sign">→</span> Style</h3>
-        <ul>
-          <li><b>Direct, kindly</b><span>Specific to behaviour, not character. No vague "be more strategic".</span></li>
-          <li><b>Named &amp; reframed</b><span>I'll name what I'm seeing, then ask how you see it - usually the gap is where the work is.</span></li>
+          <li><b>Biweekly 1:1s</b><span>Fifty minutes, owned by my report. Not for status; for coaching, career, and blockers.</span></li>
+          <li><b>Live coaching in the moment</b><span>Feedback in the work itself, not saved for a quarterly review.</span></li>
+          <li><b>Direct, kindly. Named &amp; reframed</b><span>Specific to behaviour, not character. I'll name what I'm seeing, then ask how you see it - usually the gap is the work.</span></li>
           <li><b>Praise in public, course-correct in private</b><span>Default mode, with rare exceptions when the team needs to see the standard live.</span></li>
-          <li><b>Receipts</b><span>If I ask for change, I'll point at the evidence, not just the vibe.</span></li>
+          <li><b>Quiet isn't approval</b><span>If I've gone silent, that's not a yes - worth a nudge.</span></li>
         </ul>
       </div>
     </div>
   </section>
 
-  <section class="section reveal">
+  <section class="section reveal" id="work-with-me">
     <div class="section-head">
       <h2>How to work with me</h2>
       <span class="ix">Operating defaults</span>
     </div>
-    <div class="cols">
+    <div class="cols single">
       <div class="col">
-        <h3><span class="sign">→</span> Comms &amp; meetings</h3>
         <ul>
-          <li><b>Async-first</b><span>Default to a doc or a Loom before a meeting. If you need me live, say why.</span></li>
-          <li><b>Updates live in Slack</b><span>Every few days, or weekly - what moved, what's stuck, what's needed. That's why 1:1s aren't for status: the update has already happened.</span></li>
+          <li><b>Async-first; Slack for fast, doc for slow</b><span>Default to a doc or Loom before a meeting. Weekly Slack updates - what moved, what's stuck, what's needed. Big decisions belong in writing.</span></li>
           <li><b>25 / 50 minute meetings</b><span>Never the full hour. Always an agenda.</span></li>
-          <li><b>Deep work in the mornings</b><span>Don't book me before 11 unless it's strategic. I'll do the same for you.</span></li>
-          <li><b>Slack is for fast, doc is for slow</b><span>Big decisions belong in writing, not in DMs.</span></li>
-        </ul>
-      </div>
-      <div class="col">
-        <h3><span class="sign">→</span> Decisions</h3>
-        <ul>
-          <li><b>Brief → disagree → ship</b><span>I'll write a short brief, ask for the strongest disagree, then commit. We don't relitigate later.</span></li>
-          <li><b>Disagree &amp; commit</b><span>Once a decision is made, I expect public alignment - even if you pushed back inside the room.</span></li>
-          <li><b>Reversible vs one-way</b><span>For two-way doors, decide in a day. For one-way doors, take a week and write a memo.</span></li>
-          <li><b>Default to clarity over consensus</b><span>I'd rather be 80% right and decided than 100% right and stuck.</span></li>
+          <li><b>Brief → disagree → ship</b><span>I'll write a short brief, ask for the strongest disagree, then commit. We don't relitigate.</span></li>
+          <li><b>Disagree &amp; commit</b><span>Once decided, I expect public alignment - even if you pushed back inside the room.</span></li>
           <li><b>Written, or it didn't happen</b><span>Decisions live in a doc, not in someone's memory.</span></li>
         </ul>
-      </div>
-    </div>
-
-    <!-- §9: How I measure people - full-width row beneath the two columns -->
-    <div class="cols" style="grid-template-columns:1fr;margin-top:48px">
-      <div class="col">
-        <h3><span class="sign">→</span> How I measure people</h3>
+        <h3 style="margin-top:32px"><span class="sign">→</span> How I measure people</h3>
         <p style="margin:0;font-size:15px;color:var(--fg);line-height:1.55;max-width:62ch">On outcomes and judgement, not activity: did the work move what it was meant to, were the calls sound with incomplete information, did the person lift those around them. Hours, meetings attended, and screens produced aren't on the list.</p>
       </div>
     </div>
   </section>
 
   <!-- §10: New section - What earns and loses my trust -->
-  <section class="section reveal">
+  <section class="section reveal" id="trust">
     <div class="section-head">
       <h2>What earns and loses my trust</h2>
       <span class="ix">Signal · noise</span>
@@ -831,7 +904,7 @@ footer.foot{
     </div>
   </section>
 
-  <section class="section reveal">
+  <section class="section reveal" id="energy">
     <div class="section-head">
       <h2>Energy</h2>
       <span class="ix">What lights me up · what drains me</span>
@@ -859,7 +932,7 @@ footer.foot{
     </div>
   </section>
 
-  <section class="section reveal">
+  <section class="section reveal" id="fit-test">
     <div class="section-head">
       <h2>The fit test</h2>
       <span class="ix">Hire me if · don't hire me if</span>
@@ -884,7 +957,7 @@ footer.foot{
     </div>
   </section>
 
-  <section class="section reveal">
+  <section class="section reveal" id="working-on">
     <div class="section-head">
       <h2>What I'm working on</h2>
       <span class="ix">Growth edges · the brave bit</span>
@@ -908,6 +981,51 @@ footer.foot{
 
 
 <script>
+// ---- TOC: track active section as user scrolls ----
+(function(){
+  const links = document.querySelectorAll('.toc a');
+  if (!links.length) return;
+  const idMap = new Map();
+  links.forEach(a => {
+    const id = a.getAttribute('href').slice(1);
+    const el = document.getElementById(id);
+    if (el) idMap.set(el, a);
+  });
+  if (!idMap.size) return;
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      const link = idMap.get(e.target);
+      if (!link) return;
+      if (e.isIntersecting) {
+        links.forEach(a => a.classList.remove('active'));
+        link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
+  idMap.forEach((_link, el) => io.observe(el));
+})();
+
+// ---- Skim mode toggle ----
+(function(){
+  const toggle = document.querySelector('.skim-toggle');
+  if (!toggle) return;
+  const KEY = 'kp-skim';
+  const setMode = (on) => {
+    document.body.classList.toggle('skim', on);
+    toggle.setAttribute('aria-checked', on ? 'true' : 'false');
+    try { localStorage.setItem(KEY, on ? '1' : '0'); } catch(e) {}
+  };
+  // restore
+  let initial = false;
+  try { initial = localStorage.getItem(KEY) === '1'; } catch(e) {}
+  if (initial) setMode(true);
+  const flip = () => setMode(!document.body.classList.contains('skim'));
+  toggle.addEventListener('click', flip);
+  toggle.addEventListener('keydown', e => {
+    if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); flip(); }
+  });
+})();
+
 // Scroll reveal
 (function(){
   if (!('IntersectionObserver' in window)) {
