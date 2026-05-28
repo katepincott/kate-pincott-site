@@ -122,6 +122,89 @@
       el.addEventListener('mouseleave', () => { el.style.transform = ''; });
     });
   }
+
+  /* ---------------------------------------------------------- *
+   *  4) Auto-mark the current nav tab                          *
+   * ---------------------------------------------------------- *
+   * Walks every <a> in nav.top, compares its href's file part  *
+   * to the current page's file part, and adds .current to the  *
+   * match. No per-page hardcoding needed — add a new nav item  *
+   * or new page and it just works.                              */
+  (function(){
+    const currentFile = (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
+    document.querySelectorAll('nav.top a').forEach(a => {
+      const href = a.getAttribute('href');
+      if (!href) return;
+      // Skip anchor-only links, mailto/tel, and external URLs
+      if (href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') || /^[a-z]+:\/\//i.test(href)) return;
+      // Extract just the file part (drop any #hash)
+      const file = href.split('#')[0].toLowerCase();
+      if (!file) return;
+      if (file === currentFile) a.classList.add('current');
+    });
+  })();
+
+  /* ---------------------------------------------------------- *
+   *  5) Hero h1 split-text reveal + per-word weight hover      *
+   * ---------------------------------------------------------- */
+  (function(){
+    // Inject CSS once — every page benefits from the same h1-word styling
+    const style = document.createElement('style');
+    style.textContent = `
+      .hero h1 .h1-word, .speaking-hero h1 .h1-word{
+        display:inline-block;
+        opacity:0;
+        transform:translateY(0.4em);
+        animation:h1-word-in .7s cubic-bezier(.2,.7,.2,1) forwards;
+        will-change:opacity,transform;
+        transition:font-weight .3s ease;
+      }
+      @keyframes h1-word-in{to{opacity:1;transform:translateY(0)}}
+      .hero h1 .h1-word:not(em):hover,
+      .speaking-hero h1 .h1-word:not(em):hover{font-weight:600}
+      @media (prefers-reduced-motion: reduce){
+        .hero h1 .h1-word, .speaking-hero h1 .h1-word{animation:none;opacity:1;transform:none}
+      }
+    `;
+    document.head.appendChild(style);
+
+    const h1 = document.querySelector('.hero h1, .speaking-hero h1');
+    if (!h1) return;
+    if (h1.querySelector('.h1-word')) return; // already split (e.g., page-inline JS already ran)
+
+    // Tokenize the h1's direct children, preserving inline elements (like em.cycle on home)
+    const tokens = [];
+    for (const node of [...h1.childNodes]){
+      if (node.nodeType === Node.TEXT_NODE){
+        node.textContent.split(/(\s+)/).forEach(part => {
+          if (part.trim())      tokens.push({kind:'word', text:part});
+          else if (part)        tokens.push({kind:'space', text:part});
+        });
+      } else if (node.nodeType === Node.ELEMENT_NODE){
+        tokens.push({kind:'el', el:node});
+      }
+    }
+
+    h1.innerHTML = '';
+    let i = 0;
+    tokens.forEach(t => {
+      if (t.kind === 'word'){
+        const s = document.createElement('span');
+        s.className = 'h1-word';
+        s.style.animationDelay = (i * 70 + 200) + 'ms';
+        s.textContent = t.text;
+        h1.appendChild(s);
+        i++;
+      } else if (t.kind === 'space'){
+        h1.appendChild(document.createTextNode(t.text));
+      } else if (t.kind === 'el'){
+        t.el.classList.add('h1-word');
+        t.el.style.animationDelay = (i * 70 + 200) + 'ms';
+        h1.appendChild(t.el);
+        i++;
+      }
+    });
+  })();
 })();
 
 /* ------------------------------------------------------------ *
