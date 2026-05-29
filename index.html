@@ -317,8 +317,15 @@ nav.top a.current{color:var(--accent);font-weight:600}
   color:var(--accent);
   text-decoration:none;
   text-transform:uppercase;
+  background:none;
+  border:0;
+  padding:0;
+  cursor:pointer;
 }
 .cv .body .more:hover{text-decoration:underline}
+.cv .body .more:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+/* Collapsed state hides highlights beyond the first three (toggled by JS on mobile) */
+.cv .body ul.highlights.collapsed li:nth-child(n+4){display:none}
 .cv .tags{
   display:flex;
   flex-wrap:wrap;
@@ -699,6 +706,7 @@ footer .links a:hover .arrow{transform:translateX(4px);color:var(--accent)}
   transition:border-color .15s, color .15s;
 }
 .def:hover{color:var(--accent);border-bottom-color:var(--accent)}
+.def:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:2px}
 .def-card{
   position:fixed;
   z-index:200;
@@ -746,13 +754,16 @@ footer .links a:hover .arrow{transform:translateX(4px);color:var(--accent)}
 
 /* Responsive */
 @media (max-width: 880px){
+  :root{--gap-section:60px}
   .shell{padding:32px 24px 64px}
   nav.top{margin-bottom:64px}
   nav.top ul{gap:18px;font-size:12.5px}
   .hero{grid-template-columns:1fr;gap:40px}
   .cv .item{grid-template-columns:1fr;gap:14px}
   .cv .year{padding-top:0}
+  .cv .body ul.highlights li{font-size:15px;line-height:1.6}
   .cv .tags{display:flex;flex-wrap:wrap;justify-content:flex-start;padding-top:4px}
+  .cv .tag{font-size:11px;padding:2px 9px}
   .now{grid-template-columns:1fr;gap:40px}
   footer{grid-template-columns:1fr;gap:40px}
   .wish .w{grid-template-columns:1fr;gap:6px}
@@ -834,6 +845,35 @@ footer .links a:hover .arrow{transform:translateX(4px);color:var(--accent)}
   }
   body.nav-open{overflow:hidden}
 }
+
+/* ---- Back to top ---- */
+.to-top{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  z-index:45;
+  width:44px;
+  height:44px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid var(--line);
+  border-radius:50%;
+  background:var(--surface);
+  color:var(--fg);
+  font-size:18px;
+  line-height:1;
+  cursor:pointer;
+  box-shadow:0 8px 24px -12px rgba(0,0,0,.35);
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(8px);
+  transition:opacity .25s ease, transform .25s ease, visibility .25s ease, color .15s ease, border-color .15s ease;
+}
+.to-top.show{opacity:1;visibility:visible;transform:translateY(0)}
+body.nav-open .to-top{opacity:0;visibility:hidden}
+.to-top:hover{color:var(--accent);border-color:var(--accent)}
+.to-top:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 </style>
 </head>
 <body>
@@ -905,7 +945,7 @@ footer .links a:hover .arrow{transform:translateX(4px);color:var(--accent)}
       </div>
 
       <div class="item">
-        <div class="year">2023 - 24</div>
+        <div class="year">2023 - 2024</div>
         <div class="body">
           <h3 class="role"><a href="https://web.meetcleo.com/" target="_blank" rel="noopener">Cleo</a> <span class="at">- Interim Head of Design</span></h3>
           <ul class="highlights">
@@ -939,7 +979,7 @@ footer .links a:hover .arrow{transform:translateX(4px);color:var(--accent)}
       </div>
 
       <div class="item">
-        <div class="year">2021 - 23</div>
+        <div class="year">2021 - 2023</div>
         <div class="body">
           <h3 class="role"><a href="https://mattereum.com/" target="_blank" rel="noopener">Mattereum</a> <span class="at">- Head of Design</span></h3>
           <ul class="highlights">
@@ -956,7 +996,7 @@ footer .links a:hover .arrow{transform:translateX(4px);color:var(--accent)}
       </div>
 
       <div class="item">
-        <div class="year">2020 - 21</div>
+        <div class="year">2020 - 2021</div>
         <div class="body">
           <h3 class="role"><a href="https://www.gfk-media-measurement.com/global/en/" target="_blank" rel="noopener">GfK</a> <span class="at">- Interim Head of Design</span></h3>
           <ul class="highlights">
@@ -973,7 +1013,7 @@ footer .links a:hover .arrow{transform:translateX(4px);color:var(--accent)}
       </div>
 
       <div class="item">
-        <div class="year">2019 - 20</div>
+        <div class="year">2019 - 2020</div>
         <div class="body">
           <h3 class="role"><a href="https://www.playdeo.co.uk/" target="_blank" rel="noopener">Playdeo</a> <span class="at">- Product Design Manager</span></h3>
           <ul class="highlights">
@@ -988,7 +1028,7 @@ footer .links a:hover .arrow{transform:translateX(4px);color:var(--accent)}
       </div>
 
       <div class="item">
-        <div class="year">2015 - 18</div>
+        <div class="year">2015 - 2018</div>
         <div class="body">
           <h3 class="role"><a href="https://www.meta.com/" target="_blank" rel="noopener">Meta</a> <span class="at">- Senior Product Designer</span></h3>
           <ul class="highlights">
@@ -1020,7 +1060,7 @@ footer .links a:hover .arrow{transform:translateX(4px);color:var(--accent)}
       </div>
 
       <div class="item">
-        <div class="year">2013 - 14</div>
+        <div class="year">2013 - 2014</div>
         <div class="body">
           <h3 class="role"><a href="https://speakerdeck.com/zboralski/belua-pitch-deck" target="_blank" rel="noopener">Belua</a> <span class="at">- Co-founder and first designer</span></h3>
           <ul class="highlights">
@@ -1036,7 +1076,7 @@ footer .links a:hover .arrow{transform:translateX(4px);color:var(--accent)}
       </div>
 
       <div class="item">
-        <div class="year">2012 - 13</div>
+        <div class="year">2012 - 2013</div>
         <div class="body">
           <h3 class="role"><a href="https://www.barclays.co.uk/" target="_blank" rel="noopener">Barclays</a> <span class="at">- Senior Visual Designer</span></h3>
           <ul class="highlights">
@@ -1051,7 +1091,7 @@ footer .links a:hover .arrow{transform:translateX(4px);color:var(--accent)}
       </div>
 
       <div class="item">
-        <div class="year">2010 - 12</div>
+        <div class="year">2010 - 2012</div>
         <div class="body">
           <h3 class="role"><a href="https://www.pentagram.com/" target="_blank" rel="noopener">Pentagram NYC</a> <span class="at">- Product Designer</span></h3>
           <ul class="highlights">
@@ -1140,6 +1180,8 @@ footer .links a:hover .arrow{transform:translateX(4px);color:var(--accent)}
   </div>
 
 </div>
+
+<button class="to-top" type="button" aria-label="Back to top">↑</button>
 
 
 <script>
@@ -1234,21 +1276,57 @@ footer .links a:hover .arrow{transform:translateX(4px);color:var(--accent)}
       currentTerm = null;
     }, 100);
   }
+  function hideNow(){
+    clearTimeout(hideTimer);
+    if (card) card.classList.remove('in');
+    currentTerm = null;
+  }
+  const isOpen = (el) => card && card.classList.contains('in') && currentTerm === el;
+  function toggle(el){
+    if (isOpen(el)) { hideNow(); }
+    else { currentTerm = null; show(el); }
+  }
 
-  document.addEventListener('mouseover', (e) => {
+  // Make every term keyboard-focusable and announce it as an interactive definition.
+  document.querySelectorAll('.def').forEach(el => {
+    el.setAttribute('tabindex', '0');
+    el.setAttribute('role', 'button');
+    el.setAttribute('aria-label', (el.dataset.term || el.textContent) + ' - definition');
+  });
+
+  // Hover/focus only where hovering is actually possible (desktop, keyboard).
+  // On touch devices these would fight the tap-to-toggle below, so we skip them.
+  const canHover = window.matchMedia('(hover: hover)').matches;
+  if (canHover) {
+    document.addEventListener('mouseover', (e) => {
+      const t = e.target.closest('.def');
+      if (t) show(t);
+    });
+    document.addEventListener('mouseout', (e) => {
+      const t = e.target.closest('.def');
+      if (t) hide();
+    });
+    document.addEventListener('focusin', (e) => {
+      if (e.target.matches && e.target.matches('.def')) show(e.target);
+    });
+    document.addEventListener('focusout', (e) => {
+      if (e.target.matches && e.target.matches('.def')) hide();
+    });
+  }
+
+  // Tap/click to toggle (works on touch + mouse); tapping elsewhere dismisses.
+  document.addEventListener('click', (e) => {
     const t = e.target.closest('.def');
-    if (t) show(t);
+    if (t) { e.preventDefault(); toggle(t); return; }
+    if (card && card.classList.contains('in')) hideNow();
   });
-  document.addEventListener('mouseout', (e) => {
-    const t = e.target.closest('.def');
-    if (t) hide();
+  // Keyboard: Enter/Space toggles a focused term, Escape dismisses.
+  document.addEventListener('keydown', (e) => {
+    const t = e.target.closest && e.target.closest('.def');
+    if (t && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); toggle(t); }
+    else if (e.key === 'Escape' && card && card.classList.contains('in')) hideNow();
   });
-  document.addEventListener('focusin', (e) => {
-    if (e.target.matches && e.target.matches('.def')) show(e.target);
-  });
-  document.addEventListener('focusout', (e) => {
-    if (e.target.matches && e.target.matches('.def')) hide();
-  });
+
   window.addEventListener('scroll', () => {
     if (currentTerm) position(currentTerm);
   }, { passive: true });
@@ -1292,6 +1370,53 @@ footer .links a:hover .arrow{transform:translateX(4px);color:var(--accent)}
       h1.appendChild(t.el);
       i++;
     }
+  });
+})();
+
+// Collapse long CV roles behind a "Show more" toggle on small screens.
+(function(){
+  const LIMIT = 3;
+  const mq = window.matchMedia('(max-width: 880px)');
+  const groups = [];
+  document.querySelectorAll('.cv .body ul.highlights').forEach(ul => {
+    const items = [...ul.children].filter(n => n.tagName === 'LI');
+    if (items.length <= LIMIT) return;
+    const hidden = items.length - LIMIT;
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'more';
+    btn.setAttribute('aria-controls', ul.id || (ul.id = 'hl-' + groups.length));
+    ul.insertAdjacentElement('afterend', btn);
+    const g = { ul, btn, hidden, expanded: false };
+    const render = () => {
+      btn.textContent = g.expanded ? '− Show less' : '+ Show ' + hidden + ' more';
+      btn.setAttribute('aria-expanded', String(g.expanded));
+      ul.classList.toggle('collapsed', !g.expanded);
+    };
+    btn.addEventListener('click', () => { g.expanded = !g.expanded; render(); });
+    g.render = render;
+    groups.push(g);
+  });
+  const apply = () => {
+    groups.forEach(g => {
+      if (mq.matches) { g.btn.style.display = ''; g.render(); }
+      else { g.btn.style.display = 'none'; g.ul.classList.remove('collapsed'); }
+    });
+  };
+  mq.addEventListener('change', apply);
+  apply();
+})();
+
+// Back-to-top button: fades in after scrolling, returns to top on click.
+(function(){
+  const btn = document.querySelector('.to-top');
+  if (!btn) return;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const onScroll = () => btn.classList.toggle('show', window.scrollY > 600);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
   });
 })();
 </script>
