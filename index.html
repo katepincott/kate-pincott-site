@@ -863,6 +863,14 @@ footer .links a:hover .arrow{transform:translateX(4px);color:var(--accent)}
 .nav-backdrop.open{opacity:1;visibility:visible}
 
 @media (max-width: 720px){
+  /* Clients strip becomes a swipeable carousel on mobile (no auto-motion):
+     accessible (no WCAG 2.2.2 concern) and immune to Low-Power-Mode freeze. */
+  .ticker{overflow-x:auto;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity}
+  .ticker::-webkit-scrollbar{height:0}
+  .ticker{scrollbar-width:none}
+  .ticker-track{animation:none}
+  .ticker .client[aria-hidden="true"]{display:none}
+  .ticker .client{scroll-snap-align:center;padding:0 22px;font-size:clamp(26px,8vw,38px)}
   nav.top{
     align-items:center;
     flex-wrap:nowrap;
@@ -965,6 +973,17 @@ footer .links a:hover .arrow,
 .skip-link:focus{top:8px}
 .sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 main:focus{outline:none}
+
+/* Honour an OS-level request for more contrast (Settings > Accessibility).
+   No toggle - we just deepen muted text, borders and small-text accent. */
+@media (prefers-contrast: more){
+  :root{
+    --fg-mute: oklch(0.38 0.012 60);
+    --fg-faint: oklch(0.42 0.010 60);
+    --line: oklch(0.72 0.012 70);
+    --accent-text: oklch(0.50 0.15 38);
+  }
+}
 </style>
 </head>
 <body>
