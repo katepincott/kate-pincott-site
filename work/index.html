@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Kate Pincott - Leadership README</title>
+<title>Kate Pincott - Work</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
@@ -86,10 +86,9 @@ nav.top a{
   text-decoration:none;
   font-weight:400;
   border-bottom:1px solid transparent;
-  transition: color .18s ease, border-color .18s ease, font-weight .35s ease;
+  transition: color .18s ease, border-color .18s ease;
 }
 nav.top a:hover{color:var(--accent);border-bottom-color:var(--accent)}
-nav.top a:not(.contact-cta):hover{font-weight:600}
 nav.top a.contact-cta{display:inline-block;background:var(--fg);color:var(--bg);padding:7px 16px;border-radius:4px;border-bottom:none;transition:border-radius .18s ease-out,background-color .18s ease,color .18s ease}
 nav.top a.contact-cta:hover{background:var(--accent);color:var(--bg);border-radius:999px}
 nav.top a.current{color:var(--accent);font-weight:600}
@@ -794,29 +793,42 @@ main:focus{outline:none}
     --accent-text: oklch(0.50 0.15 38);
   }
 }
+
+/* ---- Password gate ---- */
+.gate{min-height:58vh;display:flex;align-items:center;justify-content:center;padding:40px 0}
+.gate-card{max-width:430px;width:100%;text-align:center;border:1px solid var(--line);border-radius:18px;padding:44px 34px;background:var(--surface)}
+.gate-lock{font-size:26px;margin-bottom:14px;color:var(--accent)}
+.gate-card h1{font-family:var(--font-display);font-weight:500;font-size:23px;letter-spacing:-0.018em;margin:0 0 8px;color:var(--fg)}
+.gate-card .sub{color:var(--fg-mute);font-size:15px;line-height:1.55;margin:0 0 22px}
+#gate-form{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+#gate-pw{flex:1 1 200px;min-width:0;font-family:var(--font-body);font-size:15px;padding:12px 14px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--fg)}
+#gate-pw:focus{outline:2px solid var(--accent);outline-offset:2px;border-color:var(--accent)}
+#gate-form button{font-family:var(--font-body);font-size:14px;font-weight:500;padding:12px 22px;border:0;border-radius:8px;background:var(--fg);color:var(--bg);cursor:pointer;min-height:44px;transition:background-color .18s}
+#gate-form button:hover{background:var(--accent)}
+.gate-error{color:var(--accent-text);font-size:13.5px;margin:14px 0 0}
+.gate-hint{color:var(--fg-faint);font-size:12px;margin:20px 0 0;font-family:var(--font-mono);letter-spacing:0.03em}
+/* ---- Case studies ---- */
+.work-hero{margin-bottom:64px}
+.work-hero .eyebrow{font-family:var(--font-mono);font-size:11.5px;letter-spacing:0.08em;text-transform:uppercase;color:var(--fg-faint);margin-bottom:24px;display:flex;gap:14px;align-items:center}
+.work-hero .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);display:inline-block}
+.work-hero h1{font-family:var(--font-display);font-weight:500;font-size:clamp(34px,5vw,56px);line-height:1.05;letter-spacing:-0.022em;margin:0 0 20px;text-wrap:balance;max-width:18ch;color:var(--fg)}
+.work-hero h1 em{font-family:var(--font-display-italic);font-style:italic;color:var(--accent);font-weight:400}
+.work-hero .intro{font-size:17px;color:var(--fg-mute);line-height:1.55;max-width:54ch;text-wrap:pretty;margin:0}
+.cases{display:flex;flex-direction:column;gap:56px}
+.case{border-top:1px solid var(--line);padding-top:30px}
+.case-head{display:flex;gap:20px;align-items:baseline;margin-bottom:22px}
+.case-head .num{font-family:var(--font-mono);font-size:13px;color:var(--fg-faint)}
+.case-head h2{font-family:var(--font-display);font-weight:500;font-size:23px;letter-spacing:-0.016em;margin:0;text-wrap:balance;color:var(--fg)}
+.case-meta{font-family:var(--font-mono);font-size:11.5px;text-transform:uppercase;letter-spacing:0.06em;color:var(--fg-faint);margin:5px 0 0}
+.case-body{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.case-block h3{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent-text);margin:0 0 8px}
+.case-block p{font-size:14.5px;color:var(--fg-mute);line-height:1.6;margin:0;text-wrap:pretty}
+@media (max-width:880px){.case-body{grid-template-columns:1fr;gap:16px}.case-head{gap:14px}}
 </style>
 </head>
+
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
-
-<aside class="toc" aria-label="Page contents">
-  <span class="toc-label">On this page</span>
-  <div class="skim-toggle" role="switch" tabindex="0" aria-checked="false" aria-label="Toggle skim mode">
-    <span class="switch" aria-hidden="true"></span>
-    <span>Skim</span>
-  </div>
-  <ul>
-    <li><a href="#how-i-lead">How I lead</a></li>
-    <li><a href="#values">What I value</a></li>
-    <li><a href="#craft-bar">Craft bar</a></li>
-    <li><a href="#feedback">Feedback</a></li>
-    <li><a href="#work-with-me">Work with me</a></li>
-    <li><a href="#trust">Trust</a></li>
-    <li><a href="#energy">Energy</a></li>
-    <li><a href="#fit-test">Fit test</a></li>
-    <li><a href="#working-on">Working on</a></li>
-  </ul>
-</aside>
 
 <div class="shell">
 
@@ -826,389 +838,77 @@ main:focus{outline:none}
       <span></span><span></span><span></span>
     </button>
     <ul id="nav-menu">
-      <li><a href="/work/">Work</a></li>
+      <li><a href="/work/" class="current" aria-current="page">Work</a></li>
       <li><a href="/speaking/">Speaking</a></li>
       <li><a href="/testimonials/">Testimonials</a></li>
-      <li><a href="/leadership/" class="current" aria-current="page">Leadership</a></li>
+      <li><a href="/leadership/">Leadership</a></li>
       <li><a href="/#contact" class="contact-cta">Contact</a></li>
     </ul>
   </nav>
 
   <main id="main" tabindex="-1">
-
-  <header class="hero reveal">
-    <div>
-      <div class="eyebrow"><span class="dot"></span>Leadership README · v1 · 2026</div>
-      <h1>A user manual for <em>working with me</em>.</h1>
-      <p class="intro-block">
-        The thing peers and reports tell me most often is that I'm a steady presence in messy rooms - calm, warm, enthusiastic, and useful. The thing I notice most about my own impact is that it tends to outlast me. The people I've led carry the thinking forward into their next teams. That's the part I care about most, and it's the part I'm most still learning to do better.
-      </p>
-    </div>
-  </header>
-
-  <section class="pull reveal">
-    <p>
-      "My job is to move the work forward and grow the people doing it - and to refuse to treat those as separate problems."
-    </p>
-  </section>
-
-  <section class="section reveal" id="how-i-lead">
-    <div class="section-head">
-      <h2>How I lead</h2>
-
-    </div>
-    <div class="principles unnumbered">
-
-      <div class="p">
-        <h3>Listen <em>first</em>. Reframe before solving.</h3>
-        <p>Most problems aren't what they look like. I'll ask first.</p>
-      </div>
-
-      <div class="p">
-        <h3>Start with the <em>user</em>, work back from there.</h3>
-        <p>User up, team up, me last - even when politics tries to turn the arrow.</p>
-      </div>
-
-      <div class="p">
-        <h3>Set <em>direction</em>. Then get out of the way.</h3>
-        <p>Vision and metrics come from me. The "how" comes from the team. I'll write the brief, give context, and ask harder questions than the brief itself - but I won't redesign the work over your shoulder.</p>
-      </div>
-
-      <div class="p">
-        <h3>Make space for <em>experiments</em> - including ones that fail.</h3>
-        <p>Especially with AI tooling, new design system rituals, hybrid roles. I'll back a 70%-confident prototype over a 100%-talked-about idea. If it doesn't work we learn it cost us two weeks, not two quarters.</p>
-      </div>
-
-      <div class="p">
-        <h3>Coaching is the <em>work</em>, not a side activity.</h3>
-        <p>I'll ask what you're seeing before I tell you what I'm seeing. Most days that <em>is</em> the job - not a soft skill bolted onto it.</p>
-      </div>
-
-    </div>
-  </section>
-
-  <section class="section reveal" id="values">
-    <div class="section-head">
-      <h2>What I value most</h2>
-
-    </div>
-    <div class="values">
-      <div class="v">
-        <div class="star" aria-hidden="true">✦</div>
-        <h3>Curiosity over certainty</h3>
-        <p>People who ask the second question. Strong opinions, held loosely.</p>
-      </div>
-      <div class="v">
-        <div class="star" aria-hidden="true">✶</div>
-        <h3>Calm under ambiguity</h3>
-        <p>Most of the interesting problems are messy. The willingness to sit with that is half the job.</p>
-      </div>
-      <div class="v">
-        <div class="star" aria-hidden="true">✷</div>
-        <h3>Speed with humility</h3>
-        <p>Ship fast, then own what went wrong. The pace is non-negotiable; the ego is.</p>
-      </div>
-      <div class="v">
-        <div class="star" aria-hidden="true">✸</div>
-        <h3>AI grit</h3>
-        <p>Not talent - reps. Daily practice, trial and error, and the stubbornness to keep iterating when the first ten attempts flop.</p>
-      </div>
-      <div class="v">
-        <div class="star" aria-hidden="true">✹</div>
-        <h3>Craft with intent</h3>
-        <p>Beautiful work, in service of the user - not the portfolio.</p>
-      </div>
-      <div class="v">
-        <div class="star" aria-hidden="true">✺</div>
-        <h3>Diverse perspectives</h3>
-        <p>Different backgrounds, different brains. Where I've built teams, this has been the unfair advantage.</p>
+    <div class="gate" id="gate">
+      <div class="gate-card">
+        <div class="gate-lock" aria-hidden="true">&#9679;</div>
+        <h1>This page is protected</h1>
+        <p class="sub">Enter the password to view selected case studies.</p>
+        <form id="gate-form" autocomplete="on">
+          <label class="sr-only" for="gate-pw">Password</label>
+          <input id="gate-pw" type="password" name="password" autocomplete="current-password" placeholder="Password" autofocus />
+          <button type="submit">Enter &#8594;</button>
+        </form>
+        <p class="gate-error" id="gate-error" role="alert" hidden>That's not it — try again.</p>
+        <p class="gate-hint">Hint: my design ethos. Lower-case, hyphenated.</p>
       </div>
     </div>
-  </section>
-
-  <section class="section reveal" id="craft-bar">
-    <div class="section-head">
-      <h2>How I hold the craft bar</h2>
-      <span class="ix">Four questions · the standard</span>
-    </div>
-    <div class="principles">
-
-      <div class="p">
-        <span class="ix">01</span>
-        <h3>Have we thought holistically about what the user is actually <em>hiring</em> this product to do?</h3>
-      </div>
-
-      <div class="p">
-        <span class="ix">02</span>
-        <h3>Are we honest about what the user <em>wants</em> - versus what we want them to want?</h3>
-      </div>
-
-      <div class="p">
-        <span class="ix">03</span>
-        <h3>Would we use this <em>ourselves</em>? No data answers that one. We just know.</h3>
-      </div>
-
-      <div class="p">
-        <span class="ix">04</span>
-        <h3>Can we describe the job to be done clearly on a <em>whiteboard</em>? If we can't, we don't understand it yet.</h3>
-      </div>
-
-    </div>
-  </section>
-
-  <section class="section reveal" id="feedback">
-    <div class="section-head">
-      <h2>How I give feedback</h2>
-
-    </div>
-    <div class="cols">
-      <div class="col">
-        <h3><span class="sign" aria-hidden="true">→</span> Rhythm</h3>
-        <ul>
-          <li><b>Biweekly 1:1s</b><span>Fifty minutes, owned by my report. Not for status; for coaching, career, and blockers.</span></li>
-          <li><b>Live coaching in the moment</b><span>Feedback in the work itself, not saved for a quarterly review.</span></li>
-          <li><b>Quiet isn't approval</b><span>If I've gone silent, that's not a yes - worth a nudge.</span></li>
-        </ul>
-      </div>
-      <div class="col">
-        <h3><span class="sign" aria-hidden="true">→</span> Style</h3>
-        <ul>
-          <li><b>Direct, kindly</b><span>Specific to behaviour, not character. No vague "be more strategic".</span></li>
-          <li><b>Named &amp; reframed</b><span>I'll name what I'm seeing, then ask how you see it - usually the gap is the work.</span></li>
-          <li><b>Praise in public, course-correct in private</b><span>Default mode, with rare exceptions when the team needs to see the standard live.</span></li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section class="section reveal" id="work-with-me">
-    <div class="section-head">
-      <h2>How to work with me</h2>
-
-    </div>
-    <div class="cols single">
-      <div class="col">
-        <h3><span class="sign" aria-hidden="true">→</span> How I work</h3>
-        <ul>
-          <li><b>Async-first; Slack for fast, doc for slow</b><span>Default to a doc or Loom before a meeting. Weekly Slack updates - what moved, what's stuck, what's needed. Big decisions belong in writing.</span></li>
-          <li><b>25 / 50 minute meetings</b><span>Never the full hour. Always an agenda.</span></li>
-          <li><b>Brief → disagree → ship</b><span>Short brief, ask for the strongest disagree, then commit. Public alignment after, even if you pushed back inside the room - we don't relitigate.</span></li>
-          <li><b>Written, or it didn't happen</b><span>Decisions live in a doc, not in someone's memory.</span></li>
-        </ul>
-        <h3 style="margin-top:32px"><span class="sign" aria-hidden="true">→</span> How I measure people</h3>
-        <p style="margin:0;font-size:15px;color:var(--fg);line-height:1.55;max-width:62ch">On outcomes and judgement, not activity: did the work move what it was meant to, were the calls sound with incomplete information, did the person lift those around them. Hours, meetings attended, and screens produced aren't on the list.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- §10: New section - What earns and loses my trust -->
-  <section class="section reveal" id="trust">
-    <div class="section-head">
-      <h2>What earns and loses my trust</h2>
-      <span class="ix">Signal · noise</span>
-    </div>
-    <div class="cols">
-      <div class="col">
-        <h3><span class="sign" aria-hidden="true">→</span> I trust people who</h3>
-        <ul>
-          <li><b>Do what they said</b><span>- or flag early when they can't.</span></li>
-          <li><b>Show their reasoning</b><span>Not just the conclusion.</span></li>
-          <li><b>Surface their own mistakes</b><span>Before I find them.</span></li>
-        </ul>
-      </div>
-      <div class="col">
-        <h3><span class="sign" aria-hidden="true">→</span> I lose faith with</h3>
-        <ul>
-          <li><b>Surprises</b><span>Bad news heard late, from someone else.</span></li>
-          <li><b>Yes in the room, no in the actions</b><span>The decision sticks; the behaviour drifts.</span></li>
-          <li><b>Treating the quality bar as optional</b><span>It's the standard, not a preference.</span></li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section class="section reveal" id="energy">
-    <div class="section-head">
-      <h2>Energy</h2>
-
-    </div>
-    <div class="cols">
-      <div class="col">
-        <h3><span class="sign" aria-hidden="true">+</span> Energises me</h3>
-        <ul>
-          <li><b>Early-stage functions</b><span>Brand new functions, missing playbooks, no manager. Sweet spot.</span></li>
-          <li><b>Ambiguous, high-stakes problems</b><span>The messier the brief, the more interesting it is.</span></li>
-          <li><b>AI-native design systems &amp; tooling</b><span>Where craft and ops meet - the future of how we work.</span></li>
-        </ul>
-      </div>
-      <div class="col">
-        <h3><span class="sign" aria-hidden="true">−</span> Drains me</h3>
-        <ul>
-          <li><b>Theatre meetings</b><span>Decision loops that should've been one conversation.</span></li>
-          <li><b>Command-and-control leadership above me</b><span>I'll struggle in an org that doesn't see coaching as real work.</span></li>
-          <li><b>Perfectionism on low-stakes work</b><span>Polishing the inbox while the launch slips. Hard pass.</span></li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section class="section reveal" id="fit-test">
-    <div class="section-head">
-      <h2>The fit test</h2>
-
-    </div>
-    <div class="cols">
-      <div class="col">
-        <h3><span class="sign" aria-hidden="true">✓</span> Hire me if</h3>
-        <ul>
-          <li><b>Building, scaling, or untangling a design function</b><span>I've done all three. Love it every time.</span></li>
-          <li><b>Demos not decks</b><span>Building and learning beats endless discovery. The work is the demo, not the slides about it.</span></li>
-          <li><b>The role wants direction <i>and</i> autonomy</b><span>I'll set both and ask for both.</span></li>
-        </ul>
-      </div>
-      <div class="col">
-        <h3><span class="sign" aria-hidden="true">✗</span> Don't hire me if</h3>
-        <ul>
-          <li><b>The role is a pure IC, no team</b><span>I'll be in the work, but I lead through the team.</span></li>
-          <li><b>Design Systems, Brand, Research are seen as overhead</b><span>I treat them as growth multipliers. We'll fight if you don't.</span></li>
-          <li><b>No room to learn out loud, or where upskilling and feedback aren't valued</b><span>I need to grow too, not just my team.</span></li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section class="section reveal" id="working-on">
-    <div class="section-head">
-      <h2>What I'm working on</h2>
-
-    </div>
-    <div class="brave">
-      <p class="lede">The bits I'm <em>still</em> getting better at. Read this so you can hold me to it.</p>
-      <ul>
-        <li>Saying no faster - instead of saying yes and rebalancing the load three weeks later.</li>
-        <li>Shipping my own drafts earlier - less polish, more "here's where I'm at, push back."</li>
-        <li>Letting silence sit longer in 1:1s - the best stuff is usually on the other side of it.</li>
-      </ul>
-    </div>
-  </section>
-
+    <div id="work-content" hidden></div>
   </main>
 
   <footer class="foot">
-    <span>© Kate Pincott 2026</span>
+    <span>&copy; Kate Pincott 2026</span>
     <span>Made with Claude Design</span>
   </footer>
 
 </div>
 
-<button class="to-top" type="button" aria-label="Back to top">↑</button>
-
+<button class="to-top" type="button" aria-label="Back to top">&#8593;</button>
 
 <script>
-// ---- TOC: track active section as user scrolls ----
 (function(){
-  const links = document.querySelectorAll('.toc a');
-  if (!links.length) return;
-  const idMap = new Map();
-  links.forEach(a => {
-    const id = a.getAttribute('href').slice(1);
-    const el = document.getElementById(id);
-    if (el) idMap.set(el, a);
-  });
-  if (!idMap.size) return;
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      const link = idMap.get(e.target);
-      if (!link) return;
-      if (e.isIntersecting) {
-        links.forEach(a => a.classList.remove('active'));
-        link.classList.add('active');
-      }
-    });
-  }, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
-  idMap.forEach((_link, el) => io.observe(el));
-})();
-
-// ---- Skim mode toggle ----
-(function(){
-  const toggle = document.querySelector('.skim-toggle');
-  if (!toggle) return;
-  const KEY = 'kp-skim';
-  const setMode = (on) => {
-    document.body.classList.toggle('skim', on);
-    toggle.setAttribute('aria-checked', on ? 'true' : 'false');
-    try { localStorage.setItem(KEY, on ? '1' : '0'); } catch(e) {}
-  };
-  // restore
-  let initial = false;
-  try { initial = localStorage.getItem(KEY) === '1'; } catch(e) {}
-  if (initial) setMode(true);
-  const flip = () => setMode(!document.body.classList.contains('skim'));
-  toggle.addEventListener('click', flip);
-  toggle.addEventListener('keydown', e => {
-    if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); flip(); }
-  });
-})();
-
-// Scroll reveal
-(function(){
-  if (!('IntersectionObserver' in window)) {
-    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
-    return;
+  const P = {"salt":"kF7AtfpXb3GXlkzUotfdvw==","iv":"8lVfTKXXZ6oaVl8d","data":"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","iter":250000};
+  const b64d = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
+  async function decrypt(pw){
+    const km = await crypto.subtle.importKey('raw', new TextEncoder().encode(pw), 'PBKDF2', false, ['deriveKey']);
+    const key = await crypto.subtle.deriveKey(
+      { name:'PBKDF2', salt:b64d(P.salt), iterations:P.iter, hash:'SHA-256' },
+      km, { name:'AES-GCM', length:256 }, false, ['decrypt']);
+    const pt = await crypto.subtle.decrypt({ name:'AES-GCM', iv:b64d(P.iv) }, key, b64d(P.data));
+    return new TextDecoder().decode(pt);
   }
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('in');
-        io.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  const form = document.getElementById('gate-form');
+  const pw = document.getElementById('gate-pw');
+  const err = document.getElementById('gate-error');
+  const gate = document.getElementById('gate');
+  const content = document.getElementById('work-content');
+  const KEY = 'kp-work-unlock';
+  async function unlock(p, silent){
+    try{
+      const html = await decrypt(p);
+      content.innerHTML = html;
+      content.hidden = false;
+      gate.hidden = true;
+      try{ sessionStorage.setItem(KEY, p); }catch(e){}
+      const m = document.getElementById('main'); if (m) m.focus();
+    }catch(e){
+      if(!silent){ err.hidden = false; pw.value=''; pw.focus(); }
+      try{ sessionStorage.removeItem(KEY); }catch(_){}
+    }
+  }
+  form.addEventListener('submit', e => { e.preventDefault(); err.hidden = true; unlock(pw.value.trim(), false); });
+  let saved=null; try{ saved = sessionStorage.getItem(KEY); }catch(e){}
+  if(saved) unlock(saved, true);
 })();
-
-// Dictionary-style hover overlay
-(function(){
-  let card = null;
-  let currentTerm = null;
-  let hideTimer = null;
-  function ensureCard(){
-    if (card) return card;
-    card = document.createElement('div');
-    card.className = 'def-card';
-    card.innerHTML = '<p class="term"></p><p class="pron"></p><p class="pos"></p><p class="body"></p>';
-    document.body.appendChild(card);
-    return card;
-  }
-  function position(el){
-    const r = el.getBoundingClientRect();
-    const cardEl = ensureCard();
-    const w = 260;
-    const left = Math.max(12, Math.min(window.innerWidth - w - 12, r.left));
-    const top = r.bottom + 10;
-    const cardH = cardEl.offsetHeight || 140;
-    if (top + cardH > window.innerHeight - 12) cardEl.style.top = (r.top - cardH - 10) + 'px';
-    else cardEl.style.top = top + 'px';
-    cardEl.style.left = left + 'px';
-  }
-  function show(el){
-    if (currentTerm === el) return;
-    clearTimeout(hideTimer);
-    currentTerm = el;
-    const c = ensureCard();
-    c.querySelector('.term').textContent = el.dataset.term || el.textContent;
-    c.querySelector('.pron').textContent = el.dataset.pron || '';
-    c.querySelector('.pos').textContent = el.dataset.pos || '';
-    c.querySelector('.body').textContent = el.dataset.def || '';
-    position(el);
-    requestAnimationFrame(() => c.classList.add('in'));
-  }
-  function hide(){ hideTimer = setTimeout(() => { if (card) card.classList.remove('in'); currentTerm = null; }, 100); }
-  document.addEventListener('mouseover', (e) => { const t = e.target.closest('.def'); if (t) show(t); });
-  document.addEventListener('mouseout', (e) => { const t = e.target.closest('.def'); if (t) hide(); });
-  window.addEventListener('scroll', () => { if (currentTerm) position(currentTerm); }, { passive: true });
-})();
-// Back-to-top button: fades in after scrolling, returns to top on click.
+// Back-to-top
 (function(){
   const btn = document.querySelector('.to-top');
   if (!btn) return;
@@ -1216,9 +916,7 @@ main:focus{outline:none}
   const onScroll = () => btn.classList.toggle('show', window.scrollY > 600);
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
-  btn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
-  });
+  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }));
 })();
 </script>
 
