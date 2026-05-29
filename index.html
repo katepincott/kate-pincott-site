@@ -236,17 +236,30 @@ nav.top a.current{color:var(--accent);font-weight:600}
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 64px;
+  height: 100px;
 }
 .ticker .brand:hover{ color: var(--fg); }
 /* Recolourable SVG logo - currentColor paints from .client-logo */
 .client-logo{
-  height: 40px;
+  height: 40px;  /* default - Multiverse-shape (~2.7:1 wordmark+icon) */
   width: auto;
   color: #000;
   transition: color .2s ease;
   display: block;
 }
+/* Optical sizing per aspect-ratio bucket so each logo feels like a peer */
+.client-logo--icon{ height: 50px; }       /* square-ish (Pentagram, Meta, ustwo, GfK, Belua, Nafisi) */
+.client-logo--wm{ height: 30px; }         /* wordmark 3-5:1 (Memorisely) */
+.client-logo--wm-wide{ height: 24px; }    /* wordmark 5-7:1 (Barclays, Playdeo) */
+.client-logo--wm-extra{ height: 20px; }   /* wordmark 7+:1 (Mattereum) */
+/* Per-logo overrides (specificity beats bucket modifiers) */
+.client-logo[src*="barclays_logo"]{ height: 14px; }
+.client-logo[src*="playdeo_logo"]{ height: 12px; }
+.client-logo[src*="pentagram_logo"]{ height: 90px; }
+.client-logo[src*="meta_logo"]{ height: 56px; }
+.client-logo[src*="HI_logo"]{ height: 10px; }
+.client-logo[src*="mattereum_logo"]{ height: 12px; }
+.client-logo[src*="cleo_logo"]{ height: 32px; }
 .client-logo:hover,
 .ticker .brand:hover .client-logo{ color: #888; }
 .ticker .sep{
@@ -1006,35 +1019,35 @@ main:focus{outline:none}
   <section class="ticker" aria-label="Brands worked with">
     <div class="track">
       <!-- First copy -->
+      <span class="brand"><img src="./assets/logos/meta_logo.svg" alt="Meta" class="client-logo client-logo--icon" loading="lazy"></span>
+      <span class="brand"><img src="./assets/logos/pentagram_logo.svg" alt="Pentagram" class="client-logo client-logo--icon" loading="lazy"></span>
+      <span class="brand"><img src="./assets/logos/barclays_logo.svg" alt="Barclays" class="client-logo client-logo--wm-wide" loading="lazy"></span>
       <span class="brand"><img src="./assets/logos/multiverse_logo.svg" alt="Multiverse" class="client-logo" loading="lazy"></span>
-      <span class="brand"><img src="./assets/logos/meta_logo.svg" alt="Meta" class="client-logo" loading="lazy"></span>
-      <span class="brand"><img src="./assets/logos/pentagram_logo.svg" alt="Pentagram" class="client-logo" loading="lazy"></span>
-      <span class="brand"><img src="./assets/logos/cleo_logo.svg" alt="Cleo" class="client-logo" loading="lazy"></span>
-      <span class="brand"><img src="./assets/logos/ustwo_logo.svg" alt="ustwo" class="client-logo" loading="lazy"></span>
-      <span class="brand"><img src="./assets/logos/barclays_logo.svg" alt="Barclays" class="client-logo" loading="lazy"></span>
+      <span class="brand"><img src="./assets/logos/ustwo_logo.svg" alt="ustwo" class="client-logo client-logo--icon" loading="lazy"></span>
       <span class="brand"><img src="./assets/logos/GA_logo.svg" alt="General Assembly" class="client-logo" loading="lazy"></span>
-      <span class="brand"><img src="./assets/logos/memorisely_logo.svg" alt="Memorisely" class="client-logo" loading="lazy"></span>
-      <span class="brand"><img src="./assets/logos/mattereum_logo.svg" alt="Mattereum" class="client-logo" loading="lazy"></span>
-      <span class="brand"><img src="./assets/logos/playdeo_logo.svg" alt="Playdeo" class="client-logo" loading="lazy"></span>
-      <span class="brand"><img src="./assets/logos/gfk_logo.svg" alt="GfK" class="client-logo" loading="lazy"></span>
-      <span class="brand"><img src="./assets/logos/belua_logo.svg" alt="Belua" class="client-logo" loading="lazy"></span>
+      <span class="brand"><img src="./assets/logos/HI_logo.svg" alt="Hyper Island" class="client-logo" loading="lazy"></span>
+      <span class="brand"><img src="./assets/logos/memorisely_logo.svg" alt="Memorisely" class="client-logo client-logo--wm" loading="lazy"></span>
+      <span class="brand"><img src="./assets/logos/cleo_logo.svg" alt="Cleo" class="client-logo" loading="lazy"></span>
+      <span class="brand"><img src="./assets/logos/gfk_logo.svg" alt="GfK" class="client-logo client-logo--icon" loading="lazy"></span>
+      <span class="brand"><img src="./assets/logos/mattereum_logo.svg" alt="Mattereum" class="client-logo client-logo--wm-extra" loading="lazy"></span>
+      <span class="brand"><img src="./assets/logos/playdeo_logo.svg" alt="Playdeo" class="client-logo client-logo--wm-wide" loading="lazy"></span>
+      <span class="brand"><img src="./assets/logos/FLA_logo.svg" alt="FLA" class="client-logo" loading="lazy"></span>
       <span class="brand"><img src="./assets/logos/RP_logo.svg" alt="Reality Prototyping" class="client-logo" loading="lazy"></span>
-      <span class="brand"><img src="./assets/logos/nafisi_studio_logo.svg" alt="Nafisi Studio" class="client-logo" loading="lazy"></span>
       <!-- Duplicate for seamless marquee loop -->
+      <span class="brand" aria-hidden="true"><img src="./assets/logos/meta_logo.svg" alt="" class="client-logo client-logo--icon" loading="lazy"></span>
+      <span class="brand" aria-hidden="true"><img src="./assets/logos/pentagram_logo.svg" alt="" class="client-logo client-logo--icon" loading="lazy"></span>
+      <span class="brand" aria-hidden="true"><img src="./assets/logos/barclays_logo.svg" alt="" class="client-logo client-logo--wm-wide" loading="lazy"></span>
       <span class="brand" aria-hidden="true"><img src="./assets/logos/multiverse_logo.svg" alt="" class="client-logo" loading="lazy"></span>
-      <span class="brand" aria-hidden="true"><img src="./assets/logos/meta_logo.svg" alt="" class="client-logo" loading="lazy"></span>
-      <span class="brand" aria-hidden="true"><img src="./assets/logos/pentagram_logo.svg" alt="" class="client-logo" loading="lazy"></span>
-      <span class="brand" aria-hidden="true"><img src="./assets/logos/cleo_logo.svg" alt="" class="client-logo" loading="lazy"></span>
-      <span class="brand" aria-hidden="true"><img src="./assets/logos/ustwo_logo.svg" alt="" class="client-logo" loading="lazy"></span>
-      <span class="brand" aria-hidden="true"><img src="./assets/logos/barclays_logo.svg" alt="" class="client-logo" loading="lazy"></span>
+      <span class="brand" aria-hidden="true"><img src="./assets/logos/ustwo_logo.svg" alt="" class="client-logo client-logo--icon" loading="lazy"></span>
       <span class="brand" aria-hidden="true"><img src="./assets/logos/GA_logo.svg" alt="" class="client-logo" loading="lazy"></span>
-      <span class="brand" aria-hidden="true"><img src="./assets/logos/memorisely_logo.svg" alt="" class="client-logo" loading="lazy"></span>
-      <span class="brand" aria-hidden="true"><img src="./assets/logos/mattereum_logo.svg" alt="" class="client-logo" loading="lazy"></span>
-      <span class="brand" aria-hidden="true"><img src="./assets/logos/playdeo_logo.svg" alt="" class="client-logo" loading="lazy"></span>
-      <span class="brand" aria-hidden="true"><img src="./assets/logos/gfk_logo.svg" alt="" class="client-logo" loading="lazy"></span>
-      <span class="brand" aria-hidden="true"><img src="./assets/logos/belua_logo.svg" alt="" class="client-logo" loading="lazy"></span>
+      <span class="brand" aria-hidden="true"><img src="./assets/logos/HI_logo.svg" alt="" class="client-logo" loading="lazy"></span>
+      <span class="brand" aria-hidden="true"><img src="./assets/logos/memorisely_logo.svg" alt="" class="client-logo client-logo--wm" loading="lazy"></span>
+      <span class="brand" aria-hidden="true"><img src="./assets/logos/cleo_logo.svg" alt="" class="client-logo" loading="lazy"></span>
+      <span class="brand" aria-hidden="true"><img src="./assets/logos/gfk_logo.svg" alt="" class="client-logo client-logo--icon" loading="lazy"></span>
+      <span class="brand" aria-hidden="true"><img src="./assets/logos/mattereum_logo.svg" alt="" class="client-logo client-logo--wm-extra" loading="lazy"></span>
+      <span class="brand" aria-hidden="true"><img src="./assets/logos/playdeo_logo.svg" alt="" class="client-logo client-logo--wm-wide" loading="lazy"></span>
+      <span class="brand" aria-hidden="true"><img src="./assets/logos/FLA_logo.svg" alt="" class="client-logo" loading="lazy"></span>
       <span class="brand" aria-hidden="true"><img src="./assets/logos/RP_logo.svg" alt="" class="client-logo" loading="lazy"></span>
-      <span class="brand" aria-hidden="true"><img src="./assets/logos/nafisi_studio_logo.svg" alt="" class="client-logo" loading="lazy"></span>
     </div>
   </section>
 
