@@ -437,7 +437,22 @@ html,body{overflow-x:hidden}
 .nav-backdrop.open{opacity:1;visibility:visible}
 
 @media (max-width: 720px){
-  nav.top{align-items:center;flex-wrap:nowrap}
+  nav.top{
+    align-items:center;
+    flex-wrap:nowrap;
+    position:sticky;
+    top:0;
+    z-index:55;
+    background:var(--bg);
+    /* full-bleed background to the viewport edges regardless of shell padding */
+    margin-left:calc(50% - 50vw);
+    margin-right:calc(50% - 50vw);
+    padding-left:calc(50vw - 50%);
+    padding-right:calc(50vw - 50%);
+    padding-top:14px;
+    padding-bottom:12px;
+    border-bottom:1px solid var(--line);
+  }
   .nav-toggle{display:block}
   nav.top ul{
     position:fixed;
