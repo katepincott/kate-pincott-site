@@ -431,8 +431,8 @@ nav.top a.current{color:var(--accent);font-weight:600}
 /* Sticky right-rail TOC */
 .toc{
   position:fixed;
-  right:32px;
-  top:120px;
+  right:24px;
+  top:96px;
   width:200px;
   z-index:30;
   font-family:var(--font-mono);
@@ -441,6 +441,12 @@ nav.top a.current{color:var(--accent);font-weight:600}
   letter-spacing:0.04em;
   text-transform:uppercase;
   user-select:none;
+  /* Soft backdrop so content underneath stays readable but doesn't compete */
+  padding:18px 18px 18px 28px;
+  border-radius:14px;
+  background: linear-gradient(to right, transparent 0, color-mix(in oklch, var(--bg) 75%, transparent) 18%, color-mix(in oklch, var(--bg) 92%, transparent) 100%);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 .toc-label{
   display:block;
