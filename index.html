@@ -15,10 +15,11 @@
   --surface: oklch(0.965 0.008 80);
   --fg: oklch(0.22 0.012 60);
   --fg-mute: oklch(0.45 0.012 60);
-  --fg-faint: oklch(0.62 0.010 60);
+  --fg-faint: oklch(0.55 0.010 60);
   --line: oklch(0.86 0.012 70);
   --accent: oklch(0.58 0.14 38);
   --accent-soft: oklch(0.58 0.14 38 / 0.10);
+  --accent-text: oklch(0.55 0.14 38); /* darker accent for small text/links - AA */
 
   /* Density */
   --gap-row: 32px;
@@ -891,9 +892,27 @@ footer .links a:hover .arrow{transform:translateX(4px);color:var(--accent)}
 body.nav-open .to-top{opacity:0;visibility:hidden}
 .to-top:hover{color:var(--accent);border-color:var(--accent)}
 .to-top:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+/* A11y: darker accent for small text + links (WCAG AA contrast) */
+nav.top a:hover,
+nav.top a.current,
+.hero .meta .row .v a:hover,
+.cv .body .role a:hover,
+.cv .body .more,
+.cv .item:hover .year,
+footer .links a:hover,
+footer .links a:hover .arrow,
+.def:hover,
+.to-top:hover,
+.philosophy .p-num{color:var(--accent-text)}
+.skip-link{position:absolute;left:8px;top:-48px;z-index:100;background:var(--fg);color:var(--bg);padding:9px 16px;border-radius:6px;font-size:14px;text-decoration:none;transition:top .15s ease}
+.skip-link:focus{top:8px}
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+main:focus{outline:none}
 </style>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
 <div class="shell">
 
@@ -910,6 +929,8 @@ body.nav-open .to-top{opacity:0;visibility:hidden}
       <li><a href="#contact" class="contact-cta">Contact</a></li>
     </ul>
   </nav>
+
+  <main id="main" tabindex="-1">
 
   <section class="hero reveal">
     <div>
@@ -1179,6 +1200,8 @@ body.nav-open .to-top{opacity:0;visibility:hidden}
       </div>
     </div>
   </section>
+
+  </main>
 
   <footer id="contact" class="reveal">
     <div>
