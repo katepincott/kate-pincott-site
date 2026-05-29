@@ -144,7 +144,7 @@
       // Skip anchor-only, mailto/tel, and full external URLs
       if (href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') || /^[a-z]+:\/\//i.test(href)) return;
       const hrefPath = normalise(href);
-      if (hrefPath === currentPath) a.classList.add('current');
+      if (hrefPath === currentPath) { a.classList.add('current'); a.setAttribute('aria-current','page'); }
     });
   })();
 
