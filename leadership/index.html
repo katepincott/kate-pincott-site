@@ -727,6 +727,35 @@ footer.foot{
   }
   body.nav-open{overflow:hidden}
 }
+
+/* ---- Back to top ---- */
+.to-top{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  z-index:45;
+  width:44px;
+  height:44px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid var(--line);
+  border-radius:50%;
+  background:var(--surface);
+  color:var(--fg);
+  font-size:18px;
+  line-height:1;
+  cursor:pointer;
+  box-shadow:0 8px 24px -12px rgba(0,0,0,.35);
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(8px);
+  transition:opacity .25s ease, transform .25s ease, visibility .25s ease, color .15s ease, border-color .15s ease;
+}
+.to-top.show{opacity:1;visibility:visible;transform:translateY(0)}
+body.nav-open .to-top{opacity:0;visibility:hidden}
+.to-top:hover{color:var(--accent);border-color:var(--accent)}
+.to-top:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 </style>
 </head>
 <body>
@@ -1029,6 +1058,8 @@ footer.foot{
 
 </div>
 
+<button class="to-top" type="button" aria-label="Back to top">↑</button>
+
 
 <script>
 // ---- TOC: track active section as user scrolls ----
@@ -1133,6 +1164,18 @@ footer.foot{
   document.addEventListener('mouseover', (e) => { const t = e.target.closest('.def'); if (t) show(t); });
   document.addEventListener('mouseout', (e) => { const t = e.target.closest('.def'); if (t) hide(); });
   window.addEventListener('scroll', () => { if (currentTerm) position(currentTerm); }, { passive: true });
+})();
+// Back-to-top button: fades in after scrolling, returns to top on click.
+(function(){
+  const btn = document.querySelector('.to-top');
+  if (!btn) return;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const onScroll = () => btn.classList.toggle('show', window.scrollY > 600);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+  });
 })();
 </script>
 
