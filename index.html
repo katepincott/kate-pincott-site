@@ -100,10 +100,6 @@ nav.top a.current{color:var(--accent);font-weight:600}
 /* Hero */
 .hero{
   margin-bottom:var(--gap-section);
-  display:grid;
-  grid-template-columns: minmax(0, 8fr) minmax(0, 4fr);
-  gap:80px;
-  align-items:start;
 }
 .hero .eyebrow{
   font-family:var(--font-mono);
@@ -204,6 +200,95 @@ nav.top a.current{color:var(--accent);font-weight:600}
 .hero .meta .row .v{color:var(--fg)}
 .hero .meta .row .v a{color:var(--fg);text-decoration:none;border-bottom:1px solid var(--line);transition:color .15s, border-color .15s}
 .hero .meta .row .v a:hover{color:var(--accent);border-color:var(--accent)}
+
+/* Brand ticker - mobile-first snap carousel, desktop auto-marquee */
+.ticker{
+  margin: calc(var(--gap-section) * -0.4) 0 var(--gap-section);
+  padding: 40px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  position: relative;
+}
+.ticker::-webkit-scrollbar{ display: none; }
+.ticker .track{
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  width: max-content;
+  padding: 0 24px;
+  animation: ticker-scroll 60s linear infinite;
+}
+.ticker:hover .track{ animation-play-state: paused; }
+.ticker .brand{
+  scroll-snap-align: center;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 32px;
+  letter-spacing: -0.012em;
+  color: var(--fg-mute);
+  white-space: nowrap;
+  transition: color .2s ease, font-weight .35s ease;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 180px;
+  height: 110px;
+}
+.ticker .brand:hover{
+  color: var(--fg);
+  font-weight: 600;
+}
+.ticker .brand img{
+  max-height: 60px;
+  width: auto;
+  max-width: 180px;
+  object-fit: contain;
+  filter: grayscale(1) contrast(1.05);
+  opacity: 0.7;
+  mix-blend-mode: multiply;
+  transition: opacity .2s ease;
+  display: block;
+}
+/* Per-logo optical sizing */
+.ticker .brand--lg img{ max-height: 100px; max-width: 220px; }
+.ticker .brand--sm img{ max-height: 22px; max-width: 70px; }
+.ticker .brand--wordmark{ min-width: 320px; }
+.ticker .brand--wordmark img{ max-height: 38px; max-width: 300px; }
+/* For white-on-dark logos that need flipping to dark-on-cream */
+.ticker .brand--invert img{
+  filter: invert(1) grayscale(1) contrast(1.05);
+  mix-blend-mode: normal;
+}
+.ticker .brand:hover img{ opacity: 1; }
+.ticker .sep{
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--line);
+  flex-shrink: 0;
+}
+@media (min-width: 720px){
+  .ticker{
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 40px, #000 calc(100% - 40px), transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0, #000 40px, #000 calc(100% - 40px), transparent 100%);
+  }
+  .ticker .track{
+    padding: 0;
+    gap: 56px;
+  }
+}
+@keyframes ticker-scroll{
+  0%   { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+@media (prefers-reduced-motion: reduce){
+  .ticker .track{ animation: none; }
+}
 
 /* Section header */
 .section{
@@ -343,43 +428,6 @@ nav.top a.current{color:var(--accent);font-weight:600}
   background:transparent;
   white-space:nowrap;
   line-height:1.4;
-}
-
-/* Clients ticker */
-.ticker{
-  position:relative;
-  overflow:hidden;
-  padding:18px 0;
-  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%);
-  mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%);
-}
-.ticker-track{
-  display:flex;
-  width:max-content;
-  align-items:center;
-  animation: ticker-scroll 38s linear infinite;
-}
-.ticker:hover .ticker-track{animation-play-state:paused}
-.ticker .client{
-  flex-shrink:0;
-  padding:0 36px;
-  font-family:var(--font-display);
-  font-weight:500;
-  font-size:clamp(28px, 3.4vw, 42px);
-  color:var(--fg);
-  letter-spacing:-0.022em;
-  white-space:nowrap;
-  transition: color .2s ease;
-}
-.ticker .client:hover{color:var(--accent)}
-@keyframes ticker-scroll{
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-@media (prefers-reduced-motion: reduce){
-  /* Compromise: keep the clients ticker drifting, but slow and gentle
-     for users who prefer reduced motion (incl. iOS Low Power Mode). */
-  .ticker-track{animation-duration:90s}
 }
 
 /* Clients strip */
@@ -567,6 +615,14 @@ footer .big{
   letter-spacing:-0.022em;
   margin:0 0 32px 0;
   text-wrap:balance;
+}
+footer .footer-meta{
+  font-family:var(--font-mono);
+  font-size:11.5px;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  color:var(--fg-faint);
+  margin:0;
 }
 footer .big em{
   font-family:var(--font-display-italic);
@@ -934,18 +990,44 @@ main:focus{outline:none}
 
   <section class="hero reveal">
     <div>
-      <div class="eyebrow"><span class="dot"></span>Director of Experience · London, UK</div>
+      <div class="eyebrow"><span class="dot"></span>Still biological · London, UK</div>
       <h1>I help product organisations figure out what design means in an <em class="cycle" data-words="AI-first,AI-native,agent-first,post-AI">AI-first</em> world.</h1>
       <ul class="intro-list">
         <li>Currently leading across: Product Design, Research, Brand, Design Systems and Accessibility with a team of up to 20.</li>
+        <li>15+ years across enterprise, agency, startups and my own consulting, with teams of up to 25.</li>
+        <li>Industries: edtech, fintech, blockchain, social, B2C, B2B. The recurring work: building design functions from zero, brand × product, AI-native operating models, and accessibility programmes.</li>
       </ul>
     </div>
-    <div class="meta">
-      <div class="row"><span class="k">Currently</span><span class="v">Director of Experience, Multiverse</span></div>
-      <div class="row"><span class="k">Previously</span><span class="v">Cleo, Mattereum, GfK, Facebook, Ustwo, Barclays, Pentagram - across 15 years</span></div>
-      <div class="row"><span class="k">Coaching</span><span class="v">Amazon, Monzo, Figma, Google, Meta, IDEO and more</span></div>
-      <div class="row"><span class="k">Based</span><span class="v">London, UK</span></div>
-      <div class="row"><span class="k">Email</span><span class="v"><a href="mailto:kate.pincott@gmail.com">kate.pincott@gmail.com</a></span></div>
+  </section>
+
+  <section class="ticker" aria-label="Brands worked with">
+    <div class="track">
+      <!-- First copy -->
+      <span class="brand brand--lg"><img src="https://www.founderscircle.com/wp-content/uploads/2022/06/multiverse-black-logo-88-600x600.png" alt="Multiverse" loading="lazy"></span>
+      <span class="brand brand--sm"><img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg" alt="Meta" loading="lazy"></span>
+      <span class="brand brand--lg"><img src="https://ldf.fra1.cdn.digitaloceanspaces.com/partner/988/logo/xl-41b3f5b806ee6b208b06208e3f740d9f.webp" alt="Pentagram" loading="lazy"></span>
+      <span class="brand"><img src="data:image/jpeg;base64,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" alt="Cleo" loading="lazy"></span>
+      <span class="brand brand--lg"><img src="https://ldf.fra1.cdn.digitaloceanspaces.com/cce2961a2c81245a21ca268855c70c6c.webp" alt="Ustwo" loading="lazy"></span>
+      <span class="brand"><img src="https://www.nicepng.com/png/full/283-2834695_barclays-logo-black-and-white-barclays-bank.png" alt="Barclays" loading="lazy"></span>
+      <span class="brand brand--wordmark"><img src="./assets/mattereum.svg" alt="Mattereum" loading="lazy"></span>
+      <span class="brand"><img src="https://image.pitchbook.com/RGiCTGhOKwWSOURqd5qRaXabVNF1666706688406_200x200" alt="Playdeo" loading="lazy"></span>
+      <span class="brand">GfK</span>
+      <span class="brand">Belua</span>
+      <span class="brand">Reality Prototyping</span>
+      <span class="brand">Nafisi Studio</span>
+      <!-- Duplicate for seamless marquee loop -->
+      <span class="brand brand--lg" aria-hidden="true"><img src="https://www.founderscircle.com/wp-content/uploads/2022/06/multiverse-black-logo-88-600x600.png" alt="" loading="lazy"></span>
+      <span class="brand brand--sm" aria-hidden="true"><img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg" alt="" loading="lazy"></span>
+      <span class="brand brand--lg" aria-hidden="true"><img src="https://ldf.fra1.cdn.digitaloceanspaces.com/partner/988/logo/xl-41b3f5b806ee6b208b06208e3f740d9f.webp" alt="" loading="lazy"></span>
+      <span class="brand" aria-hidden="true"><img src="data:image/jpeg;base64,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" alt="" loading="lazy"></span>
+      <span class="brand brand--lg" aria-hidden="true"><img src="https://ldf.fra1.cdn.digitaloceanspaces.com/cce2961a2c81245a21ca268855c70c6c.webp" alt="" loading="lazy"></span>
+      <span class="brand" aria-hidden="true"><img src="https://www.nicepng.com/png/full/283-2834695_barclays-logo-black-and-white-barclays-bank.png" alt="" loading="lazy"></span>
+      <span class="brand brand--wordmark" aria-hidden="true"><img src="./assets/mattereum.svg" alt="" loading="lazy"></span>
+      <span class="brand" aria-hidden="true"><img src="https://image.pitchbook.com/RGiCTGhOKwWSOURqd5qRaXabVNF1666706688406_200x200" alt="" loading="lazy"></span>
+      <span class="brand" aria-hidden="true">GfK</span>
+      <span class="brand" aria-hidden="true">Belua</span>
+      <span class="brand" aria-hidden="true">Reality Prototyping</span>
+      <span class="brand" aria-hidden="true">Nafisi Studio</span>
     </div>
   </section>
 
@@ -1012,6 +1094,21 @@ main:focus{outline:none}
           <span class="tag">Founder</span>
           <span class="tag">Career Development</span>
           <span class="tag">Public Speaking</span>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="year">2019 - 2022</div>
+        <div class="body">
+          <h3 class="role">Nafisi Studio <span class="at">- Co-founder</span></h3>
+          <ul class="highlights">
+            <li>Building a furniture business with my partner.</li>
+          </ul>
+        </div>
+        <div class="tags">
+          <span class="tag">Founder</span>
+          <span class="tag">Brand</span>
+          <span class="tag">Product Design</span>
         </div>
       </div>
 
@@ -1145,33 +1242,6 @@ main:focus{outline:none}
     </div>
   </section>
 
-  <section class="section reveal" id="clients">
-    <div class="section-head">
-      <h2>Coaching clients</h2>
-      <span class="count">100+ designers</span>
-    </div>
-    <div class="ticker" aria-label="Coaching clients">
-      <div class="ticker-track">
-        <span class="client">Amazon</span>
-        <span class="client">Monzo</span>
-        <span class="client">Figma</span>
-        <span class="client">Google</span>
-        <span class="client">Meta</span>
-        <span class="client">IDEO</span>
-        <span class="client">IKEA</span>
-        <span class="client">Lloyds</span>
-        <span class="client" aria-hidden="true">Amazon</span>
-        <span class="client" aria-hidden="true">Monzo</span>
-        <span class="client" aria-hidden="true">Figma</span>
-        <span class="client" aria-hidden="true">Google</span>
-        <span class="client" aria-hidden="true">Meta</span>
-        <span class="client" aria-hidden="true">IDEO</span>
-        <span class="client" aria-hidden="true">IKEA</span>
-        <span class="client" aria-hidden="true">Lloyds</span>
-      </div>
-    </div>
-  </section>
-
   <section class="section reveal" id="now">
     <div class="section-head">
       <h2>Open to chat about</h2>
@@ -1206,6 +1276,7 @@ main:focus{outline:none}
     <div>
       <h3>Contact</h3>
       <p class="big">Let's <em>talk</em>.</p>
+      <p class="footer-meta">Based in London, UK · Hybrid / Remote</p>
     </div>
     <div class="links">
       <a data-magnetic href="mailto:kate.pincott@gmail.com">kate.pincott@gmail.com <span class="arrow">→</span></a>
